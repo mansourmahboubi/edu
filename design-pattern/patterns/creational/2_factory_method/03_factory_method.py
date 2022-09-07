@@ -101,8 +101,10 @@ def client_code(creator: Creator) -> None:
 
 if __name__ == "__main__":
     print("App: Launched with the ConcreteCreator1.")
-    client_code(ConcreteCreator1())
+    creator_1 = ConcreteCreator1()
+    client_code(creator_1)
     print("\n")
 
     print("App: Launched with the ConcreteCreator2.")
-    client_code(ConcreteCreator2())
+    creator_2 = ConcreteCreator2()
+    client_code(creator_2)
