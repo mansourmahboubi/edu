@@ -8,22 +8,22 @@ from typing import List
 
 class BaseCreator(ABC):
     @abstractmethod
-    def factory_method(self):
+    def factory_method(self) -> "BaseBook":
         pass
 
     def process(self):
         product = self.factory_method()
-        excerpt = product.excerpt()  # type: ignore
+        excerpt = product.excerpt()
         return excerpt
 
 
 class HistoryBookCreator(BaseCreator):
-    def factory_method(self) -> "BaseBook":
+    def factory_method(self):
         return HistoryBook()
 
 
 class EduBookCreator(BaseCreator):
-    def factory_method(self) -> "BaseBook":
+    def factory_method(self):
         return EduBook()
 
 
