@@ -32,7 +32,7 @@ class TestSetDefault:
         # mock_publish = mocker.patch.object(events, 'publish')
 
         address.set_default()
-        logger.error(address)
+        # logger.error(address)
         # We lose the integration tests of the database flows
         mock_filter.assert_called_with(user=address.user)
         mock_update.assert_called_with(is_default=False)
