@@ -16,17 +16,15 @@ class Solution:
                     index = cur_index
                 else:
                     return False
-        if string == s:
-            return True
-        return False
+        return string == s
 
-    def is_subsequence_2(self, s: str, t: str) -> bool:
+    def is_subsequence_2(self, string: str, target: str) -> bool:
         i, j = 0, 0
-        while i < len(s) and j < len(t):
-            if s[i] == t[j]:
+        while i < len(string) and j < len(target):
+            if string[i] == target[j]:
                 i += 1
             j += 1
-        return i == len(s)
+        return i == len(string)
 
 
 if __name__ == "__main__":
