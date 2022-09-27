@@ -25,6 +25,7 @@ class Solution:
         return res
 
     def reverse_list_2(self, head: Optional["ListNode"]) -> Optional["ListNode"]:
+
         prev = None
         curr = head
 
@@ -37,6 +38,9 @@ class Solution:
         return prev
 
     def reverse_list_3(self, head, prev=None):
+        """
+        recurstion
+        """
         if not head:
             return prev
         next = head.next
