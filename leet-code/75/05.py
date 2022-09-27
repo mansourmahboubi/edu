@@ -1,17 +1,7 @@
-import time
 from typing import Optional
 
+from list_node import ListNode
 from timer import Timer
-
-
-# Definition for singly-linked list.
-class ListNode:
-    def __init__(self, val=0, next=None):
-        self.val = val
-        self.next: Optional["ListNode"] = next
-
-    def __str__(self):
-        return f"{self.val}-{self.next}"
 
 
 class Solution:
@@ -39,15 +29,7 @@ if __name__ == "__main__":
     with Timer():
         a = [1, 2, 4]
         b = [1, 3, 4]
-        l1_head = dummly_l1 = ListNode(val=1)
-        l2_head = dummly_l2 = ListNode(val=1)
-        for i in range(1, len(a)):
-            new_l1 = ListNode(val=a[i])
-            l1_head.next = new_l1
-            l1_head = new_l1
-
-            new_l2 = ListNode(val=b[i])
-            l2_head.next = new_l2
-            l2_head = new_l2
+        dummly_l1 = ListNode.array_to_listnode(a)
+        dummly_l2 = ListNode.array_to_listnode(b)
         res = s.merge_two_lists(dummly_l1, dummly_l2)
         print(res)
