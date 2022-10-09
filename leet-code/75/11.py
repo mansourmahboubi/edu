@@ -6,35 +6,9 @@ https://www.tutorialspoint.com/python_data_structure/python_tree_traversal_algor
 https://www.studytonight.com/advanced-data-structures/nary-tree
 """
 
-from typing import List
 
+from n_ary import NAryNode
 from timer import Timer
-
-
-# Definition for a Node.
-class Node:
-    # intresting bug if children start with[]
-    def __init__(self, val=None, children=None):
-        self.val = val
-        self.children = children
-
-    # def __repr__(self):
-    #     return f"value {self.val} childs {self.children} |"
-
-    @classmethod
-    def create_node_list_from_array(cls, array: List[int]):
-        root = cls(array[0], children=[])
-        nodes = [root]
-        index = 0
-        for i in range(2, len(array)):
-            if array[i] == None:
-                index += 1
-            else:
-                node = cls(array[i], children=[])
-                nodes.append(node)
-                nodes[index].children.append(node)  # type:ignore
-                # print(f"self: {node.val} parent: {nodes[index].val}")
-        return root
 
 
 class Solution:
@@ -53,7 +27,7 @@ class Solution:
 
     def preorder(self, root):
         """
-        :type root: Node
+        :type root: NAryNode
         :rtype: List[int]
         """
 
@@ -67,7 +41,7 @@ class Solution:
 
     def preorder_1(self, root):
         """
-        :type root: Node
+        :type root: NAryNode
         :rtype: List[int]
         """
         if root is None:
@@ -97,7 +71,7 @@ if __name__ == "__main__":
     s = Solution()
     a = [1, None, 3, 2, 4, None, 5, 6]
 
-    n_ary = Node.create_node_list_from_array(a)
+    n_ary = NAryNode.create_node_list_from_array(a)
 
     with Timer("Method 1"):
         res = s.preorder(n_ary)
