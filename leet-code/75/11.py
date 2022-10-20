@@ -70,6 +70,7 @@ class Solution:
 if __name__ == "__main__":
     s = Solution()
     a = [1, None, 3, 2, 4, None, 5, 6]
+    print(f"original array: {a}")
 
     n_ary = NAryNode.create_node_list_from_array(a)
 
