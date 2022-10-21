@@ -3,21 +3,24 @@ flatten a nested JSON object
 """
 
 
+def key_name(name, key):
+    return f"{key}_{name}" if key else name
+
+
 def flat_object(obj):
     flat_dict = {}
     # nested_props = {}
-    def flasten(value, key):
+    def flasten(value, key=None):
         if isinstance(value, dict):
             for key_1, value in value.items():
-                flasten(value, key=f"{key}_{key_1}")
+                flasten(value, key=key_name(key_1, key))
         elif isinstance(value, list):
-            for item in value:
-                flasten(item, key=f"{key}_{item}")
+            for idx, item in enumerate(value):
+                flasten(item, key=key_name(idx, key))
         else:
             flat_dict[key] = value  # type:ignore
 
-    for key, value in obj.items():
-        flasten(value, key=key)
+    flasten(obj)
 
     return flat_dict
 
