@@ -1,0 +1,44 @@
+[build-system]
+requires      = ["setuptools>=61.0.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mansour-utils"
+version = "0.2.2"
+description = "Mansour Mahboubi's tools"
+readme = "README.md"
+authors = [{ name = "Mansour Mahboubi", email = "mansourmahboubi@outlook.com" }]
+license = { file = "LICENSE" }
+classifiers = [
+    "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+]
+keywords = ["mansour"]
+dependencies = []
+requires-python = ">=3.8"
+
+[project.optional-dependencies]
+dev = ["black", "pytest"]
+
+[project.urls]
+Homepage = "https://github.com/mansourmahboubi/"
+
+[project.scripts]
+timer = "mansour_utils.__main__:main"
+
+[tool.bumpver]
+current_version = "0.2.2"
+version_pattern = "MAJOR.MINOR.PATCH"
+commit_message = "bump version {old_version} -> {new_version}"
+commit = true
+tag = true
+push = false
+
+[tool.bumpver.file_patterns]
+"pyproject.toml" = ['current_version = "{version}"', 'version = "{version}"']
+"src/mansour_utils/__init__.py" = ["{version}"]
+"setup.py" = [
+    "{version}",
+]
+
