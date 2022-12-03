@@ -26,7 +26,7 @@ with Timer("Method 1"):
 
 with Timer("Method gen"):
     result = fib_gen()
-    print(result)
+    # print(result)
 
     for n in result:
         print(n, end=", ")
