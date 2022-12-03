@@ -1,13 +1,14 @@
 import asyncio
 import datetime
-import colorama
 import random
+
+import colorama
 
 
 def main():
     # Changed this from the video due to changes in Python 3.10:
     # DeprecationWarning: There is no current event loop, loop = asyncio.get_event_loop()
-    loop = asyncio.new_event_loop()
+    loop = asyncio.get_event_loop()
 
     t0 = datetime.datetime.now()
     print(colorama.Fore.WHITE + "App started.", flush=True)
@@ -22,16 +23,20 @@ def main():
     loop.run_until_complete(final_task)
 
     dt = datetime.datetime.now() - t0
-    print(colorama.Fore.WHITE + f"App exiting, total time: {dt.total_seconds():,.2f} sec.", flush=True)
+    print(
+        colorama.Fore.WHITE
+        + f"App exiting, total time: {dt.total_seconds():,.2f} sec.",
+        flush=True,
+    )
 
 
 async def generate_data(num: int, data: asyncio.Queue):
     for idx in range(1, num + 1):
-        item = idx*idx
+        item = idx * idx
         await data.put((item, datetime.datetime.now()))
 
         print(colorama.Fore.YELLOW + f" -- generated item {idx}", flush=True)
-        await asyncio.sleep(random.random() + .5)
+        await asyncio.sleep(random.random() + 0.5)
 
 
 async def process_data(num: int, data: asyncio.Queue):
@@ -44,10 +49,13 @@ async def process_data(num: int, data: asyncio.Queue):
         t = item[1]
         dt = datetime.datetime.now() - t
 
-        print(colorama.Fore.CYAN +
-              f" +++ Processed value {value} after {dt.total_seconds():,.2f} sec.", flush=True)
-        await asyncio.sleep(.5)
+        print(
+            colorama.Fore.CYAN
+            + f" +++ Processed value {value} after {dt.total_seconds():,.2f} sec.",
+            flush=True,
+        )
+        await asyncio.sleep(0.5)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
