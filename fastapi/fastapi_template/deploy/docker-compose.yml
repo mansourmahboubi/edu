@@ -1,0 +1,57 @@
+version: '3.9'
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: ./deploy/Dockerfile
+    image: fastapi_template:${FASTAPI_TEMPLATE_VERSION:-latest}
+    restart: always
+    env_file:
+    - .env
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    environment:
+      FASTAPI_TEMPLATE_HOST: 0.0.0.0
+      FASTAPI_TEMPLATE_DB_HOST: fastapi_template-db
+      FASTAPI_TEMPLATE_DB_PORT: 5432
+      FASTAPI_TEMPLATE_DB_USER: fastapi_template
+      FASTAPI_TEMPLATE_DB_PASS: fastapi_template
+      FASTAPI_TEMPLATE_DB_BASE: fastapi_template
+
+  db:
+    image: postgres:13.8-bullseye
+    hostname: fastapi_template-db
+    environment:
+      POSTGRES_PASSWORD: "fastapi_template"
+      POSTGRES_USER: "fastapi_template"
+      POSTGRES_DB: "fastapi_template"
+    volumes:
+    - fastapi_template-db-data:/var/lib/postgresql/data
+    restart: always
+    healthcheck:
+      test: pg_isready -U fastapi_template
+      interval: 2s
+      timeout: 3s
+      retries: 40
+
+  redis:
+    image: bitnami/redis:6.2.5
+    hostname: "fastapi_template-redis"
+    restart: always
+    environment:
+      ALLOW_EMPTY_PASSWORD: "yes"
+    healthcheck:
+      test: redis-cli ping
+      interval: 1s
+      timeout: 3s
+      retries: 50
+
+
+
+volumes:
+  fastapi_template-db-data:
+    name: fastapi_template-db-data
