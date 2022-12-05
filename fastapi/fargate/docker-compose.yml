@@ -3,9 +3,41 @@ version: '3.9'
 services:
   api:
     build: src
+    container_name: 'fastt_api'
     ports:
       # Exposes application port.
-    - "8000:80"
+      - "8000:80"
     volumes:
       # Adds current directory as volume.
-    - ./src/:/app/
+      - ./src/:/app/
+    networks:
+      - fast_api_network
+  dramatiq:
+    build: src
+    container_name: 'dramatiq'
+    volumes:
+      # Adds current directory as volume.
+      - ./src/:/app/
+    entrypoint: dramatiq app.actors
+    networks:
+      - fast_api_network
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
+    container_name: 'rabbitmq'
+    ports:
+      - 5672:5672
+      - 15672:15672
+    volumes:
+      - rabbit_data:/var/lib/rabbitmq/
+      - rabbit_logs:/var/log/rabbitmq
+    networks:
+      - fast_api_network
+
+volumes:
+  rabbit_logs:
+  rabbit_data:
+
+
+networks:
+  fast_api_network:
+    driver: bridge
