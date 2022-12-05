@@ -1,0 +1,12 @@
+version: '3.9'
+
+services:
+  api:
+    build:
+      context: .
+    ports:
+      # Exposes application port.
+    - "8000:8000"
+    volumes:
+      # Adds current directory as volume.
+    - .:/app/
