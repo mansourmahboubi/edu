@@ -1,0 +1,1 @@
+1. https://www.eliasbrange.dev/posts/deploy-fastapi-on-aws-part-2-fargate-alb/#8-deploy-your-api-to-aws
