@@ -2,11 +2,10 @@ version: '3.9'
 
 services:
   api:
-    build:
-      context: .
+    build: src
     ports:
       # Exposes application port.
-    - "8000:8000"
+    - "8000:80"
     volumes:
       # Adds current directory as volume.
-    - .:/app/
+    - ./src/:/app/

@@ -1,0 +1,3 @@
+fastapi
+typing_extensions
+uvicorn
