@@ -3,6 +3,7 @@ import pytest
 from api.neo4j import close_driver, get_driver
 from api.dao.movies import MovieDAO
 
+
 def test_pagination(app):
     """Test that the all method on the MovieDAO is correctly implemented"""
     with app.app_context():
@@ -41,10 +42,10 @@ def test_ordering(app):
         assert first[0] is not ascending[0]
 
         print("Here is the answer to the quiz question on the lesson:")
-        print("What is the title of the highest rated movie in the recommendations dataset?")
+        print(
+            "What is the title of the highest rated movie in the recommendations dataset?"
+        )
         print("Copy and paste the following answer into the text box:")
         print("")
 
         print(first[0]["title"])
-
-

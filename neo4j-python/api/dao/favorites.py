@@ -1,14 +1,15 @@
 from api.data import popular, goodfellas
 from api.exceptions.notfound import NotFoundException
 
+
 class FavoriteDAO:
     """
     The constructor expects an instance of the Neo4j Driver, which will be
     used to interact with Neo4j.
     """
-    def __init__(self, driver):
-        self.driver=driver
 
+    def __init__(self, driver):
+        self.driver = driver
 
     """
     This method should retrieve a list of movies that have an incoming :HAS_FAVORITE
@@ -21,12 +22,12 @@ class FavoriteDAO:
     The `skip` variable should be used to skip a certain number of rows.
     """
     # tag::all[]
-    def all(self, user_id, sort = 'title', order = 'ASC', limit = 6, skip = 0):
+    def all(self, user_id, sort="title", order="ASC", limit=6, skip=0):
         # TODO: Open a new session
         # TODO: Retrieve a list of movies favorited by the user
         return popular
-    # end::all[]
 
+    # end::all[]
 
     """
     This method should create a `:HAS_FAVORITE` relationship between
@@ -41,10 +42,8 @@ class FavoriteDAO:
         # TODO: Execute the transaction function within a Write Transaction
         # TODO: Return movie details and `favorite` property
 
-        return {
-            **goodfellas,
-            "favorite": False
-        }
+        return {**goodfellas, "favorite": False}
+
     # end::add[]
 
     """
@@ -61,8 +60,6 @@ class FavoriteDAO:
         # TODO: Execute the transaction function within a Write Transaction
         # TODO: Return movie details and `favorite` property
 
-        return {
-            **goodfellas,
-            "favorite": False
-        }
+        return {**goodfellas, "favorite": False}
+
     # end::remove[]

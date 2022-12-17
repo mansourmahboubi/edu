@@ -7,6 +7,7 @@ from api.dao.ratings import RatingDAO
 
 pulp_fiction = "680"
 
+
 def test_get_movie_ratings(app):
     with app.app_context():
         # Get Neo4j Driver
@@ -19,16 +20,15 @@ def test_get_movie_ratings(app):
         limit = 1
 
         # Descending Order
-        descending = dao.for_movie(pulp_fiction, 'timestamp', 'DESC', limit)
+        descending = dao.for_movie(pulp_fiction, "timestamp", "DESC", limit)
 
         assert len(descending) == limit
 
         # Check Pagination & Ordering
-        ascending = dao.for_movie(pulp_fiction, 'timestamp', 'ASC', limit)
+        ascending = dao.for_movie(pulp_fiction, "timestamp", "ASC", limit)
 
         assert len(ascending) == limit
         assert descending[0] != ascending[0]
-
 
         print("\n\n")
         print("Here is the answer to the quiz question on the lesson:")

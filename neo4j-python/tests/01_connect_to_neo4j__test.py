@@ -1,6 +1,7 @@
 import os
 from api.neo4j import close_driver, get_driver
 
+
 def test_env_vars():
     """Test that environment variables have been set"""
 

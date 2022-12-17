@@ -1,13 +1,15 @@
 from api.data import genres
 from api.exceptions.notfound import NotFoundException
 
+
 class GenreDAO:
     """
     The constructor expects an instance of the Neo4j Driver, which will be
     used to interact with Neo4j.
     """
+
     def __init__(self, driver):
-        self.driver=driver
+        self.driver = driver
 
     """
     This method should return a list of genres from the database with a
@@ -30,8 +32,8 @@ class GenreDAO:
         # TODO: Execute within a Read Transaction
 
         return genres
-    # end::all[]
 
+    # end::all[]
 
     """
     This method should find a Genre node by its name and return a set of properties
@@ -46,4 +48,5 @@ class GenreDAO:
         # TODO: Execute within a Read Transaction
 
         return [g for g in genres if g["name"] == name][0]
+
     # end::find[]

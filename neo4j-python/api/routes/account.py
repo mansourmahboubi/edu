@@ -6,12 +6,14 @@ from api.dao.ratings import RatingDAO
 
 account_routes = Blueprint("account", __name__, url_prefix="/api/account")
 
-@account_routes.route('/', methods=['GET'])
+
+@account_routes.route("/", methods=["GET"])
 @jwt_required()
 def get_profile():
     return jsonify(current_user)
 
-@account_routes.route('/favorites', methods=['GET'])
+
+@account_routes.route("/favorites", methods=["GET"])
 @jwt_required()
 def get_favorites():
     # Get user ID from JWT
@@ -30,7 +32,8 @@ def get_favorites():
 
     return jsonify(output)
 
-@account_routes.route('/favorites/<movie_id>', methods=['POST', 'DELETE'])
+
+@account_routes.route("/favorites/<movie_id>", methods=["POST", "DELETE"])
 @jwt_required()
 def add_favorite(movie_id):
     # Get user ID from JWT
@@ -50,7 +53,7 @@ def add_favorite(movie_id):
     return jsonify(output)
 
 
-@account_routes.route('/ratings/<movie_id>', methods=['POST'])
+@account_routes.route("/ratings/<movie_id>", methods=["POST"])
 @jwt_required()
 def save_rating(movie_id):
     # Get user ID from JWT
@@ -68,4 +71,3 @@ def save_rating(movie_id):
 
     # Return the output
     return jsonify(output)
-

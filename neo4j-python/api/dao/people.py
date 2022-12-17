@@ -20,7 +20,7 @@ class PeopleDAO:
     certain number of rows.
     """
     # tag::all[]
-    def all(self, q, sort = 'name', order = 'ASC', limit = 6, skip = 0):
+    def all(self, q, sort="name", order="ASC", limit=6, skip=0):
         # TODO: Get a list of people from the database
         # TODO: Remember to use double braces to replace the braces in the Cypher query {{ }}
 
@@ -46,8 +46,9 @@ class PeopleDAO:
     in descending order.
     """
     # tag::getSimilarPeople[]
-    def get_similar_people(self, id, limit = 6, skip = 0):
+    def get_similar_people(self, id, limit=6, skip=0):
         # TODO: Get a list of similar people to the person by their id
 
         return people[skip:limit]
+
     # end::getSimilarPeople[]

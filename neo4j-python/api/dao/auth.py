@@ -9,11 +9,13 @@ from api.exceptions.validation import ValidationException
 
 from neo4j.exceptions import ConstraintError
 
+
 class AuthDAO:
     """
     The constructor expects an instance of the Neo4j Driver, which will be
     used to interact with Neo4j.
     """
+
     def __init__(self, driver, jwt_secret):
         self.driver = driver
         self.jwt_secret = jwt_secret
@@ -28,13 +30,15 @@ class AuthDAO:
     """
     # tag::register[]
     def register(self, email, plain_password, name):
-        encrypted = bcrypt.hashpw(plain_password.encode("utf8"), bcrypt.gensalt()).decode('utf8')
+        encrypted = bcrypt.hashpw(
+            plain_password.encode("utf8"), bcrypt.gensalt()
+        ).decode("utf8")
 
         # TODO: Handle unique constraint error
         if email != "graphacademy@neo4j.com":
             raise ValidationException(
                 f"An account already exists with the email address {email}",
-                {"email": "An account already exists with this email"}
+                {"email": "An account already exists with this email"},
             )
 
         # Build a set of claims
@@ -48,6 +52,7 @@ class AuthDAO:
         payload["token"] = self._generate_token(payload)
 
         return payload
+
     # end::register[]
 
     """
@@ -82,6 +87,7 @@ class AuthDAO:
             return payload
         else:
             return False
+
     # end::authenticate[]
 
     """
@@ -95,13 +101,10 @@ class AuthDAO:
         payload["sub"] = payload["userId"]
         payload["iat"] = iat
         payload["nbf"] = iat
-        payload["exp"] = iat + current_app.config.get('JWT_EXPIRATION_DELTA')
+        payload["exp"] = iat + current_app.config.get("JWT_EXPIRATION_DELTA")
 
-        return jwt.encode(
-            payload,
-            self.jwt_secret,
-            algorithm='HS256'
-        ).decode('ascii')
+        return jwt.encode(payload, self.jwt_secret, algorithm="HS256").decode("ascii")
+
     # end::generate[]
 
     """
@@ -116,4 +119,5 @@ class AuthDAO:
             return None
         except jwt.InvalidTokenError:
             return None
+
     # end::decode[]

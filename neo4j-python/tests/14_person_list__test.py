@@ -24,7 +24,7 @@ def test_should_return_paginated_list_of_people(app):
         assert len(second_page) == 1
         assert first_page != second_page
 
-        descending =  dao.all(None, "name", "DESC", limit, 0)
+        descending = dao.all(None, "name", "DESC", limit, 0)
 
         assert len(descending) == 1
         assert first_page != descending
@@ -66,8 +66,9 @@ def test_get_outcome(app):
         first = dao.all(None, "name", "ASC", 1)
 
         print("Here is the answer to the quiz question on the lesson:")
-        print("What is the name of the first person in the database in alphabetical order?")
+        print(
+            "What is the name of the first person in the database in alphabetical order?"
+        )
         print("Copy and paste the following answer into the text box: \n\n")
 
         print(first[0]["name"])
-

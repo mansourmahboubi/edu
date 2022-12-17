@@ -10,23 +10,27 @@ email = "graphacademy@neo4j.com"
 password = "letmein"
 name = "Graph Academy"
 
+
 @pytest.fixture(autouse=True)
 def before_all(app):
     with app.app_context():
         driver = get_driver()
 
         def delete_user(tx):
-            return tx.run("MATCH (u:User {email: $email}) DETACH DELETE u", email=email).consume()
+            return tx.run(
+                "MATCH (u:User {email: $email}) DETACH DELETE u", email=email
+            ).consume()
 
         with driver.session() as session:
             session.execute_write(delete_user)
             session.close()
 
+
 def test_register_user(app):
     with app.app_context():
         driver = get_driver()
 
-        dao = AuthDAO(driver, os.environ.get('JWT_SECRET'))
+        dao = AuthDAO(driver, os.environ.get("JWT_SECRET"))
 
         user = dao.register(email, password, name)
 

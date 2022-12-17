@@ -7,7 +7,7 @@ from api.dao.ratings import RatingDAO
 movie_routes = Blueprint("movies", __name__, url_prefix="/api/movies")
 
 # tag::list[]
-@movie_routes.get('/')
+@movie_routes.get("/")
 @jwt_required(optional=True)
 def get_movies():
     # Extract pagination values from the request
@@ -27,10 +27,12 @@ def get_movies():
 
     # Return as JSON
     return jsonify(output)
+
+
 # end::list[]
 
 
-@movie_routes.get('/<movie_id>')
+@movie_routes.get("/<movie_id>")
 @jwt_required(optional=True)
 def get_movie_details(movie_id):
     # Get User ID from JWT Auth
@@ -45,7 +47,7 @@ def get_movie_details(movie_id):
     return jsonify(movie)
 
 
-@movie_routes.get('/<movie_id>/ratings')
+@movie_routes.get("/<movie_id>/ratings")
 def get_movie_ratings(movie_id):
     # Extract pagination values from the request
     sort = request.args.get("sort", "timestamp")
@@ -62,7 +64,7 @@ def get_movie_ratings(movie_id):
     return jsonify(ratings)
 
 
-@movie_routes.get('/<movie_id>/similar')
+@movie_routes.get("/<movie_id>/similar")
 @jwt_required(optional=True)
 def get_similar_movies(movie_id):
     # Get User ID from JWT Auth
@@ -79,4 +81,3 @@ def get_similar_movies(movie_id):
     output = dao.get_similar_movies(movie_id, limit, skip, user_id)
 
     return jsonify(output)
-

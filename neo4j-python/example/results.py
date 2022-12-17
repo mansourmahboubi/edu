@@ -2,8 +2,7 @@
 from neo4j import GraphDatabase
 
 # Create a Driver instance
-driver = GraphDatabase.driver("neo4j://localhost:7687",
-    auth=("neo4j", "neo"))
+driver = GraphDatabase.driver("neo4j://localhost:7687", auth=("neo4j", "neo"))
 
 # Verify Connectivity
 # driver.verify_connectivity()
@@ -11,22 +10,26 @@ driver = GraphDatabase.driver("neo4j://localhost:7687",
 # tag::get_actors[]
 # tag::get_actors_unit_of_work[]
 # Unit of work
-def get_actors(tx, movie): # <1>
-    result = tx.run("""
+def get_actors(tx, movie):  # <1>
+    result = tx.run(
+        """
         MATCH (p:Person)-[:ACTED_IN]->(:Movie {title: $title})
         RETURN p
-    """, title=movie)
+    """,
+        title=movie,
+    )
 
     # tag::get_actor_nodes[]
     # Access the `p` value from each record
-    return [ record["p"] for record in result ]
+    return [record["p"] for record in result]
     # end::get_actor_nodes[]
     # end::get_actors_unit_of_work[]
+
 
 # Open a Session
 with driver.session() as session:
     # Run the unit of work within a Read Transaction
-    actors = session.execute_read(get_actors, movie="The Green Mile") # <2>
+    actors = session.execute_read(get_actors, movie="The Green Mile")  # <2>
 
     for record in actors:
         print(record["p"])
@@ -34,15 +37,19 @@ with driver.session() as session:
     session.close()
 # end::get_actors[]
 
+
 def get_actors_iterate(tx, movie):
-    result = tx.run("""
+    result = tx.run(
+        """
         MATCH (p:Person)-[r:ACTED_IN]->(:Movie {title: $title})
         RETURN p, r.roles AS roles
-    """, title=movie)
+    """,
+        title=movie,
+    )
 
     # tag::keys[]
     # Get all keys available in the result
-    print(result.keys()) # ["p", "roles"]
+    print(result.keys())  # ["p", "roles"]
     # end::keys[]
 
     # tag::peek[]
@@ -50,7 +57,6 @@ def get_actors_iterate(tx, movie):
     peek = result.peek()
     print(peek)
     # end::peek[]
-
 
     # Get the next record
     first = result.single()
@@ -66,7 +72,7 @@ def get_actors_iterate(tx, movie):
 
     # tag::for[]
     for record in result:
-        print(record["p"]) # Person Node
+        print(record["p"])  # Person Node
     # end::for[]
 
 
@@ -75,10 +81,13 @@ Consume the remainder of this result and return a ResultSummary.
 """
 # tag::consume[]
 def get_actors_consume(tx, name):
-    result = tx.run("""
+    result = tx.run(
+        """
         MERGE (p:Person {name: $name})
         RETURN p
-    """, name=name)
+    """,
+        name=name,
+    )
 
     info = result.consume()
     # end::consume[]
@@ -98,6 +107,7 @@ def get_actors_consume(tx, name):
 
     return info
 
+
 """
 Obtain the next and only remaining record from this result if available
 else return None. Calling this method always exhausts the result.
@@ -107,23 +117,33 @@ first of these is still returned.
 """
 # tag::single[]
 def get_actors_single(tx, movie):
-    result = tx.run("""
+    result = tx.run(
+        """
         MATCH (p:Person)-[:ACTED_IN]->(:Movie {title: $title})
         RETURN p
-    """, title=movie)
+    """,
+        title=movie,
+    )
 
     return result.single()
+
+
 # end::single[]
 
 """
 Obtain the next record from this result without consuming it. This
 leaves the record in the buffer for further processing.
 """
+
+
 def get_actors_peek(tx, movie):
-    result = tx.run("""
+    result = tx.run(
+        """
         MATCH (p:Person)-[:ACTED_IN]->(:Movie {title: $title})
         RETURN p
-    """, title=movie)
+    """,
+        title=movie,
+    )
 
     # Check the first record without consuming it
     peek = result.peek()
@@ -142,12 +162,17 @@ for Node and Relationship instances.
 """
 # tag::graph[]
 def get_actors_graph(tx, movie):
-    result = tx.run("""
+    result = tx.run(
+        """
         MATCH (p:Person)-[r:ACTED_IN]->(m:Movie {title: $title})
         RETURN p, r, m
-    """, title=movie)
+    """,
+        title=movie,
+    )
 
     return result.graph()
+
+
 # end::graph[]
 
 
@@ -157,13 +182,17 @@ Helper function that return the remainder of the result as a list of values.
 """
 # tag::value[]
 def get_actors_values(tx, movie):
-    result = tx.run("""
+    result = tx.run(
+        """
         MATCH (p:Person)-[r:ACTED_IN]->(m:Movie {title: $title})
         RETURN p.name AS name, m.title AS title, r.roles AS roles
-    """, title=movie)
+    """,
+        title=movie,
+    )
 
     return result.value("name", False)
     # Returns the `name` value, or False if unavailable
+
 
 # end::value[]
 
@@ -173,12 +202,16 @@ Helper function that return the remainder of the result as a list of values list
 """
 # tag::values[]
 def get_actors_values(tx, movie):
-    result = tx.run("""
+    result = tx.run(
+        """
         MATCH (p:Person)-[r:ACTED_IN]->(m:Movie {title: $title})
         RETURN p.name AS name, m.title AS title, r.roles AS roles
-    """, title=movie)
+    """,
+        title=movie,
+    )
 
     return result.values("name", "title", "roles")
+
 
 # end::values[]
 
@@ -187,21 +220,29 @@ Helper function that return the remainder of the result as a list of dictionarie
 """
 # tag::data[]
 def get_actors_data(tx, movie):
-    result = tx.run("""
+    result = tx.run(
+        """
         MATCH (p:Person)-[r:ACTED_IN]->(m:Movie {title: $title})
         RETURN p.name AS name, m.title AS title, r.roles AS roles
-    """, title=movie)
+    """,
+        title=movie,
+    )
 
     return result.data("name", "title", "roles")
+
+
 # end::data[]
 
 
 def get_node_example(tx, movie):
     # tag::run[]
-    result = tx.run("""
+    result = tx.run(
+        """
     MATCH path = (person:Person)-[actedIn:ACTED_IN]->(movie:Movie {title: $title})
     RETURN path, person, actedIn, movie
-    """, title=movie)
+    """,
+        title=movie,
+    )
     # end::run[]
 
     # tag::node[]
@@ -211,9 +252,9 @@ def get_node_example(tx, movie):
 
         # tag::node_info[]
 
-        print(node.id)              # <1>
-        print(node.labels)          # <2>
-        print(node.items())         # <3>
+        print(node.id)  # <1>
+        print(node.labels)  # <2>
+        print(node.items())  # <3>
 
         # <4>
         print(node["name"])
@@ -223,23 +264,23 @@ def get_node_example(tx, movie):
         # tag::rel[]
         acted_in = record["actedIn"]
 
-        print(acted_in.id)         # <1>
-        print(acted_in.type)       # <2>
-        print(acted_in.items())    # <3>
+        print(acted_in.id)  # <1>
+        print(acted_in.type)  # <2>
+        print(acted_in.items())  # <3>
 
         # 4
         print(acted_in["roles"])
         print(acted_in.get("roles", "(Unknown)"))
 
-        print(acted_in.start_node) # <5>
-        print(acted_in.end_node)   # <6>
+        print(acted_in.start_node)  # <5>
+        print(acted_in.end_node)  # <6>
         # end::rel[]
 
         # tag::path[]
         path = record["path"]
 
         print(path.start_node)  # <1>
-        print(path.end_node)    # <2>
+        print(path.end_node)  # <2>
         print(len(path))  # <1>
         print(path.relationships)  # <1>
         # end::path[]
@@ -266,12 +307,11 @@ def temporal():
     datetime = neo4j.time.DateTime(year, month, day, hour, minute, second, nanosecond)
 
     #  Create a DateTime  a time stamp (seconds since unix epoch).
-    from_timestamp = neo4j.time.DateTime(1609459200000) # 2021-01-01
+    from_timestamp = neo4j.time.DateTime(1609459200000)  # 2021-01-01
 
     # Get the current date and time.
     now = neo4j.time.DateTime.now()
 
-    print(now.year) # 2022
-
+    print(now.year)  # 2022
 
     # end::temporal[]

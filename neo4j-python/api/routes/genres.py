@@ -6,7 +6,8 @@ from api.dao.movies import MovieDAO
 
 genre_routes = Blueprint("genre", __name__, url_prefix="/api/genres")
 
-@genre_routes.get('/')
+
+@genre_routes.get("/")
 def get_index():
     # Create the DAO
     dao = GenreDAO(current_app.driver)
@@ -16,7 +17,8 @@ def get_index():
 
     return jsonify(output)
 
-@genre_routes.get('/<name>/')
+
+@genre_routes.get("/<name>/")
 def get_genre(name):
     # Create the DAO
     dao = GenreDAO(current_app.driver)
@@ -26,7 +28,8 @@ def get_genre(name):
 
     return jsonify(output)
 
-@genre_routes.get('/<name>/movies')
+
+@genre_routes.get("/<name>/movies")
 @jwt_required(optional=True)
 def get_genre_movies(name):
     # Get User ID from JWT Auth
@@ -45,4 +48,3 @@ def get_genre_movies(name):
     output = dao.get_by_genre(name, sort, order, limit, skip, user_id)
 
     return jsonify(output)
-

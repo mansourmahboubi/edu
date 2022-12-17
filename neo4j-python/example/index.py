@@ -1,6 +1,7 @@
 # tag::import[]
 # Import the neo4j dependency
 from neo4j import GraphDatabase
+
 # end::import[]
 
 
@@ -10,8 +11,8 @@ uri = "neo4j://localhost:7687"
 Example Authentication token.
 You can pass the username and password as a tuple.
 """
-username = 'neo4j'
-password = 'letmein!'
+username = "neo4j"
+password = "letmein!"
 
 # tag::auth[]
 auth = (username, password)
@@ -19,8 +20,7 @@ auth = (username, password)
 
 # tag::driver[]
 # Create a new Driver instance
-driver = GraphDatabase.driver("neo4j://localhost:7687",
-    auth=("neo4j", "neo"))
+driver = GraphDatabase.driver("neo4j://localhost:7687", auth=("neo4j", "neo"))
 # end::driver[]
 
 
@@ -64,32 +64,31 @@ with driver.session(database="people") as session:
 
 # tag::driver.session[]
 with driver.session() as session:
-# end::driver.session[]
+    # end::driver.session[]
 
     # tag::session.run[]
     session.run(
-        "MATCH (p:Person {name: $name}) RETURN p", # Query
-        name="Tom Hanks" # Named parameters referenced
-    )                    # in Cypher by prefixing with a $
+        "MATCH (p:Person {name: $name}) RETURN p",  # Query
+        name="Tom Hanks",  # Named parameters referenced
+    )  # in Cypher by prefixing with a $
     # end::session.run[]
-
 
     # tag::session.readTransaction[]
     # Define a Unit of work to run within a Transaction (`tx`)
     def get_movies(tx, title):
-        return tx.run("""
+        return tx.run(
+            """
             MATCH (p:Person)-[:ACTED_IN]->(m:Movie)
             WHERE m.title = $title // <1>
             RETURN p.name AS name
             LIMIT 10
-        """, title=title)
+        """,
+            title=title,
+        )
 
     # Execute get_movies within a Read Transaction
-    session.execute_read(get_movies,
-        title="Arthur" # <2>
-    )
+    session.execute_read(get_movies, title="Arthur")  # <2>
     # end::session.readTransaction[]
-
 
     """
     # tag::session.writeTransaction[]
@@ -106,11 +105,10 @@ with driver.session() as session:
     # end::session.writeTransaction[]
     """
 
-
     # tag::session.beginTransaction[]
     with session.begin_transaction() as tx:
         # Run queries by calling `tx.run()`
-    # end::session.beginTransaction[]
+        # end::session.beginTransaction[]
 
         """
         # tag::session.beginTransaction.Try[]
@@ -127,7 +125,6 @@ with driver.session() as session:
         # end::session.beginTransaction.Try[]
         """
 
-
     # tag::session.close[]
     # Close the session
     session.close()
@@ -136,16 +133,15 @@ with driver.session() as session:
 
 # tag::createPerson[]
 def create_person_work(tx, name):
-    return tx.run("CREATE (p:Person {name: $name}) RETURN p",
-        name=name).single()
+    return tx.run("CREATE (p:Person {name: $name}) RETURN p", name=name).single()
+
 
 def create_person(name):
     # Create a Session for the `people` database
     session = driver.session(database="people")
 
     # Create a node within a write transaction
-    record = session.execute_write(create_person_work,
-                                    name=name)
+    record = session.execute_write(create_person_work, name=name)
 
     # Get the `p` value from the first record
     person = record["p"]
@@ -155,5 +151,6 @@ def create_person(name):
 
     # Return the property from the node
     return person["name"]
-# end::createPerson[]
 
+
+# end::createPerson[]

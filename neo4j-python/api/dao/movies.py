@@ -3,11 +3,13 @@ from api.data import popular, goodfellas
 from api.exceptions.notfound import NotFoundException
 from api.data import popular
 
+
 class MovieDAO:
     """
     The constructor expects an instance of the Neo4j Driver, which will be
     used to interact with Neo4j.
     """
+
     def __init__(self, driver):
         self.driver = driver
 
@@ -23,6 +25,7 @@ class MovieDAO:
     def all(self, sort, order, limit=6, skip=0, user_id=None):
         # TODO: Get list from movies from Neo4j
         return popular
+
     # end::all[]
 
     """
@@ -38,12 +41,15 @@ class MovieDAO:
     signify whether the user has added the movie to their "My Favorites" list.
     """
     # tag::getByGenre[]
-    def get_by_genre(self, name, sort='title', order='ASC', limit=6, skip=0, user_id=None):
+    def get_by_genre(
+        self, name, sort="title", order="ASC", limit=6, skip=0, user_id=None
+    ):
         # TODO: Get Movies in a Genre
         # TODO: The Cypher string will be formated so remember to escape the braces: {{name: $name}}
         # MATCH (m:Movie)-[:IN_GENRE]->(:Genre {name: $name})
 
         return popular[skip:limit]
+
     # end::getByGenre[]
 
     """
@@ -59,12 +65,15 @@ class MovieDAO:
     signify whether the user has added the movie to their "My Favorites" list.
     """
     # tag::getForActor[]
-    def get_for_actor(self, id, sort='title', order='ASC', limit=6, skip=0, user_id=None):
+    def get_for_actor(
+        self, id, sort="title", order="ASC", limit=6, skip=0, user_id=None
+    ):
         # TODO: Get Movies for an Actor
         # TODO: The Cypher string will be formated so remember to escape the braces: {{tmdbId: $id}}
         # MATCH (:Person {tmdbId: $id})-[:ACTED_IN]->(m:Movie)
 
         return popular[skip:limit]
+
     # end::getForActor[]
 
     """
@@ -80,12 +89,15 @@ class MovieDAO:
     signify whether the user has added the movie to their "My Favorites" list.
     """
     # tag::getForDirector[]
-    def get_for_director(self, id, sort='title', order='ASC', limit=6, skip=0, user_id=None):
+    def get_for_director(
+        self, id, sort="title", order="ASC", limit=6, skip=0, user_id=None
+    ):
         # TODO: Get Movies directed by a Person
         # TODO: The Cypher string will be formated so remember to escape the braces: {{name: $name}}
         # MATCH (:Person {tmdbId: $id})-[:DIRECTED]->(m:Movie)
 
         return popular[skip:limit]
+
     # end::getForDirector[]
 
     """
@@ -103,6 +115,7 @@ class MovieDAO:
         # MATCH (m:Movie {tmdbId: $id})
 
         return goodfellas
+
     # end::findById[]
 
     """
@@ -123,8 +136,8 @@ class MovieDAO:
         # TODO: Get similar movies from Neo4j
 
         return popular[skip:limit]
-    # end::getSimilarMovies[]
 
+    # end::getSimilarMovies[]
 
     """
     This function should return a list of tmdbId properties for the movies that
@@ -133,4 +146,5 @@ class MovieDAO:
     # tag::getUserFavorites[]
     def get_user_favorites(self, tx, user_id):
         return []
+
     # end::getUserFavorites[]

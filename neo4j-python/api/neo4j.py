@@ -2,6 +2,7 @@ from flask import Flask, current_app
 
 # tag::import[]
 from neo4j import GraphDatabase
+
 # end::import[]
 
 """
@@ -13,6 +14,8 @@ def init_driver(uri, username, password):
     current_app.driver = None
 
     return None
+
+
 # end::initDriver[]
 
 
@@ -22,6 +25,7 @@ Get the instance of the Neo4j Driver created in the `initDriver` function
 # tag::getDriver[]
 def get_driver():
     return current_app.driver
+
 
 # end::getDriver[]
 
@@ -36,4 +40,6 @@ def close_driver():
         current_app.driver = None
 
         return current_app.driver
+
+
 # end::closeDriver[]

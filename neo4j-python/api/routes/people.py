@@ -4,7 +4,8 @@ from api.dao.people import PeopleDAO
 
 people_routes = Blueprint("people", __name__, url_prefix="/api/people")
 
-@people_routes.route('/', methods=['GET'])
+
+@people_routes.route("/", methods=["GET"])
 def get_index():
     # Get Pagination Values
     q = request.args.get("q")
@@ -22,7 +23,7 @@ def get_index():
     return jsonify(output)
 
 
-@people_routes.get('/<id>')
+@people_routes.get("/<id>")
 def get_person(id):
     # Create an instance of the PeopleDAO
     dao = PeopleDAO(current_app.driver)
@@ -33,7 +34,7 @@ def get_person(id):
     return jsonify(person)
 
 
-@people_routes.get('/<id>/similar')
+@people_routes.get("/<id>/similar")
 def get_similar_people(id):
     # Get Pagination Values
     limit = request.args.get("limit", 6, type=int)
@@ -46,4 +47,3 @@ def get_similar_people(id):
     similar = dao.get_similar_people(id, limit, skip)
 
     return jsonify(similar)
-

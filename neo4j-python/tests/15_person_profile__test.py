@@ -5,6 +5,7 @@ from api.dao.people import PeopleDAO
 
 coppola = "1776"
 
+
 def test_should_find_person_by_id(app):
     with app.app_context():
         # Get Neo4j Driver
@@ -44,7 +45,9 @@ def test_should_return_paginated_list_of_similar_people(app):
 
         print("\n\n")
         print("Here is the answer to the quiz question on the lesson:")
-        print("According to our algorithm, who is the most similar person to Francis Ford Coppola?")
+        print(
+            "According to our algorithm, who is the most similar person to Francis Ford Coppola?"
+        )
         print("Copy and paste the following answer into the text box: \n\n")
 
         print(output[0]["name"])
