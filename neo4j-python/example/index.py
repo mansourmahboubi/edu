@@ -1,18 +1,20 @@
 # tag::import[]
 # Import the neo4j dependency
+import os
+
 from neo4j import GraphDatabase
 
 # end::import[]
 
 
-uri = "neo4j://localhost:7687"
+uri = os.getenv("neo4j_uri")
+username = os.getenv("neo4j_username")
+password = os.getenv("neo4j_password")
 
 """
 Example Authentication token.
 You can pass the username and password as a tuple.
 """
-username = "neo4j"
-password = "letmein!"
 
 # tag::auth[]
 auth = (username, password)
@@ -20,7 +22,13 @@ auth = (username, password)
 
 # tag::driver[]
 # Create a new Driver instance
-driver = GraphDatabase.driver("neo4j://localhost:7687", auth=("neo4j", "neo"))
+driver = GraphDatabase.driver(
+    uri,
+    auth=(username, password),
+    max_connection_lifetime=30 * 60,
+    max_connection_pool_size=50,
+    connection_acquisition_timeout=2 * 60,
+)
 # end::driver[]
 
 
@@ -76,7 +84,7 @@ with driver.session() as session:
     # tag::session.readTransaction[]
     # Define a Unit of work to run within a Transaction (`tx`)
     def get_movies(tx, title):
-        return tx.run(
+        result = tx.run(
             """
             MATCH (p:Person)-[:ACTED_IN]->(m:Movie)
             WHERE m.title = $title // <1>
@@ -85,9 +93,11 @@ with driver.session() as session:
         """,
             title=title,
         )
+        return result.values()
 
     # Execute get_movies within a Read Transaction
-    session.execute_read(get_movies, title="Arthur")  # <2>
+    a = session.execute_read(get_movies, title="Arthur")  # <2>
+    print(a)
     # end::session.readTransaction[]
 
     """
@@ -125,10 +135,7 @@ with driver.session() as session:
         # end::session.beginTransaction.Try[]
         """
 
-    # tag::session.close[]
-    # Close the session
     session.close()
-    # end::session.close[]
 
 
 # tag::createPerson[]
@@ -153,4 +160,5 @@ def create_person(name):
     return person["name"]
 
 
-# end::createPerson[]
+# if __name__ == "__main__":
+#     a = create_person("Mansour")

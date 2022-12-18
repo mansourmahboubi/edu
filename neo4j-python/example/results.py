@@ -1,9 +1,27 @@
 # Import the Driver
+import os
+
 from neo4j import GraphDatabase
 
-# Create a Driver instance
-driver = GraphDatabase.driver("neo4j://localhost:7687", auth=("neo4j", "neo"))
+uri = os.getenv("neo4j_uri")
+username = os.getenv("neo4j_username")
+password = os.getenv("neo4j_password")
 
+"""
+Example Authentication token.
+You can pass the username and password as a tuple.
+"""
+
+
+auth = (username, password)
+# Create a new Driver instance
+driver = GraphDatabase.driver(
+    uri,
+    auth=(username, password),
+    max_connection_lifetime=30 * 60,
+    max_connection_pool_size=50,
+    connection_acquisition_timeout=2 * 60,
+)
 # Verify Connectivity
 # driver.verify_connectivity()
 
@@ -18,10 +36,19 @@ def get_actors(tx, movie):  # <1>
     """,
         title=movie,
     )
-
-    # tag::get_actor_nodes[]
     # Access the `p` value from each record
-    return [record["p"] for record in result]
+    actors = [record["p"] for record in result]
+
+    # it should be called after data retrieve
+    info = result.consume()
+    # The time it took for the server to have the result available. (milliseconds)
+    print(info.result_available_after)
+    # The time it took for the server to consume the result. (milliseconds)
+    print(info.result_consumed_after)
+    print("{0} nodes created".format(info.counters.nodes_created))
+    print("{0} properties set".format(info.counters.properties_set))
+
+    return actors
     # end::get_actor_nodes[]
     # end::get_actors_unit_of_work[]
 

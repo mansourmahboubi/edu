@@ -1,5 +1,9 @@
+import logging
 import os
+
 from api.neo4j import close_driver, get_driver
+
+logger = logging.getLogger(__name__)
 
 
 def test_env_vars():
