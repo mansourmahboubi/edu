@@ -27,10 +27,17 @@ class MovieDAO:
         # Define the Unit of Work
         def get_movies(tx, sort, order, limit, skip, user_id):
             # Define the cypher statement
+            # Get User favorites
+            favorites = self.get_user_favorites(tx, user_id)
+
+            # Define the cypher statement
             cypher = """
                 MATCH (m:Movie)
                 WHERE exists(m.`{0}`)
-                RETURN m {{ .* }} AS movie
+                RETURN m {{
+                    .*,
+                    favorite: m.tmdbId IN $favorites
+                }} AS movie
                 ORDER BY m.`{0}` {1}
                 SKIP $skip
                 LIMIT $limit
@@ -38,7 +45,9 @@ class MovieDAO:
                 sort, order
             )
             # Run the statement within the transaction passed as the first argument
-            result = tx.run(cypher, limit=limit, skip=skip, user_id=user_id)
+            result = tx.run(
+                cypher, limit=limit, skip=skip, user_id=user_id, favorites=favorites
+            )
             return [row.value("movie") for row in result]
 
         with self.driver.session() as session:
@@ -163,6 +172,17 @@ class MovieDAO:
     """
     # tag::getUserFavorites[]
     def get_user_favorites(self, tx, user_id):
-        return []
+        if user_id == None:
+            return []
+
+        result = tx.run(
+            """
+            MATCH (u:User {userId: $userId})-[:HAS_FAVORITE]->(m)
+            RETURN m.tmdbId AS id
+        """,
+            userId=user_id,
+        )
+
+        return [record.get("id") for record in result]
 
     # end::getUserFavorites[]

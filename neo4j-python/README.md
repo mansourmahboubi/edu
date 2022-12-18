@@ -76,6 +76,33 @@ now = neo4j.time.DateTime.now()
 print(now.year) # 2022
 ```
 
+# Unique Constraits should be created manually
+
+```
+CREATE CONSTRAINT UserEmailUnique
+IF NOT EXISTS
+FOR (user:User)
+REQUIRE user.email IS UNIQUE;
+```
+
+# Query
+
+1. Merge
+   1. > By using the MERGE keyword here, we will overwrite an existing rating if one already exists. This way we don’t need to worry about duplicates or deleting existing records.
+   2. > MERGE either matches existing nodes and binds them, or it creates new data and binds that. It’s like a combination of MATCH and CREATE that additionally allows you to specify what happens if the data was matched or created.
+   3. https://neo4j.com/docs/cypher-manual/current/clauses/merge/#query-merge-introduction
+2. Match
+
+# Notices
+
+Escaped Braces
+
+You may have noticed that the code block above features double curly braces ({{ and }}) within the MATCH clause rather than the single braces used within the Cypher statement.
+
+MATCH (u:User {{userId: $userId}})
+
+Braces need to be escaped within a Python string, and we do this by using double quotes.
+
 # test
 
 1. There are three schemas `neo4j`, `neo4j+s`, `neo4j+ssc`(and bolt).
