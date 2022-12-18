@@ -28,10 +28,56 @@ ACID Transactions = atomic, consistent, isolated, and durable
 5. values
 6. python dictionary
 
-#test
+# Node
 
-#test
+Node is a type provided by the Neo4j Python Driver to hold the information held in Neo4j for the node.
 
-6. There are three schemas `neo4j`, `neo4j+s`, `neo4j+ssc`(and bolt).
-7. https://graphacademy.neo4j.com/courses/app-python
-8. https://neo4j.com/docs/api/python-driver/current/api.html
+```
+print(node.id)              # (1)
+print(node.labels)          # (2)
+print(node.items())         # (3)
+
+# (4)
+print(node["name"])
+print(node.get("name", "N/A"))
+```
+
+> Internal IDs refer to the position in the Neo4j store files where the record is held. These numbers can be re-used, a best practice is to always look up a node by an indexed property rather than relying on an internal ID.
+
+# Path
+
+The relationships within a path can be iterated over using the iter() function.
+
+```
+for rel in iter(path):
+    print(rel.type)
+    print(rel.start_node)
+    print(rel.end_node)
+```
+
+# Types
+
+![Neo4j types](docs/images/types.png)
+
+# Date
+
+![Neo4j dates](docs/images/neo4j-date.png)
+
+```
+# Create a DateTime instance using individual values
+datetime = neo4j.time.DateTime(year, month, day, hour, minute, second, nanosecond)
+
+#  Create a DateTime  a time stamp (seconds since unix epoch).
+from_timestamp = neo4j.time.DateTime(1609459200000) # 2021-01-01
+
+# Get the current date and time.
+now = neo4j.time.DateTime.now()
+
+print(now.year) # 2022
+```
+
+# test
+
+1. There are three schemas `neo4j`, `neo4j+s`, `neo4j+ssc`(and bolt).
+2. https://graphacademy.neo4j.com/courses/app-python
+3. https://neo4j.com/docs/api/python-driver/current/api.html
