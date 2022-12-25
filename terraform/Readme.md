@@ -30,6 +30,12 @@ The prefix -/+ means that Terraform will destroy and recreate the resource, rath
 ```
 terraform destroy
 ```
+
+# Custom variable
+```
+terraform apply -var "instance_name=YetAnotherName"
+```
+
 # Explain
 
 ## Terraform Block
