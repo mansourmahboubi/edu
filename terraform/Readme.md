@@ -11,18 +11,21 @@ terraform fmt
 terraform validate
 terraform apply
 ```
-# State 
+
+# State
+
 ```
 terraform show
 ```
 
 # Advanced state manager
- 
+
 ```
 terraform state list
 ```
 
 # Terafform changes
+
 The prefix -/+ means that Terraform will destroy and recreate the resource, rather than updating it in-place. Terraform can update some attributes in-place (indicated with the ~ prefix), but changing the AMI for an EC2 instance requires recreating it. Terraform handles these details for you, and the execution plan displays what Terraform will do.
 
 # Terraform destory
@@ -32,9 +35,14 @@ terraform destroy
 ```
 
 # Custom variable
+
 ```
 terraform apply -var "instance_name=YetAnotherName"
 ```
+
+# Terraform cloud
+
+After adding the `token` we need to add `terraform init` again.
 
 # Explain
 
@@ -59,11 +67,12 @@ Resource blocks have two strings before the block: the resource type and the res
 Resource blocks contain arguments which you use to configure the resource. Arguments can include things like machine sizes, disk image names, or VPC IDs. Our providers reference lists the required and optional arguments for each resource. For your EC2 instance, the example configuration sets the AMI ID to an Ubuntu image, and the instance type to t2.micro, which qualifies for AWS' free tier. It also sets a tag to give the instance a name.
 
 ## .terraform.lock.hcl
+
 Terraform has created a lock file .terraform.lock.hcl to record the provider
 selections it made above. Include this file in your version control repository
 so that Terraform can guarantee to make the same selections by default when
 you run "terraform init" in the future.
 
-
 # Resources
+
 1. https://docs.aws.amazon.com/vpc/latest/userguide/working-with-vpcs.html
