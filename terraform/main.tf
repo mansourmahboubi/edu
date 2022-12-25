@@ -1,13 +1,13 @@
 # define provider required to provision
 # providers can be found in teraform registry
 terraform {
-  backend "remote" {
-    organization = "mansourmahboubi"
-    workspaces {
-      name = "first-ws"
-    }
+  # backend "remote" {
+  #   organization = "mansourmahboubi"
+  #   workspaces {
+  #     name = "first-ws"
+  #   }
 
-  }
+  # }
   required_providers {
     aws = {
       source  = "hashicorp/aws"
@@ -20,7 +20,9 @@ terraform {
 
 # sepcify provider
 provider "aws" {
+  # is not required in tfm cloud
   profile = "default"
+
   region  = "eu-west-3"
 }
 
