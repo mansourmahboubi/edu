@@ -23,7 +23,7 @@ provider "aws" {
   # is not required in tfm cloud
   profile = "default"
 
-  region  = "eu-west-3"
+  region = "eu-west-3"
 }
 
 # physical or virtual component
