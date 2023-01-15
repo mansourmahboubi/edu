@@ -35,7 +35,7 @@ provider "aws" {
 resource "aws_instance" "app_server" {
   # ami is somekind of template 
   #   https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/finding-an-ami.html#finding-quick-start-amis
-  ami           = "ami-052f10f1c45aa2155"
+  ami           = "ami-084419b01954a6223"
   instance_type = "t2.micro"
 
   tags = {
