@@ -8,7 +8,7 @@
   "python.linting.mypyEnabled": true,
   "python.linting.mypyPath": ".venv/bin/mypy",
   "editor.codeActionsOnSave": {
-    "source.organizeImports": true
+    "source.organizeImports": "explicit"
   },
   "editor.formatOnSave": true,
   "[python]": {
