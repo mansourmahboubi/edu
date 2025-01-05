@@ -127,14 +127,12 @@ function getBNBPriceKuCoin() {
 }
 
 function insertRows() {
-  // const sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet(); // Get the active sheet
-  // const row = sheet.getActiveCell().getRow(); // Get the row number of the currently selected cell
-  const numberOfRows = 26; // Adjust this number for how many rows to insert
+  // number of rows from 18 to 6
+  const numberOfRows = 25;
+  // get active sheet
+  const sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
 
-  // sheet.insertRows(row, numberOfRows); // Insert rows at the selected position
-
-  const sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet(); // Get the active sheet
-  let hour = 18;
+  let hour = 17;
   for (let i = 1; i < numberOfRows; i++) {
     const minute = i % 2 === 0 ? 30 : 0;
     const rowContent = ["", `=TIME(${hour}, ${minute}, 0)`]; // Data to populate in the new row
