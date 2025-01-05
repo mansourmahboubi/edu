@@ -128,13 +128,13 @@ function getBNBPriceKuCoin() {
 
 function insertRows() {
   // number of rows from 18 to 6
-  const numberOfRows = 25;
+  const numberOfRows = 48;
   // get active sheet
   const sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
 
-  let hour = 17;
-  for (let i = 1; i < numberOfRows; i++) {
-    const minute = i % 2 === 0 ? 30 : 0;
+  let hour = 23;
+  for (let i = 1; i <= numberOfRows; i++) {
+    const minute = i % 2 === 0 ? 0 : 30;
     const rowContent = ["", `=TIME(${hour}, ${minute}, 0)`]; // Data to populate in the new row
 
     // Insert a new row in the second position
@@ -143,7 +143,7 @@ function insertRows() {
     // Populate the second row with data
     const rowRange = sheet.getRange(2, 1, 1, rowContent.length); // Target the second row
     rowRange.setValues([rowContent]);
-    if (i % 2 !== 0) {
+    if (i % 2 === 0) {
       hour = hour - 1;
     }
   }
