@@ -128,7 +128,7 @@ function getBNBPriceKuCoin() {
 
 function insertRows() {
   // number of rows from 18 to 6
-  const numberOfRows = 48;
+  const numberOfRows = 2;
   // get active sheet
   const sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
 
@@ -138,13 +138,61 @@ function insertRows() {
     const rowContent = ["", `=TIME(${hour}, ${minute}, 0)`]; // Data to populate in the new row
 
     // Insert a new row in the second position
-    sheet.insertRowAfter(1);
+    // sheet.insertRowAfter(1);
 
-    // Populate the second row with data
-    const rowRange = sheet.getRange(2, 1, 1, rowContent.length); // Target the second row
-    rowRange.setValues([rowContent]);
+    // // Populate the second row with data
+    // const rowRange = sheet.getRange(2, 1, 1, rowContent.length); // Target the second row
+
+    // rowRange.setValues([rowContent]);
+    copyRowToSecondPosition();
+    // rowRange.setFontWeight("normal");
     if (i % 2 === 0) {
       hour = hour - 1;
     }
+  }
+}
+
+function copyRowToSecondPosition() {
+  try {
+    // Get the active spreadsheet and sheet
+    const ss = SpreadsheetApp.getActiveSpreadsheet();
+    const sheet = ss.getActiveSheet();
+
+    // Get the row to copy (for example, row 1)
+    const sourceRowNum = 1; // Change this to the row number you want to copy
+    const lastColumn = sheet.getLastColumn();
+
+    // Get the source row data
+    const sourceRange = sheet.getRange(sourceRowNum, 1, 1, lastColumn);
+    const sourceValues = sourceRange.getValues();
+    const sourceFormats = sourceRange.getBackgrounds();
+    const sourceFormulas = sourceRange.getFormulas();
+
+    // Insert a new row at position 2
+    sheet.insertRowAfter(1);
+
+    // Get the target range (row 2)
+    const targetRange = sheet.getRange(2, 1, 1, lastColumn);
+
+    // Copy values, formats, and formulas
+    targetRange.setValues(sourceValues);
+    targetRange.setBackgrounds(sourceFormats);
+
+    // Apply formulas only where they exist
+    for (let col = 0; col < sourceFormulas[0].length; col++) {
+      if (sourceFormulas[0][col] !== "") {
+        targetRange.getCell(1, col + 1).setFormula(sourceFormulas[0][col]);
+      }
+    }
+
+    // Copy data validations if any
+    const validations = sourceRange.getDataValidations();
+    targetRange.setDataValidations(validations);
+
+    // Show success message
+    SpreadsheetApp.getActive().toast("Row copied successfully!");
+  } catch (error) {
+    Logger.log("Error: " + error.toString());
+    SpreadsheetApp.getActive().toast("Error copying row: " + error.toString());
   }
 }
