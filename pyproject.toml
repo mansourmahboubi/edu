@@ -19,9 +19,7 @@ exclude = '''
 max-line-length = 80
 max-doc-length = 200
 extend-ignore = ["E501","E266"]
-exclude = [".git", "__pycache__", "dist",
-
-"python/neo4j-python/*","software/leet-code/75/*"]
+exclude = [".git", "__pycache__", "dist", "python/neo4j-python/*","software/leet-code/75/*"]
 max-complexity = 10
 
 [tool.isort]
@@ -30,5 +28,11 @@ profile = "black"
 line_length = 80
 skip_gitignore = true
 
-[pytest]
-addopts = ["python/*"]
+[tool.pytest.ini_options]
+norecursedirs = [
+    "python/fastapi/backend/*",
+    "python/fastapi/fastapi_template/*",
+    "python/fastapi/fastapi_third/*",
+    "python/neo4j-python/*",
+    "python/pypi/reader-master/*",
+]
