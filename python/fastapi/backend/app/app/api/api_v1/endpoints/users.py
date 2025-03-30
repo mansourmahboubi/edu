@@ -109,7 +109,9 @@ def create_user_open(
             status_code=400,
             detail="The user with this username already exists in the system",
         )
-    user_in = schemas.UserCreate(password=password, email=email, full_name=full_name)
+    user_in = schemas.UserCreate(
+        password=password, email=email, full_name=full_name
+    )
     user = crud.user.create(db, obj_in=user_in)
     return user
 

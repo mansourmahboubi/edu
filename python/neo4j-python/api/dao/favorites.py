@@ -129,6 +129,8 @@ class FavoriteDAO:
         # Execute the transaction function within a Write Transaction
         with self.driver.session() as session:
             # Return movie details and `favorite` property
-            return session.execute_write(remove_from_favorites, user_id, movie_id)
+            return session.execute_write(
+                remove_from_favorites, user_id, movie_id
+            )
 
     # end::remove[]

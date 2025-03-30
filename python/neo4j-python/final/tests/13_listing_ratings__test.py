@@ -30,7 +30,9 @@ def test_get_movie_ratings(app):
 
         print("\n\n")
         print("Here is the answer to the quiz question on the lesson:")
-        print("What is the name of the first person to rate the movie Pulp Fiction?")
+        print(
+            "What is the name of the first person to rate the movie Pulp Fiction?"
+        )
         print("Copy and paste the following answer into the text box: \n\n")
 
         print(ascending[0]["user"]["name"])

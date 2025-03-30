@@ -345,7 +345,9 @@ def event_loop(main: Coroutine[Any, Any, Any]) -> None:
                 break
 
         # Remove cancelled tasks from timers
-        timers = [(time, thread) for time, thread in timers if not thread.cancelled]
+        timers = [
+            (time, thread) for time, thread in timers if not thread.cancelled
+        ]
         wakeup_date = min(timers, key=lambda x: x[0])[0] if timers else None
 
         # Remove watches for cancelled tasks
@@ -600,7 +602,9 @@ if __name__ == "__main__":
                 if not data:
                     break
 
-                print(f"Received from {addr[0]}:{addr[1]}: {data.decode().strip()}")
+                print(
+                    f"Received from {addr[0]}:{addr[1]}: {data.decode().strip()}"
+                )
                 await send(client_sock, data)
         except Exception as e:
             print(f"Error handling client {addr[0]}:{addr[1]}: {e}")

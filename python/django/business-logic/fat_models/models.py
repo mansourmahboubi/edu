@@ -3,7 +3,9 @@ from django.db import models
 
 
 class Address(models.Model):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL, on_delete=models.CASCADE
+    )
     street = models.CharField(max_length=50)
     number = models.PositiveIntegerField()
     is_default = models.BooleanField()

@@ -3,7 +3,10 @@ from importlib import metadata
 from fastapi import FastAPI
 from fastapi.responses import UJSONResponse
 from fastapi_third.web.api.router import api_router
-from fastapi_third.web.lifetime import register_shutdown_event, register_startup_event
+from fastapi_third.web.lifetime import (
+    register_shutdown_event,
+    register_startup_event,
+)
 
 
 def get_app() -> FastAPI:

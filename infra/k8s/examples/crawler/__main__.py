@@ -37,7 +37,9 @@ def get_urls() -> List[str]:
     return urls
 
 
-def store_main_topic(driver: webdriver.Firefox, url: str, file_name: str) -> None:
+def store_main_topic(
+    driver: webdriver.Firefox, url: str, file_name: str
+) -> None:
     driver.get(url)
     time.sleep(3)
     # Find the element with the class name "editor-content"
@@ -58,7 +60,9 @@ def download_pdf_from_url(pdf_url, file_name):
         print(f"Failed to download file. Status code: {response.status_code}")
 
 
-def download_pdf(driver: webdriver.Firefox, url: str, pdf_file_name: str) -> None:
+def download_pdf(
+    driver: webdriver.Firefox, url: str, pdf_file_name: str
+) -> None:
     driver.get(url)
     time.sleep(3)
     try:

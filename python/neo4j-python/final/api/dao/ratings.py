@@ -102,6 +102,8 @@ class RatingDAO:
             return [row.get("review") for row in result]
 
         with self.driver.session() as session:
-            return session.execute_read(get_movie_ratings, id, sort, order, limit)
+            return session.execute_read(
+                get_movie_ratings, id, sort, order, limit
+            )
 
     # end::forMovie[]

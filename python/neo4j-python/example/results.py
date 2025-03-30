@@ -344,7 +344,9 @@ def temporal():
 
     # tag::temporal[]
     # Create a DateTime instance using individual values
-    datetime = neo4j.time.DateTime(year, month, day, hour, minute, second, nanosecond)
+    datetime = neo4j.time.DateTime(
+        year, month, day, hour, minute, second, nanosecond
+    )
 
     #  Create a DateTime  a time stamp (seconds since unix epoch).
     from_timestamp = neo4j.time.DateTime(1609459200000)  # 2021-01-01

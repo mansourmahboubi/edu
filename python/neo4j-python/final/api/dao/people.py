@@ -51,7 +51,9 @@ class PeopleDAO:
             return [row.get("person") for row in result]
 
         with self.driver.session() as session:
-            return session.execute_read(get_all_people, q, sort, order, limit, skip)
+            return session.execute_read(
+                get_all_people, q, sort, order, limit, skip
+            )
 
     # end::all[]
 

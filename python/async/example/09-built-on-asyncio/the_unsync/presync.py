@@ -55,7 +55,9 @@ async def download_some():
 
 async def download_some_more():
     print("Downloading more ...")
-    url = "https://pythonbytes.fm/episodes/show/92/will-your-python-be-compiled"
+    url = (
+        "https://pythonbytes.fm/episodes/show/92/will-your-python-be-compiled"
+    )
     resp = requests.get(url)
     resp.raise_for_status()
 

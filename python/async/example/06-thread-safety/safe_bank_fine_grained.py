@@ -76,7 +76,9 @@ def do_transfer(from_account: Account, to_account: Account, amount: int):
 transfer_lock = RLock()
 
 
-def do_transfer_global_style(from_account: Account, to_account: Account, amount: int):
+def do_transfer_global_style(
+    from_account: Account, to_account: Account, amount: int
+):
     if from_account.balance < amount:
         return
 

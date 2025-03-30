@@ -30,7 +30,9 @@ class TestSetDefault:
             is_default=False,
         )
 
-    def test_sets_address_as_default_and_publishes_changes(self, mocker, address):
+    def test_sets_address_as_default_and_publishes_changes(
+        self, mocker, address
+    ):
         mock_filter = mocker.patch.object(Address.objects, "filter")
         mock_update = mocker.patch.object(mock_filter.return_value, "update")
         mock_save = mocker.patch.object(address, "save")

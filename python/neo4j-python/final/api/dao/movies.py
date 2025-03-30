@@ -229,7 +229,9 @@ class MovieDAO:
         user_id=None,
     ):
         # Get Movies directed by a Person
-        def get_movies_for_director(tx, id, sort, order, limit, skip, user_id):
+        def get_movies_for_director(
+            tx, id, sort, order, limit, skip, user_id
+        ):
             favorites = self.get_user_favorites(tx, user_id)
 
             cypher = """

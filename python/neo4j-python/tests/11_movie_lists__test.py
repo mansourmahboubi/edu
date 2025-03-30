@@ -84,7 +84,9 @@ def test_paginated_list_of_movies_for_director(app):
         assert output[0] != paginated[0]
 
         # Reordered
-        reordered = dao.get_for_director(tom_hanks, "released", order, limit, 0)
+        reordered = dao.get_for_director(
+            tom_hanks, "released", order, limit, 0
+        )
 
         assert len(reordered) == 2
         assert output[0] != reordered[0]

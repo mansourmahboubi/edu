@@ -15,7 +15,9 @@ def send_email(
     html_template: str = "",
     environment: Dict[str, Any] = {},
 ) -> None:
-    assert settings.EMAILS_ENABLED, "no provided configuration for email variables"
+    assert (
+        settings.EMAILS_ENABLED
+    ), "no provided configuration for email variables"
     message = emails.Message(
         subject=JinjaTemplate(subject_template),
         html=JinjaTemplate(html_template),
@@ -34,7 +36,9 @@ def send_email(
         smtp_options["user"] = settings.SMTP_USER
     if settings.SMTP_PASSWORD:
         smtp_options["password"] = settings.SMTP_PASSWORD
-    response = message.send(to=email_to, render=environment, smtp=smtp_options)
+    response = message.send(
+        to=email_to, render=environment, smtp=smtp_options
+    )
     logging.info(f"send email result: {response}")
 
 
@@ -57,7 +61,9 @@ def send_test_email(email_to: str) -> None:
 def send_reset_password_email(email_to: str, email: str, token: str) -> None:
     project_name = settings.PROJECT_NAME
     subject = f"{project_name} - Password recovery for user {email}"
-    with open(Path(settings.EMAIL_TEMPLATES_DIR) / "reset_password.html") as f:
+    with open(
+        Path(settings.EMAIL_TEMPLATES_DIR) / "reset_password.html"
+    ) as f:
         template_str = f.read()
     server_host = settings.SERVER_HOST
     link = f"{server_host}/reset-password?token={token}"
@@ -75,7 +81,9 @@ def send_reset_password_email(email_to: str, email: str, token: str) -> None:
     )
 
 
-def send_new_account_email(email_to: str, username: str, password: str) -> None:
+def send_new_account_email(
+    email_to: str, username: str, password: str
+) -> None:
     project_name = settings.PROJECT_NAME
     subject = f"{project_name} - New account for user {username}"
     with open(Path(settings.EMAIL_TEMPLATES_DIR) / "new_account.html") as f:

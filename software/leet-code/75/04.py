@@ -10,7 +10,9 @@ class Solution:
         for l in s:
             after_letters = t[index + 1 if index else 0 : len(t)]
             if l in after_letters:
-                cur_index = after_letters.index(l) + (len(t) - len(after_letters))
+                cur_index = after_letters.index(l) + (
+                    len(t) - len(after_letters)
+                )
                 if not index or cur_index > index:
                     string += l
                     index = cur_index

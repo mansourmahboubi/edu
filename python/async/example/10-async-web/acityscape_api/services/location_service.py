@@ -25,9 +25,7 @@ measured_latency_in_sec = [
 
 async def get_lat_long(zip_code: str, country: str) -> Tuple[float, float]:
     key = f"{zip_code}, {country}"
-    url = (
-        f'http://www.datasciencetoolkit.org/street2coordinates/{key.replace(" ", "+")}'
-    )
+    url = f'http://www.datasciencetoolkit.org/street2coordinates/{key.replace(" ", "+")}'
 
     if use_cached_data:
         await asyncio.sleep(random.choice(measured_latency_in_sec))
@@ -40,4 +38,6 @@ async def get_lat_long(zip_code: str, country: str) -> Tuple[float, float]:
                 data = await resp.json()
 
         city_data = data.get(f"{zip_code}, {country}", dict())
-        return city_data.get("latitude", 0.00), city_data.get("longitude", 0.00)
+        return city_data.get("latitude", 0.00), city_data.get(
+            "longitude", 0.00
+        )

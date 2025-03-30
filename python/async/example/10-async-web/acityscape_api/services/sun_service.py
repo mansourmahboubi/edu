@@ -16,7 +16,9 @@ use_cached_data = False
 
 
 async def for_today(latitude: float, longitude: float) -> dict:
-    url = f"https://api.sunrise-sunset.org/json?lat={latitude}&lng={longitude}"
+    url = (
+        f"https://api.sunrise-sunset.org/json?lat={latitude}&lng={longitude}"
+    )
 
     if use_cached_data:  # Set in config/dev.json or config/prod.json
         await asyncio.sleep(random.choice(measured_latency_in_sec))
@@ -43,7 +45,9 @@ async def for_today(latitude: float, longitude: float) -> dict:
             if "AM" not in v and "PM" not in v:
                 continue
 
-            sun_data[k] = datetime.datetime.strftime(__utc_to_local(v), "%I:%M:%S %p")
+            sun_data[k] = datetime.datetime.strftime(
+                __utc_to_local(v), "%I:%M:%S %p"
+            )
 
         return sun_data
 

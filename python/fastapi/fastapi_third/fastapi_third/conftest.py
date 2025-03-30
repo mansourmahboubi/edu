@@ -11,7 +11,11 @@ from fastapi_third.settings import settings
 from fastapi_third.web.application import get_app
 from httpx import AsyncClient
 from redis.asyncio import ConnectionPool
-from sqlalchemy.ext.asyncio import AsyncEngine, AsyncSession, create_async_engine
+from sqlalchemy.ext.asyncio import (
+    AsyncEngine,
+    AsyncSession,
+    create_async_engine,
+)
 from sqlalchemy.orm import sessionmaker
 
 
