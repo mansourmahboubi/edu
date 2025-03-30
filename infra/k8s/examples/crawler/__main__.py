@@ -67,7 +67,7 @@ def download_pdf(
     time.sleep(3)
     try:
         element = driver.find_element(By.ID, "pdf-viewer")
-    except Exception as e:
+    except Exception:
         print("No pdf-viewer found")
         return
     if element:

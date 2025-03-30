@@ -42,6 +42,6 @@ class TestSetDefault:
         # We lose the integration tests of the database flows
         mock_filter.assert_called_with(user=address.user)
         mock_update.assert_called_with(is_default=False)
-        assert address.is_default == True
+        assert address.is_default is True
         mock_save.assert_called()
         # mock_publish.assert_called_with(events.DEFAULT_ADDRESS_CHANGED, address=address)

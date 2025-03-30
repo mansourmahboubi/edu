@@ -18,8 +18,10 @@ exclude = '''
 [tool.flake8]
 max-line-length = 80
 max-doc-length = 200
-extend-ignore = ["E501"]
-exclude = [".git", "__pycache__", "dist"]
+extend-ignore = ["E501","E266"]
+exclude = [".git", "__pycache__", "dist",
+
+"python/neo4j-python/*","software/leet-code/75/*"]
 max-complexity = 10
 
 [tool.isort]

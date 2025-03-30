@@ -251,7 +251,7 @@ class WatchedSocket:
         return hash(self.socket)
 
 
-def event_loop(main: Coroutine[Any, Any, Any]) -> None:
+def event_loop(main: Coroutine[Any, Any, Any]) -> None:  # noqa: C901
     """
     The core event loop implementation that drives the asynchronous execution.
 
@@ -572,7 +572,7 @@ async def accept(
     return client_sock, addr
 
 
-if __name__ == "__main__":
+if __name__ == "__main__":  # noqa: C901
     """
     Demo application that showcases the event loop functionality.
 

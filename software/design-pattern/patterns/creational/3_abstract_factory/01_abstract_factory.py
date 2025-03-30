@@ -55,22 +55,22 @@ class Coupe(ABC):
 
 class Gla(Suv):
     def creating_suv(self):
-        print((f"creating benz gla suv"))
+        print(("creating benz gla suv"))
 
 
 class X1(Suv):
     def creating_suv(self):
-        print((f"creating benz suv x1"))
+        print(("creating benz suv x1"))
 
 
 class Cls(Coupe):
     def creating_coupe(self):
-        print((f"creating benz cls coupe"))
+        print(("creating benz cls coupe"))
 
 
 class M2(Coupe):
     def creating_coupe(self):
-        print((f"creating bmw m2 coupe"))
+        print(("creating bmw m2 coupe"))
 
 
 def client_suv(order):
