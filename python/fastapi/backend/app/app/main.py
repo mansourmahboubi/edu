@@ -4,7 +4,8 @@ from fastapi import FastAPI
 from starlette.middleware.cors import CORSMiddleware
 
 app = FastAPI(
-    title=settings.PROJECT_NAME, openapi_url=f"{settings.API_V1_STR}/openapi.json"
+    title=settings.PROJECT_NAME,
+    openapi_url=f"{settings.API_V1_STR}/openapi.json",
 )
 
 # Set all CORS enabled origins

@@ -21,7 +21,12 @@ def test_show(capsys):
 def test_show_list(capsys):
     """Test that show_list shows a list of items with an ID."""
     site = "Real Python"
-    things = ["pathlib", "data classes", "python 3.7", "decorators"]
+    things = [
+        "pathlib",
+        "data classes",
+        "python 3.7",
+        "decorators",
+    ]
     viewer.show_list(site, things)
     stdout, stderr = capsys.readouterr()
     assert stderr == ""

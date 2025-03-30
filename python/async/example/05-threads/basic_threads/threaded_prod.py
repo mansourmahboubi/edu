@@ -13,9 +13,21 @@ def main():
     data = []
 
     threads = [
-        threading.Thread(target=generate_data, args=(20, data), daemon=True),
-        threading.Thread(target=generate_data, args=(20, data), daemon=True),
-        threading.Thread(target=process_data, args=(40, data), daemon=True),
+        threading.Thread(
+            target=generate_data,
+            args=(20, data),
+            daemon=True,
+        ),
+        threading.Thread(
+            target=generate_data,
+            args=(20, data),
+            daemon=True,
+        ),
+        threading.Thread(
+            target=process_data,
+            args=(40, data),
+            daemon=True,
+        ),
     ]
     abort_thread = threading.Thread(target=check_cancel, daemon=True)
     abort_thread.start()
@@ -37,7 +49,10 @@ def main():
 
 
 def check_cancel():
-    print(colorama.Fore.RED + "Press enter to cancel...", flush=True)
+    print(
+        colorama.Fore.RED + "Press enter to cancel...",
+        flush=True,
+    )
     input()
 
 
@@ -46,7 +61,10 @@ def generate_data(num: int, data: list):
         item = idx * idx
         data.append((item, datetime.datetime.now()))
 
-        print(colorama.Fore.YELLOW + f" -- generated item {idx}", flush=True)
+        print(
+            colorama.Fore.YELLOW + f" -- generated item {idx}",
+            flush=True,
+        )
         time.sleep(random.random() + 0.5)
 
 

@@ -10,7 +10,10 @@ from sqlalchemy.ext.asyncio import AsyncSession
 class DummyDAO:
     """Class for accessing dummy table."""
 
-    def __init__(self, session: AsyncSession = Depends(get_db_session)):
+    def __init__(
+        self,
+        session: AsyncSession = Depends(get_db_session),
+    ):
         self.session = session
 
     async def create_dummy_model(self, name: str) -> None:

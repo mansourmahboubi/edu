@@ -14,7 +14,9 @@ def init_redis(app: FastAPI) -> None:  # pragma: no cover
     )
 
 
-async def shutdown_redis(app: FastAPI) -> None:  # pragma: no cover
+async def shutdown_redis(
+    app: FastAPI,
+) -> None:  # pragma: no cover
     """
     Closes redis connection pool.
 

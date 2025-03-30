@@ -9,9 +9,13 @@ from sqlalchemy.orm import Session
 
 
 def test_get_users_superuser_me(
-    client: TestClient, superuser_token_headers: Dict[str, str]
+    client: TestClient,
+    superuser_token_headers: Dict[str, str],
 ) -> None:
-    r = client.get(f"{settings.API_V1_STR}/users/me", headers=superuser_token_headers)
+    r = client.get(
+        f"{settings.API_V1_STR}/users/me",
+        headers=superuser_token_headers,
+    )
     current_user = r.json()
     assert current_user
     assert current_user["is_active"] is True
@@ -20,9 +24,13 @@ def test_get_users_superuser_me(
 
 
 def test_get_users_normal_user_me(
-    client: TestClient, normal_user_token_headers: Dict[str, str]
+    client: TestClient,
+    normal_user_token_headers: Dict[str, str],
 ) -> None:
-    r = client.get(f"{settings.API_V1_STR}/users/me", headers=normal_user_token_headers)
+    r = client.get(
+        f"{settings.API_V1_STR}/users/me",
+        headers=normal_user_token_headers,
+    )
     current_user = r.json()
     assert current_user
     assert current_user["is_active"] is True
@@ -31,7 +39,9 @@ def test_get_users_normal_user_me(
 
 
 def test_create_user_new_email(
-    client: TestClient, superuser_token_headers: dict, db: Session
+    client: TestClient,
+    superuser_token_headers: dict,
+    db: Session,
 ) -> None:
     username = random_email()
     password = random_lower_string()
@@ -49,7 +59,9 @@ def test_create_user_new_email(
 
 
 def test_get_existing_user(
-    client: TestClient, superuser_token_headers: dict, db: Session
+    client: TestClient,
+    superuser_token_headers: dict,
+    db: Session,
 ) -> None:
     username = random_email()
     password = random_lower_string()
@@ -68,7 +80,9 @@ def test_get_existing_user(
 
 
 def test_create_user_existing_username(
-    client: TestClient, superuser_token_headers: dict, db: Session
+    client: TestClient,
+    superuser_token_headers: dict,
+    db: Session,
 ) -> None:
     username = random_email()
     # username = email
@@ -87,7 +101,8 @@ def test_create_user_existing_username(
 
 
 def test_create_user_by_normal_user(
-    client: TestClient, normal_user_token_headers: Dict[str, str]
+    client: TestClient,
+    normal_user_token_headers: Dict[str, str],
 ) -> None:
     username = random_email()
     password = random_lower_string()
@@ -101,7 +116,9 @@ def test_create_user_by_normal_user(
 
 
 def test_retrieve_users(
-    client: TestClient, superuser_token_headers: dict, db: Session
+    client: TestClient,
+    superuser_token_headers: dict,
+    db: Session,
 ) -> None:
     username = random_email()
     password = random_lower_string()
@@ -113,7 +130,10 @@ def test_retrieve_users(
     user_in2 = UserCreate(email=username2, password=password2)
     crud.user.create(db, obj_in=user_in2)
 
-    r = client.get(f"{settings.API_V1_STR}/users/", headers=superuser_token_headers)
+    r = client.get(
+        f"{settings.API_V1_STR}/users/",
+        headers=superuser_token_headers,
+    )
     all_users = r.json()
 
     assert len(all_users) > 1

@@ -9,7 +9,9 @@ class ListNode:
 
     @classmethod
     def array_to_listnode(
-        cls, array: List[int], circle_index: Optional[int] = None
+        cls,
+        array: List[int],
+        circle_index: Optional[int] = None,
     ) -> Optional["ListNode"]:
         l1_head = dummly_l1 = cls(val=array[0])
         node_list = []

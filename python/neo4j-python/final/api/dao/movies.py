@@ -47,7 +47,11 @@ class MovieDAO:
 
             # Run the statement within the transaction passed as the first argument
             result = tx.run(
-                cypher, limit=limit, skip=skip, user_id=user_id, favorites=favorites
+                cypher,
+                limit=limit,
+                skip=skip,
+                user_id=user_id,
+                favorites=favorites,
             )
             # end::allcypher[]
 
@@ -60,7 +64,14 @@ class MovieDAO:
         # tag::session[]
         with self.driver.session() as session:
             # end::session[]
-            return session.execute_read(get_movies, sort, order, limit, skip, user_id)
+            return session.execute_read(
+                get_movies,
+                sort,
+                order,
+                limit,
+                skip,
+                user_id,
+            )
             # end::return[]
 
     # end::all[]
@@ -80,7 +91,13 @@ class MovieDAO:
 
     # tag::getByGenre[]
     def get_by_genre(
-        self, name, sort="title", order="ASC", limit=6, skip=0, user_id=None
+        self,
+        name,
+        sort="title",
+        order="ASC",
+        limit=6,
+        skip=0,
+        user_id=None,
     ):
         # Get Movies in a Genre
         def get_movies_in_genre(tx, sort, order, limit, skip, user_id):
@@ -138,7 +155,13 @@ class MovieDAO:
 
     # tag::getForActor[]
     def get_for_actor(
-        self, id, sort="title", order="ASC", limit=6, skip=0, user_id=None
+        self,
+        id,
+        sort="title",
+        order="ASC",
+        limit=6,
+        skip=0,
+        user_id=None,
     ):
         # Get Movies for an Actor
         def get_movies_for_actor(tx, id, sort, order, limit, skip, user_id):
@@ -197,7 +220,13 @@ class MovieDAO:
 
     # tag::getForDirector[]
     def get_for_director(
-        self, id, sort="title", order="ASC", limit=6, skip=0, user_id=None
+        self,
+        id,
+        sort="title",
+        order="ASC",
+        limit=6,
+        skip=0,
+        user_id=None,
     ):
         # Get Movies directed by a Person
         def get_movies_for_director(tx, id, sort, order, limit, skip, user_id):
@@ -316,12 +345,24 @@ class MovieDAO:
             } AS movie
             """
 
-            result = tx.run(cypher, id=id, limit=limit, skip=skip, favorites=favorites)
+            result = tx.run(
+                cypher,
+                id=id,
+                limit=limit,
+                skip=skip,
+                favorites=favorites,
+            )
 
             return [row.get("movie") for row in result]
 
         with self.driver.session() as session:
-            return session.execute_read(find_similar_movies, id, limit, skip, user_id)
+            return session.execute_read(
+                find_similar_movies,
+                id,
+                limit,
+                skip,
+                user_id,
+            )
 
     # end::getSimilarMovies[]
 

@@ -27,7 +27,10 @@ def generate_data(num: int, data: list):
         item = idx * idx
         data.append((item, datetime.datetime.now()))
 
-        print(colorama.Fore.YELLOW + f" -- generated item {idx}", flush=True)
+        print(
+            colorama.Fore.YELLOW + f" -- generated item {idx}",
+            flush=True,
+        )
         time.sleep(random.random() + 0.5)
 
 

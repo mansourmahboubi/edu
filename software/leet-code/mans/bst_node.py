@@ -89,4 +89,9 @@ class BSTNode:
         lines = [first_line, second_line] + [
             a + val_len * " " + b for a, b in zipped_lines
         ]
-        return lines, n + m + val_len, max(p, q) + 2, n + val_len // 2
+        return (
+            lines,
+            n + m + val_len,
+            max(p, q) + 2,
+            n + val_len // 2,
+        )

@@ -9,7 +9,9 @@ LetterList = List[str]
 LetterIndexMap = Dict[str, int]
 
 
-def map_strings_by_index(my_list: LetterList) -> LetterIndexMap:
+def map_strings_by_index(
+    my_list: LetterList,
+) -> LetterIndexMap:
     return {letter: index for index, letter in enumerate(my_list)}
 
 

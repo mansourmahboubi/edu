@@ -23,7 +23,12 @@ class TestSetDefault:
 
     @pytest.fixture
     def address(self, user):
-        return Address(user=user, street="Fake", number=1, is_default=False)
+        return Address(
+            user=user,
+            street="Fake",
+            number=1,
+            is_default=False,
+        )
 
     def test_sets_address_as_default_and_publishes_changes(self, mocker, address):
         mock_filter = mocker.patch.object(Address.objects, "filter")

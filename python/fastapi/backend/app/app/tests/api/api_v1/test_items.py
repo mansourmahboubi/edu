@@ -5,7 +5,9 @@ from sqlalchemy.orm import Session
 
 
 def test_create_item(
-    client: TestClient, superuser_token_headers: dict, db: Session
+    client: TestClient,
+    superuser_token_headers: dict,
+    db: Session,
 ) -> None:
     data = {"title": "Foo", "description": "Fighters"}
     response = client.post(
@@ -22,7 +24,9 @@ def test_create_item(
 
 
 def test_read_item(
-    client: TestClient, superuser_token_headers: dict, db: Session
+    client: TestClient,
+    superuser_token_headers: dict,
+    db: Session,
 ) -> None:
     item = create_random_item(db)
     response = client.get(

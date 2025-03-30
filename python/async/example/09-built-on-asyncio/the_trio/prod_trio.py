@@ -21,9 +21,24 @@ async def main():
 
     with trio.move_on_after(5):
         async with trio.open_nursery() as nursery:
-            nursery.start_soon(generate_data, 20, send_channel, name="Prod 1")
-            nursery.start_soon(generate_data, 20, send_channel, name="Prod 2")
-            nursery.start_soon(process_data, 40, receive_channel, name="Consumer")
+            nursery.start_soon(
+                generate_data,
+                20,
+                send_channel,
+                name="Prod 1",
+            )
+            nursery.start_soon(
+                generate_data,
+                20,
+                send_channel,
+                name="Prod 2",
+            )
+            nursery.start_soon(
+                process_data,
+                40,
+                receive_channel,
+                name="Consumer",
+            )
 
     dt = datetime.datetime.now() - t0
     print(
@@ -38,7 +53,10 @@ async def generate_data(num: int, data: trio.MemorySendChannel):
         item = idx * idx
         await data.send((item, datetime.datetime.now()))
 
-        print(colorama.Fore.YELLOW + f" -- generated item {idx}", flush=True)
+        print(
+            colorama.Fore.YELLOW + f" -- generated item {idx}",
+            flush=True,
+        )
         await trio.sleep(random.random() + 0.5)
 
 

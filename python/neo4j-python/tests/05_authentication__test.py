@@ -28,7 +28,8 @@ def test_authenticate_user(app):
         # Delete the user
         def delete_user(tx):
             return tx.run(
-                "MATCH (u:User {email: $email}) DETACH DELETE u", email=email
+                "MATCH (u:User {email: $email}) DETACH DELETE u",
+                email=email,
             ).consume()
 
         with driver.session() as session:

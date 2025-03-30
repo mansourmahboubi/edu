@@ -26,7 +26,10 @@ class Migration(migrations.Migration):
                         verbose_name="ID",
                     ),
                 ),
-                ("street", models.CharField(max_length=50)),
+                (
+                    "street",
+                    models.CharField(max_length=50),
+                ),
                 ("number", models.PositiveIntegerField()),
                 ("is_default", models.BooleanField()),
                 (

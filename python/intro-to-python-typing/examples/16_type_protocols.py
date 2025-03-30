@@ -6,7 +6,9 @@ from typing import Protocol
 
 
 class Barkable(Protocol):
-    def bark(self) -> str: ...  # New idiom for Abstract / "Won't be defined"
+    def bark(
+        self,
+    ) -> str: ...  # New idiom for Abstract / "Won't be defined"
 
 
 class Corgi:

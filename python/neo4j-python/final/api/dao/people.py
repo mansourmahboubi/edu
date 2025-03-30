@@ -39,7 +39,14 @@ class PeopleDAO:
                 sort, order
             )
 
-            result = tx.run(cypher, q=q, sort=sort, order=order, limit=limit, skip=skip)
+            result = tx.run(
+                cypher,
+                q=q,
+                sort=sort,
+                order=order,
+                limit=limit,
+                skip=skip,
+            )
 
             return [row.get("person") for row in result]
 

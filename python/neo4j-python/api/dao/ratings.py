@@ -39,7 +39,10 @@ class RatingDAO:
 
         with self.driver.session() as session:
             record = session.execute_write(
-                create_rating, user_id=user_id, movie_id=movie_id, rating=rating
+                create_rating,
+                user_id=user_id,
+                movie_id=movie_id,
+                rating=rating,
             )
 
             if record is None:
@@ -59,7 +62,14 @@ class RatingDAO:
     """
 
     # tag::forMovie[]
-    def for_movie(self, id, sort="timestamp", order="ASC", limit=6, skip=0):
+    def for_movie(
+        self,
+        id,
+        sort="timestamp",
+        order="ASC",
+        limit=6,
+        skip=0,
+    ):
         # TODO: Get ratings for a Movie
         # TODO: Remember to escape the braces in the cypher query with double braces: {{ }}
 

@@ -8,7 +8,9 @@ User = get_user_model()
 
 class Address(models.Model):
     user = models.ForeignKey(
-        User, on_delete=models.CASCADE, related_name="seprate_login_user"
+        User,
+        on_delete=models.CASCADE,
+        related_name="seprate_login_user",
     )
     street = models.CharField(max_length=50)
     number = models.PositiveIntegerField()

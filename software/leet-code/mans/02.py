@@ -37,7 +37,22 @@ def min_height_bst_2(lst, start, end):
 
 
 if __name__ == "__main__":
-    array = [1, 2, 3, 4, 6, 7, 8, 9, 10, 12, 15, 19, 25, 32]
+    array = [
+        1,
+        2,
+        3,
+        4,
+        6,
+        7,
+        8,
+        9,
+        10,
+        12,
+        15,
+        19,
+        25,
+        32,
+    ]
     with Timer("Method 1 bad"):
         bst = min_height_bst(array, None, 0, len(array) - 1)
     # bst.display()

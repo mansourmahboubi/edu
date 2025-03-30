@@ -48,12 +48,23 @@ class MovieDAO:
             )
             # Run the statement within the transaction passed as the first argument
             result = tx.run(
-                cypher, limit=limit, skip=skip, user_id=user_id, favorites=favorites
+                cypher,
+                limit=limit,
+                skip=skip,
+                user_id=user_id,
+                favorites=favorites,
             )
             return [row.value("movie") for row in result]
 
         with self.driver.session() as session:
-            return session.execute_read(get_movies, sort, order, limit, skip, user_id)
+            return session.execute_read(
+                get_movies,
+                sort,
+                order,
+                limit,
+                skip,
+                user_id,
+            )
 
     # end::all[]
 
@@ -72,7 +83,13 @@ class MovieDAO:
 
     # tag::getByGenre[]
     def get_by_genre(
-        self, name, sort="title", order="ASC", limit=6, skip=0, user_id=None
+        self,
+        name,
+        sort="title",
+        order="ASC",
+        limit=6,
+        skip=0,
+        user_id=None,
     ):
         # TODO: Get Movies in a Genre
         # TODO: The Cypher string will be formated so remember to escape the braces: {{name: $name}}
@@ -97,7 +114,13 @@ class MovieDAO:
 
     # tag::getForActor[]
     def get_for_actor(
-        self, id, sort="title", order="ASC", limit=6, skip=0, user_id=None
+        self,
+        id,
+        sort="title",
+        order="ASC",
+        limit=6,
+        skip=0,
+        user_id=None,
     ):
         # TODO: Get Movies for an Actor
         # TODO: The Cypher string will be formated so remember to escape the braces: {{tmdbId: $id}}
@@ -122,7 +145,13 @@ class MovieDAO:
 
     # tag::getForDirector[]
     def get_for_director(
-        self, id, sort="title", order="ASC", limit=6, skip=0, user_id=None
+        self,
+        id,
+        sort="title",
+        order="ASC",
+        limit=6,
+        skip=0,
+        user_id=None,
     ):
         # TODO: Get Movies directed by a Person
         # TODO: The Cypher string will be formated so remember to escape the braces: {{name: $name}}

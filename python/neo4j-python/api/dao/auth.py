@@ -100,7 +100,10 @@ class AuthDAO:
         # tag::get_user[]
         def get_user(tx, email):
             # Get the result
-            result = tx.run("MATCH (u:User {email: $email}) RETURN u", email=email)
+            result = tx.run(
+                "MATCH (u:User {email: $email}) RETURN u",
+                email=email,
+            )
 
             # Expect a single row
             first = result.single()
@@ -131,7 +134,8 @@ class AuthDAO:
             # Passwords do not match, return false
             if (
                 bcrypt.checkpw(
-                    plain_password.encode("utf-8"), user["password"].encode("utf-8")
+                    plain_password.encode("utf-8"),
+                    user["password"].encode("utf-8"),
                 )
                 is False
             ):

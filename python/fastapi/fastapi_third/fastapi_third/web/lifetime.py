@@ -4,8 +4,11 @@ from typing import Awaitable, Callable
 from fastapi import FastAPI
 from fastapi_third.services.redis.lifetime import init_redis, shutdown_redis
 from fastapi_third.settings import settings
-from sqlalchemy.ext.asyncio import (AsyncSession, async_scoped_session,
-                                    create_async_engine)
+from sqlalchemy.ext.asyncio import (
+    AsyncSession,
+    async_scoped_session,
+    create_async_engine,
+)
 from sqlalchemy.orm import sessionmaker
 
 

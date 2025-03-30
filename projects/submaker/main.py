@@ -44,7 +44,11 @@ def convert_to_srt(data_file: str) -> None:
         # Format each subtitle entry
         srt_file_data += f"{index}\n{start_time} --> {end_time}\n{text}\n\n"
 
-    with open(data_file.replace(".json", ".srt"), "w", encoding="utf-8") as f:
+    with open(
+        data_file.replace(".json", ".srt"),
+        "w",
+        encoding="utf-8",
+    ) as f:
         f.write(srt_file_data)
 
 

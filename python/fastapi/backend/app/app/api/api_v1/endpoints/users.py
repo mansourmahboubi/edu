@@ -45,7 +45,9 @@ def create_user(
     user = crud.user.create(db, obj_in=user_in)
     if settings.EMAILS_ENABLED and user_in.email:
         send_new_account_email(
-            email_to=user_in.email, username=user_in.email, password=user_in.password
+            email_to=user_in.email,
+            username=user_in.email,
+            password=user_in.password,
         )
     return user
 
@@ -126,7 +128,8 @@ def read_user_by_id(
         return user
     if not crud.user.is_superuser(current_user):
         raise HTTPException(
-            status_code=400, detail="The user doesn't have enough privileges"
+            status_code=400,
+            detail="The user doesn't have enough privileges",
         )
     return user
 

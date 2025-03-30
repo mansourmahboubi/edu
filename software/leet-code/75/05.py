@@ -6,7 +6,9 @@ from timer import Timer
 
 class Solution:
     def merge_two_lists(
-        self, l1: Optional["ListNode"], l2: Optional["ListNode"]
+        self,
+        l1: Optional["ListNode"],
+        l2: Optional["ListNode"],
     ) -> Optional["ListNode"]:
         tmp = head = ListNode()
         while l1 and l2:

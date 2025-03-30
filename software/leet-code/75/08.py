@@ -28,14 +28,20 @@ class Solution:
     def detect_cycle_1(self, head: Optional[ListNode]) -> Optional[ListNode]:
         slow = fast = head
         while fast and fast.next:
-            slow, fast = slow.next, fast.next.next  # type:ignore
+            slow, fast = (
+                slow.next,
+                fast.next.next,
+            )  # type:ignore
             if slow == fast:
                 break
         else:
             return None  # if not (fast and fast.next): return None
 
         while head != slow:
-            head, slow = head.next, slow.next  # type:ignore
+            head, slow = (
+                head.next,
+                slow.next,
+            )  # type:ignore
         return head
 
     def detect_cycle_2(self, head: Optional[ListNode]) -> Optional[ListNode]:

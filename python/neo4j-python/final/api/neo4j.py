@@ -1,4 +1,5 @@
 from flask import Flask, current_app
+
 # tag::import[]
 from neo4j import GraphDatabase
 

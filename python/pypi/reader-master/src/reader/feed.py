@@ -6,6 +6,7 @@ from typing import Dict, List  # noqa
 # Third party imports
 import feedparser
 import html2text
+
 # Reader imports
 from reader import URL
 

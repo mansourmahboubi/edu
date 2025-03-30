@@ -23,10 +23,16 @@ class TestAddressManagerSetDefault:
     # We make integration tests for the manager to validate database behaviours
     def test_sets_address_as_default(self, saved_user):
         old_default_address = Address.objects.create(
-            user=saved_user, street="Fake", number=1, is_default=True
+            user=saved_user,
+            street="Fake",
+            number=1,
+            is_default=True,
         )
         address = Address.objects.create(
-            user=saved_user, street="Fake", number=2, is_default=False
+            user=saved_user,
+            street="Fake",
+            number=2,
+            is_default=False,
         )
 
         Address.objects.set_default(address)  # type: ignore
@@ -49,7 +55,12 @@ class TestSetDefault:
 
     @pytest.fixture
     def address(self, user):
-        return Address(user=user, street="Fake", number=1, is_default=False)
+        return Address(
+            user=user,
+            street="Fake",
+            number=1,
+            is_default=False,
+        )
 
     def test_sets_address_as_default_and_publishes_changes(self, mocker, address):
         # In this case a lot less dependencies

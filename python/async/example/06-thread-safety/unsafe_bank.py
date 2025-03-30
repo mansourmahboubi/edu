@@ -74,7 +74,10 @@ def validate_bank(accounts: List[Account], total: int, quiet=False):
             flush=True,
         )
     elif not quiet:
-        print(f"All good: Consistent account balance: ${total:,}", flush=True)
+        print(
+            f"All good: Consistent account balance: ${total:,}",
+            flush=True,
+        )
 
 
 def get_two_accounts(accounts):

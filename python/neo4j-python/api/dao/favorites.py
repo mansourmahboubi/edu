@@ -23,7 +23,14 @@ class FavoriteDAO:
     """
 
     # tag::all[]
-    def all(self, user_id, sort="title", order="ASC", limit=6, skip=0):
+    def all(
+        self,
+        user_id,
+        sort="title",
+        order="ASC",
+        limit=6,
+        skip=0,
+    ):
         # Open a new session
         with self.driver.session() as session:
             # Retrieve a list of movies favorited by the user

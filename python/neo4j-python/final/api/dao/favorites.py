@@ -21,7 +21,14 @@ class FavoriteDAO:
     """
 
     # tag::all[]
-    def all(self, user_id, sort="title", order="ASC", limit=6, skip=0):
+    def all(
+        self,
+        user_id,
+        sort="title",
+        order="ASC",
+        limit=6,
+        skip=0,
+    ):
         # Open a new session
         # tag::session[]
         with self.driver.session() as session:

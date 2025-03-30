@@ -23,7 +23,13 @@ def get_movies():
     dao = MovieDAO(current_app.driver)
 
     # Retrieve a paginated list of movies
-    output = dao.all(sort, order, limit=limit, skip=skip, user_id=user_id)
+    output = dao.all(
+        sort,
+        order,
+        limit=limit,
+        skip=skip,
+        user_id=user_id,
+    )
 
     # Return as JSON
     return jsonify(output)

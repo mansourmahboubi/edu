@@ -22,7 +22,9 @@ def test_should_find_person_by_id(app):
         assert output["actedCount"] == 2
 
 
-def test_should_return_paginated_list_of_similar_people(app):
+def test_should_return_paginated_list_of_similar_people(
+    app,
+):
     with app.app_context():
         # Get Neo4j Driver
         driver = get_driver()

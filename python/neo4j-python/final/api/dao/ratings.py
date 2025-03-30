@@ -43,7 +43,10 @@ class RatingDAO:
         # tag::run_create_rating[]
         with self.driver.session() as session:
             record = session.execute_write(
-                create_rating, user_id=user_id, movie_id=movie_id, rating=rating
+                create_rating,
+                user_id=user_id,
+                movie_id=movie_id,
+                rating=rating,
             )
             # end::run_create_rating[]
 
@@ -68,7 +71,14 @@ class RatingDAO:
     """
 
     # tag::forMovie[]
-    def for_movie(self, id, sort="timestamp", order="ASC", limit=6, skip=0):
+    def for_movie(
+        self,
+        id,
+        sort="timestamp",
+        order="ASC",
+        limit=6,
+        skip=0,
+    ):
         # Get ratings for a Movie
         def get_movie_ratings(tx, id, sort, order, limit):
             cypher = """

@@ -133,7 +133,10 @@ with driver.session() as session:
 
 # tag::createPerson[]
 def create_person_work(tx, name):
-    return tx.run("CREATE (p:Person {name: $name}) RETURN p", name=name).single()
+    return tx.run(
+        "CREATE (p:Person {name: $name}) RETURN p",
+        name=name,
+    ).single()
 
 
 def create_person(name):

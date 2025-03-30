@@ -5,7 +5,9 @@ Generic types are available for all Abstract Base Classes
 from typing import Iterable, Tuple
 
 
-def first_and_last(data: Iterable[str]) -> Tuple["str", "str"]:
+def first_and_last(
+    data: Iterable[str],
+) -> Tuple["str", "str"]:
     first = ""
     for item in data:
         first = item if not first else first

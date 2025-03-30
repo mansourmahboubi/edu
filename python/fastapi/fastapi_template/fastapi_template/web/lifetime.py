@@ -6,8 +6,11 @@ from fastapi_template.db.meta import meta
 from fastapi_template.db.models import load_all_models
 from fastapi_template.services.redis.lifetime import init_redis, shutdown_redis
 from fastapi_template.settings import settings
-from sqlalchemy.ext.asyncio import (AsyncSession, async_scoped_session,
-                                    create_async_engine)
+from sqlalchemy.ext.asyncio import (
+    AsyncSession,
+    async_scoped_session,
+    create_async_engine,
+)
 from sqlalchemy.orm import sessionmaker
 
 

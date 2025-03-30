@@ -312,7 +312,10 @@ def event_loop(main: Coroutine[Any, Any, Any]) -> None:
 
                     case Timeout(seconds):
                         timers.append(
-                            (datetime.now() + timedelta(seconds=seconds), thread)
+                            (
+                                datetime.now() + timedelta(seconds=seconds),
+                                thread,
+                            )
                         )
 
                     case Readable(socket):
@@ -365,13 +368,23 @@ def event_loop(main: Coroutine[Any, Any, Any]) -> None:
         if read_watches or write_watches or error_watches or wakeup_date:
             try:
                 timeout = (
-                    max((wakeup_date - datetime.now()).total_seconds(), 0)
+                    max(
+                        (wakeup_date - datetime.now()).total_seconds(),
+                        0,
+                    )
                     if wakeup_date
                     else None
                 )
                 # prune negative filenos
-                read_sockets, write_sockets, error_sockets = select.select(
-                    read_watches, write_watches, error_watches, timeout
+                (
+                    read_sockets,
+                    write_sockets,
+                    error_sockets,
+                ) = select.select(
+                    read_watches,
+                    write_watches,
+                    error_watches,
+                    timeout,
                 )
                 for socket in read_sockets:
                     task_queue.append((socket.thread, socket))
@@ -394,7 +407,9 @@ def event_loop(main: Coroutine[Any, Any, Any]) -> None:
             break
 
 
-async def schedule(coroutine: Coroutine[Any, Any, Any]) -> Task:
+async def schedule(
+    coroutine: Coroutine[Any, Any, Any],
+) -> Task:
     """
     Schedule a new coroutine to be executed by the event loop.
 
@@ -534,7 +549,9 @@ async def listen(host: str, port: int, backlog: int = 5) -> socket.socket:
     return server_sock
 
 
-async def accept(server_sock: socket.socket) -> tuple[socket.socket, tuple[str, int]]:
+async def accept(
+    server_sock: socket.socket,
+) -> tuple[socket.socket, tuple[str, int]]:
     """
     Accept a connection on the server socket asynchronously.
 
@@ -688,7 +705,11 @@ if __name__ == "__main__":
         await sleep(0.1)
 
         # Schedule the client task with some messages
-        messages = ["Hello from the client!", "This is a test message", "Goodbye!"]
+        messages = [
+            "Hello from the client!",
+            "This is a test message",
+            "Goodbye!",
+        ]
         await schedule(client(host, port, messages))
 
         # Wait for the tasks to finish

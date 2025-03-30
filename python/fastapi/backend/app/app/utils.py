@@ -19,9 +19,15 @@ def send_email(
     message = emails.Message(
         subject=JinjaTemplate(subject_template),
         html=JinjaTemplate(html_template),
-        mail_from=(settings.EMAILS_FROM_NAME, settings.EMAILS_FROM_EMAIL),
+        mail_from=(
+            settings.EMAILS_FROM_NAME,
+            settings.EMAILS_FROM_EMAIL,
+        ),
     )
-    smtp_options = {"host": settings.SMTP_HOST, "port": settings.SMTP_PORT}
+    smtp_options = {
+        "host": settings.SMTP_HOST,
+        "port": settings.SMTP_PORT,
+    }
     if settings.SMTP_TLS:
         smtp_options["tls"] = True
     if settings.SMTP_USER:
@@ -41,7 +47,10 @@ def send_test_email(email_to: str) -> None:
         email_to=email_to,
         subject_template=subject,
         html_template=template_str,
-        environment={"project_name": settings.PROJECT_NAME, "email": email_to},
+        environment={
+            "project_name": settings.PROJECT_NAME,
+            "email": email_to,
+        },
     )
 
 
@@ -99,9 +108,15 @@ def generate_password_reset_token(email: str) -> str:
     return encoded_jwt
 
 
-def verify_password_reset_token(token: str) -> Optional[str]:
+def verify_password_reset_token(
+    token: str,
+) -> Optional[str]:
     try:
-        decoded_token = jwt.decode(token, settings.SECRET_KEY, algorithms=["HS256"])
+        decoded_token = jwt.decode(
+            token,
+            settings.SECRET_KEY,
+            algorithms=["HS256"],
+        )
         return decoded_token["email"]
     except jwt.JWTError:
         return None

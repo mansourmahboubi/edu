@@ -24,9 +24,15 @@ popular = [
     {
         "actors": [
             {"name": "Tim Robbins", "tmdbId": "0000209"},
-            {"name": "William Sadler", "tmdbId": "0006669"},
+            {
+                "name": "William Sadler",
+                "tmdbId": "0006669",
+            },
             {"name": "Bob Gunton", "tmdbId": "0348409"},
-            {"name": "Morgan Freeman", "tmdbId": "0000151"},
+            {
+                "name": "Morgan Freeman",
+                "tmdbId": "0000151",
+            },
         ],
         "languages": ["English"],
         "plot": 'Two imprisoned men bond over a number of "year"s, finding solace and eventual redemption through acts of common decency.',
@@ -43,7 +49,10 @@ popular = [
     },
     {
         "actors": [
-            {"name": "Richard S. Castellano", "tmdbId": "0144710"},
+            {
+                "name": "Richard S. Castellano",
+                "tmdbId": "0144710",
+            },
             {"name": "James Caan", "tmdbId": "0001001"},
             {"name": "Al Pacino", "tmdbId": "0000199"},
             {"name": "Marlon Brando", "tmdbId": "0000008"},
@@ -55,7 +64,12 @@ popular = [
             {"link": '/"genres"/Drama', "name": "Drama"},
             {"link": '/"genres"/Crime', "name": "Crime"},
         ],
-        "directors": [{"name": "Francis Ford Coppola", "tmdbId": "0000338"}],
+        "directors": [
+            {
+                "name": "Francis Ford Coppola",
+                "tmdbId": "0000338",
+            }
+        ],
         "imdbRating": 9.2,
         "tmdbId": "0068646",
         "title": "Godfather, The",
@@ -65,18 +79,32 @@ popular = [
     {
         "actors": [
             {"name": "Al Pacino", "tmdbId": "0000199"},
-            {"name": "Robert De Niro", "tmdbId": "0000134"},
+            {
+                "name": "Robert De Niro",
+                "tmdbId": "0000134",
+            },
             {"name": "Robert Duvall", "tmdbId": "0000380"},
             {"name": "Diane Keaton", "tmdbId": "0000473"},
         ],
-        "languages": ["English", " Italian", " Spanish", " Latin", " Sicilian"],
+        "languages": [
+            "English",
+            " Italian",
+            " Spanish",
+            " Latin",
+            " Sicilian",
+        ],
         "plot": "The early life and career of Vito Corleone in 1920s New York is portrayed while his son, Michael, expands and tightens his grip on his crime syndicate stretching from Lake Tahoe, Nevada to pre-revolution 1958 Cuba.",
         "year": 1974,
         "genres": [
             {"link": '/"genres"/Crime', "name": "Crime"},
             {"link": '/"genres"/Drama', "name": "Drama"},
         ],
-        "directors": [{"name": "Francis Ford Coppola", "tmdbId": "0000338"}],
+        "directors": [
+            {
+                "name": "Francis Ford Coppola",
+                "tmdbId": "0000338",
+            }
+        ],
         "imdbRating": 9.0,
         "tmdbId": "0071562",
         "title": "Godfather: Part II, The",
@@ -88,7 +116,10 @@ popular = [
             {"name": "Michael Caine", "tmdbId": "0000323"},
             {"name": "Heath Ledger", "tmdbId": "0005132"},
             {"name": "Aaron Eckhart", "tmdbId": "0001173"},
-            {"name": "Christian Bale", "tmdbId": "0000288"},
+            {
+                "name": "Christian Bale",
+                "tmdbId": "0000288",
+            },
         ],
         "languages": ["English", " Mandarin"],
         "plot": "When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, the caped crusader must come to terms with one of the greatest psychological tests of his ability to fight injustice.",
@@ -99,7 +130,12 @@ popular = [
             {"link": '/"genres"/Drama', "name": "Drama"},
             {"link": '/"genres"/IMAX', "name": "IMAX"},
         ],
-        "directors": [{"name": "Christopher Nolan", "tmdbId": "0634240"}],
+        "directors": [
+            {
+                "name": "Christopher Nolan",
+                "tmdbId": "0634240",
+            }
+        ],
         "imdbRating": 9.0,
         "tmdbId": "0468569",
         "title": "Dark Knight, The",
@@ -125,7 +161,10 @@ popular = [
     },
     {
         "actors": [
-            {"name": "Helena Bonham Carter", "tmdbId": "0000307"},
+            {
+                "name": "Helena Bonham Carter",
+                "tmdbId": "0000307",
+            },
             {"name": "Meat Loaf", "tmdbId": "0001533"},
             {"name": "Brad Pitt", "tmdbId": "0000093"},
             {"name": "Edward Norton", "tmdbId": "0001570"},
@@ -135,7 +174,10 @@ popular = [
         "year": 1999,
         "genres": [
             {"link": '/"genres"/Drama', "name": "Drama"},
-            {"link": '/"genres"/Thriller', "name": "Thriller"},
+            {
+                "link": '/"genres"/Thriller',
+                "name": "Thriller",
+            },
             {"link": '/"genres"/Action', "name": "Action"},
             {"link": '/"genres"/Crime', "name": "Crime"},
         ],
@@ -172,8 +214,14 @@ RETURN collect(n)
 latest = [
     {
         "actors": [
-            {"name": "Robin Williams", "tmdbId": "0000245"},
-            {"name": "Bradley Pierce", "tmdbId": "0682300"},
+            {
+                "name": "Robin Williams",
+                "tmdbId": "0000245",
+            },
+            {
+                "name": "Bradley Pierce",
+                "tmdbId": "0682300",
+            },
             {"name": "Kirsten Dunst", "tmdbId": "0000379"},
             {"name": "Jonathan Hyde", "tmdbId": "0404993"},
         ],
@@ -181,9 +229,18 @@ latest = [
         "plot": "When two kids find and play a magical board game, they release a man trapped for decades in it and a host of dangers that can only be stopped by finishing the game.",
         "year": 1995,
         "genres": [
-            {"link": '/"genres"/Adventure', "name": "Adventure"},
-            {"link": '/"genres"/Children', "name": "Children"},
-            {"link": '/"genres"/Fantasy', "name": "Fantasy"},
+            {
+                "link": '/"genres"/Adventure',
+                "name": "Adventure",
+            },
+            {
+                "link": '/"genres"/Children',
+                "name": "Children",
+            },
+            {
+                "link": '/"genres"/Fantasy',
+                "name": "Fantasy",
+            },
         ],
         "directors": [{"name": "Joe Johnston", "tmdbId": "0002653"}],
         "imdbRating": 6.9,
@@ -193,7 +250,10 @@ latest = [
     },
     {
         "actors": [
-            {"name": "Walter Matthau", "tmdbId": "0000527"},
+            {
+                "name": "Walter Matthau",
+                "tmdbId": "0000527",
+            },
             {"name": "Ann-Margret", "tmdbId": "0000268"},
             {"name": "Jack Lemmon", "tmdbId": "0000493"},
             {"name": "Sophia Loren", "tmdbId": "0000047"},
@@ -203,7 +263,10 @@ latest = [
         "year": 1995,
         "genres": [
             {"link": '/"genres"/Comedy', "name": "Comedy"},
-            {"link": '/"genres"/Romance', "name": "Romance"},
+            {
+                "link": '/"genres"/Romance',
+                "name": "Romance",
+            },
         ],
         "directors": [{"name": "Howard Deutch", "tmdbId": "0222043"}],
         "imdbRating": 6.6,
@@ -213,20 +276,37 @@ latest = [
     },
     {
         "actors": [
-            {"name": "Whitney Houston", "tmdbId": "0001365"},
+            {
+                "name": "Whitney Houston",
+                "tmdbId": "0001365",
+            },
             {"name": "Lela Rochon", "tmdbId": "0005375"},
-            {"name": "Angela Bassett", "tmdbId": "0000291"},
-            {"name": "Loretta Devine", "tmdbId": "0222643"},
+            {
+                "name": "Angela Bassett",
+                "tmdbId": "0000291",
+            },
+            {
+                "name": "Loretta Devine",
+                "tmdbId": "0222643",
+            },
         ],
         "languages": ["English"],
         "plot": "Based on Terry McMillan's novel, this film follows four very different African-American women and their relationships with the male gender.",
         "year": 1995,
         "genres": [
-            {"link": '/"genres"/Romance', "name": "Romance"},
+            {
+                "link": '/"genres"/Romance',
+                "name": "Romance",
+            },
             {"link": '/"genres"/Drama', "name": "Drama"},
             {"link": '/"genres"/Comedy', "name": "Comedy"},
         ],
-        "directors": [{"name": "Forest Whitaker", "tmdbId": "0001845"}],
+        "directors": [
+            {
+                "name": "Forest Whitaker",
+                "tmdbId": "0001845",
+            }
+        ],
         "imdbRating": 5.6,
         "tmdbId": "0114885",
         "title": "Waiting to Exhale",
@@ -235,7 +315,10 @@ latest = [
     {
         "actors": [
             {"name": "Steve Martin", "tmdbId": "0000188"},
-            {"name": "Kimberly Williams-Paisley", "tmdbId": "0931090"},
+            {
+                "name": "Kimberly Williams-Paisley",
+                "tmdbId": "0931090",
+            },
             {"name": "Diane Keaton", "tmdbId": "0000473"},
             {"name": "Martin Short", "tmdbId": "0001737"},
         ],
@@ -252,7 +335,10 @@ latest = [
     {
         "actors": [
             {"name": "Al Pacino", "tmdbId": "0000199"},
-            {"name": "Robert De Niro", "tmdbId": "0000134"},
+            {
+                "name": "Robert De Niro",
+                "tmdbId": "0000134",
+            },
             {"name": "Val Kilmer", "tmdbId": "0000174"},
             {"name": "Jon Voight", "tmdbId": "0000685"},
         ],
@@ -262,7 +348,10 @@ latest = [
         "genres": [
             {"link": '/"genres"/Action', "name": "Action"},
             {"link": '/"genres"/Crime', "name": "Crime"},
-            {"link": '/"genres"/Thriller', "name": "Thriller"},
+            {
+                "link": '/"genres"/Thriller',
+                "name": "Thriller",
+            },
         ],
         "directors": [{"name": "Michael Mann", "tmdbId": "0000520"}],
         "imdbRating": 8.2,
@@ -281,11 +370,23 @@ latest = [
         "plot": "A cowboy doll is profoundly threatened and jealous when a new spaceman figure supplants him as top toy in a boy's room.",
         "year": 1995,
         "genres": [
-            {"link": '/"genres"/Adventure', "name": "Adventure"},
-            {"link": '/"genres"/Animation', "name": "Animation"},
-            {"link": '/"genres"/Children', "name": "Children"},
+            {
+                "link": '/"genres"/Adventure',
+                "name": "Adventure",
+            },
+            {
+                "link": '/"genres"/Animation',
+                "name": "Animation",
+            },
+            {
+                "link": '/"genres"/Children',
+                "name": "Children",
+            },
             {"link": '/"genres"/Comedy', "name": "Comedy"},
-            {"link": '/"genres"/Fantasy', "name": "Fantasy"},
+            {
+                "link": '/"genres"/Fantasy',
+                "name": "Fantasy",
+            },
         ],
         "directors": [{"name": "John Lasseter", "tmdbId": "0005124"}],
         "imdbRating": 8.3,
@@ -351,27 +452,42 @@ goodfellas = {
     "ratings": [
         {
             "imdbRating": 2.0,
-            "user": {"name": "Catherine Trujillo", "tmdbId": "570"},
+            "user": {
+                "name": "Catherine Trujillo",
+                "tmdbId": "570",
+            },
             "timestamp": 1475784311,
         },
         {
             "imdbRating": 5.0,
-            "user": {"name": "Teresa Graham", "tmdbId": "457"},
+            "user": {
+                "name": "Teresa Graham",
+                "tmdbId": "457",
+            },
             "timestamp": 1471383372,
         },
         {
             "imdbRating": 5.0,
-            "user": {"name": "Meredith Leonard", "tmdbId": "519"},
+            "user": {
+                "name": "Meredith Leonard",
+                "tmdbId": "519",
+            },
             "timestamp": 1471150621,
         },
         {
             "imdbRating": 4.0,
-            "user": {"name": "Dr. Angela Johnson", "tmdbId": "56"},
+            "user": {
+                "name": "Dr. Angela Johnson",
+                "tmdbId": "56",
+            },
             "timestamp": 1467003139,
         },
         {
             "imdbRating": 5.0,
-            "user": {"name": "Melissa King", "tmdbId": "483"},
+            "user": {
+                "name": "Melissa King",
+                "tmdbId": "483",
+            },
             "timestamp": 1465387394,
         },
     ],
@@ -389,7 +505,10 @@ RETURN collect(r)[0..5]
 ratings = [
     {
         "imdbRating": 2.0,
-        "user": {"name": "Catherine Trujillo", "tmdbId": "570"},
+        "user": {
+            "name": "Catherine Trujillo",
+            "tmdbId": "570",
+        },
         "timestamp": 1475784311,
     },
     {
@@ -399,12 +518,18 @@ ratings = [
     },
     {
         "imdbRating": 5.0,
-        "user": {"name": "Meredith Leonard", "tmdbId": "519"},
+        "user": {
+            "name": "Meredith Leonard",
+            "tmdbId": "519",
+        },
         "timestamp": 1471150621,
     },
     {
         "imdbRating": 4.0,
-        "user": {"name": "Dr. Angela Johnson", "tmdbId": "56"},
+        "user": {
+            "name": "Dr. Angela Johnson",
+            "tmdbId": "56",
+        },
         "timestamp": 1467003139,
     },
     {
@@ -441,7 +566,10 @@ similar = [
             {"link": '/"genres"/Drama', "name": "Drama"},
             {"link": '/"genres"/Crime', "name": "Crime"},
             {"link": '/"genres"/Comedy', "name": "Comedy"},
-            {"link": '/"genres"/Thriller', "name": "Thriller"},
+            {
+                "link": '/"genres"/Thriller',
+                "name": "Thriller",
+            },
         ],
         "imdbRating": 6.9,
         "tmdbId": "0116361",
@@ -472,8 +600,14 @@ similar = [
         "year": 1987,
         "genres": [
             {"link": '/"genres"/Drama', "name": "Drama"},
-            {"link": '/"genres"/Romance', "name": "Romance"},
-            {"link": '/"genres"/Fantasy', "name": "Fantasy"},
+            {
+                "link": '/"genres"/Romance',
+                "name": "Romance",
+            },
+            {
+                "link": '/"genres"/Fantasy',
+                "name": "Fantasy",
+            },
         ],
         "imdbRating": 8.1,
         "tmdbId": "0093191",
@@ -486,8 +620,14 @@ similar = [
         "year": 1993,
         "genres": [
             {"link": '/"genres"/Comedy', "name": "Comedy"},
-            {"link": '/"genres"/Children', "name": "Children"},
-            {"link": '/"genres"/Animation', "name": "Animation"},
+            {
+                "link": '/"genres"/Children',
+                "name": "Children",
+            },
+            {
+                "link": '/"genres"/Animation',
+                "name": "Animation",
+            },
             {"link": '/"genres"/Crime', "name": "Crime"},
         ],
         "imdbRating": 8.4,
@@ -500,8 +640,14 @@ similar = [
         "plot": "A hack screenwriter writes a screenplay for a former silent-film star who has faded into Hollywood obscurity.",
         "year": 1950,
         "genres": [
-            {"link": '/"genres"/Romance', "name": "Romance"},
-            {"link": '/"genres"/Film-Noir', "name": "Film-Noir"},
+            {
+                "link": '/"genres"/Romance',
+                "name": "Romance",
+            },
+            {
+                "link": '/"genres"/Film-Noir',
+                "name": "Film-Noir",
+            },
             {"link": '/"genres"/Drama', "name": "Drama"},
         ],
         "imdbRating": 8.5,
@@ -641,7 +787,12 @@ roles = [
         "imdbVotes": 256626,
         "poster": "https://image.tmdb.org/t/p/w440_and_h660_face/1hdm3Axw9LjITbApvAXBbqO58zE.jpg",
         "countries": ["USA"],
-        "languages": ["English", " Italian", " German", " Latin"],
+        "languages": [
+            "English",
+            " Italian",
+            " German",
+            " Latin",
+        ],
         "revenue": 136766062,
         "budget": 54000000,
         "tmdbId": "242",
@@ -660,7 +811,12 @@ roles = [
         "year": 2004,
         "imdbVotes": 29063,
         "poster": "https://image.tmdb.org/t/p/w440_and_h660_face/sbYUDtqbYtqbqTvmjGBZAeWTinb.jpg",
-        "countries": ["USA", " Italy", " Luxembourg", " UK"],
+        "countries": [
+            "USA",
+            " Italy",
+            " Luxembourg",
+            " UK",
+        ],
         "languages": ["English"],
         "tmdbId": "11162",
         "imdbRating": 7.1,

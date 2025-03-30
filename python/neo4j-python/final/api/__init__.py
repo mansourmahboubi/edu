@@ -22,7 +22,11 @@ from .routes.status import status_routes
 def create_app(test_config=None):
     # Create and configure app
     static_folder = os.path.join(os.path.dirname(__file__), "..", "public")
-    app = Flask(__name__, static_url_path="/", static_folder=static_folder)
+    app = Flask(
+        __name__,
+        static_url_path="/",
+        static_folder=static_folder,
+    )
 
     app.config.from_mapping(
         NEO4J_URI=os.getenv("NEO4J_URI"),
@@ -58,7 +62,12 @@ def create_app(test_config=None):
     CORS(
         app,
         resources={
-            r"/*": {"origins": ["http://localhost:3000", "http://127.0.0.1:3000"]}
+            r"/*": {
+                "origins": [
+                    "http://localhost:3000",
+                    "http://127.0.0.1:3000",
+                ]
+            }
         },
     )
 
