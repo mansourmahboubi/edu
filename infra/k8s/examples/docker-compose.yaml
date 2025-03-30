@@ -15,7 +15,7 @@ services:
     # Alternatively, you can use tty for interactive mode
     # tty: true
     # stdin_open: true
-    
+
     # deploy:
     #   resources:
     #     limits:
@@ -29,7 +29,7 @@ services:
     # volumes:
     #   - ./data:/data
     #   - ./config:/config
-      
+
     # Network ports (customize as needed)
     # ports:
     #   - "8080:80"
@@ -39,7 +39,7 @@ services:
     # environment:
     #   - TZ=UTC
     #   - LANG=C.UTF-8
-      
+
     # Networks (customize as needed)
 #     networks:
 #       - ubuntu_net

@@ -4,7 +4,7 @@ Namespaces
         Global namespace
             Enclosed namespace
                 Local namespace
-   global(), local() 
+   global(), local()
    global, non-local
 """
 

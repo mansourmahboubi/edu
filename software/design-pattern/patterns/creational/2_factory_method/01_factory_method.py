@@ -1,18 +1,18 @@
 """
-    Creatioonal:
-        Factory Method
-            3 Component and Identifer
-                1. Creator
-                2. Product
-                3. Client
+Creatioonal:
+    Factory Method
+        3 Component and Identifer
+            1. Creator
+            2. Product
+            3. Client
 
-    Factory Method is a creational design pattern 
-    that provides an interface for creating objects in a superclass,
-    but allows subclasses to alter the type of objects that will be created.
+Factory Method is a creational design pattern
+that provides an interface for creating objects in a superclass,
+but allows subclasses to alter the type of objects that will be created.
 
-    https://refactoring.guru/design-patterns/factory-method
+https://refactoring.guru/design-patterns/factory-method
 
-    Objects returned by a factory method are often referred to as products.
+Objects returned by a factory method are often referred to as products.
 """
 
 ### THE PROBLEM ###

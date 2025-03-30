@@ -1,10 +1,10 @@
 """Tests for the reader.feed module."""
+
 # Standard library imports
 import pathlib
 
 # Third party imports
 import pytest
-
 # Reader imports
 from reader import feed
 

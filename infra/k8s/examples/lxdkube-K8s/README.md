@@ -1,10 +1,10 @@
-### Setting up K8s Cluster using LXC/LXD 
+### Setting up K8s Cluster using LXC/LXD
 > **Note:** For development purpose and not recommended for Production use
 
 #### In case you want to use an AWS EC2 instance
 Create an EC2 instance of type t2.medium size which will be sufficient for running 3 lxc containers each with 2 CPUs and 2Gi of memory.
 
-#### Installing the LXC on Ubuntu 
+#### Installing the LXC on Ubuntu
 ```
 $ sudo apt-get update && apt-get install lxc -y
 $ sudo systemctl status lxc
@@ -104,7 +104,7 @@ Kubernetes master is running at https://10.127.221.187:6443
 KubeDNS is running at https://10.127.221.187:6443/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
 ```
 
-#### Let's deploy sample nginx 
+#### Let's deploy sample nginx
 ```
 $ kubectl create deploy nginx --image nginx
 deployment.apps/nginx created

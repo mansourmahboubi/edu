@@ -1,4 +1,5 @@
 """Example DAG demonstrating the usage of the BashOperator."""
+
 from __future__ import annotations
 
 import datetime

@@ -1,4 +1,4 @@
-from api.data import people, pacino
+from api.data import pacino, people
 from api.exceptions.notfound import NotFoundException
 
 
@@ -19,6 +19,7 @@ class PeopleDAO:
     number passed as `limit`.  The `skip` variable should be used to skip a
     certain number of rows.
     """
+
     # tag::all[]
     def all(self, q, sort="name", order="ASC", limit=6, skip=0):
         # TODO: Get a list of people from the database
@@ -33,6 +34,7 @@ class PeopleDAO:
 
     If no user is found, a NotFoundError should be thrown.
     """
+
     # tag::findById[]
     def find_by_id(self, id):
         # TODO: Find a user by their ID
@@ -45,6 +47,7 @@ class PeopleDAO:
     Get a list of similar people to a Person, ordered by their similarity score
     in descending order.
     """
+
     # tag::getSimilarPeople[]
     def get_similar_people(self, id, limit=6, skip=0):
         # TODO: Get a list of similar people to the person by their id

@@ -1,14 +1,14 @@
-FROM python:3.8.1-slim 
+FROM python:3.8.1-slim
 
 # the dir name does not make sence for me
 WORKDIR /app
 
 COPY requirements.txt requirements.txt
 
-RUN pip install --no-cache-dir -r requirements.txt 
+RUN pip install --no-cache-dir -r requirements.txt
 
-ENV PYTHONUNBUFFERED 1 
-EXPOSE 80 
+ENV PYTHONUNBUFFERED 1
+EXPOSE 80
 
 COPY . .
 

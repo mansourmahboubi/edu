@@ -27,7 +27,7 @@ $kubectl cluster-info
 2. dns
 
 kubeadm has community focus and it's stable now\dots
-kubeadm is added in k+s 1.4. 
+kubeadm is added in k+s 1.4.
 
 Using apt hold to prevent upgrading kubeadm
 $ sudo apt-mark hold kubeadm

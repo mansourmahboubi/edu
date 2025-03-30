@@ -6,5 +6,5 @@ def main():
     greeter.greet(name)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

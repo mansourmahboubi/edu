@@ -1,12 +1,12 @@
 """
-    Creatioonal:
-        Factory Method
-            3 Component and Identifer
-                1. Creator
-                2. Product
-                3. Client
-    Provides an interface for creating objects in a superclass, 
-        but allows subclasses to alter the type of objects that will be created.
+Creatioonal:
+    Factory Method
+        3 Component and Identifer
+            1. Creator
+            2. Product
+            3. Client
+Provides an interface for creating objects in a superclass,
+    but allows subclasses to alter the type of objects that will be created.
 """
 
 ### THE Answer using factory method ###

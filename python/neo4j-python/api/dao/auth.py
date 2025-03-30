@@ -26,6 +26,7 @@ class AuthDAO:
     The properties also be used to generate a JWT `token` which should be included
     with the returned user.
     """
+
     # tag::register[]
     def register(self, email, plain_password, name):
         encrypted = bcrypt.hashpw(
@@ -93,6 +94,7 @@ class AuthDAO:
       token: '...'
     }
     """
+
     # tag::authenticate[]
     def authenticate(self, email, plain_password):
         # tag::get_user[]
@@ -155,6 +157,7 @@ class AuthDAO:
     This method should take the claims encoded into a JWT token and return
     the information needed to authenticate this user against the database.
     """
+
     # tag::generate[]
     def _generate_token(self, payload):
         iat = datetime.utcnow()
@@ -171,6 +174,7 @@ class AuthDAO:
     """
     This method will attemp to decode a JWT token
     """
+
     # tag::decode[]
     def decode_token(auth_token, jwt_secret):
         try:

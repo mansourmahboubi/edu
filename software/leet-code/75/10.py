@@ -3,6 +3,7 @@ Given a string s which consists of lowercase or uppercase letters, return the le
 
 Letters are case sensitive, for example, "Aa" is not considered a palindrome here.
 """
+
 from collections import Counter
 
 from timer import Timer

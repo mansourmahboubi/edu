@@ -1,10 +1,9 @@
 import quart
-from views import city_api
-from views import home
-from config import settings
-import services.weather_service
-import services.sun_service
 import services.location_service
+import services.sun_service
+import services.weather_service
+from config import settings
+from views import city_api, home
 
 app = quart.Quart(__name__)
 is_debug = True
@@ -14,12 +13,12 @@ app.register_blueprint(city_api.blueprint)
 
 
 def configure_app():
-    mode = 'dev' if is_debug else 'prod'
+    mode = "dev" if is_debug else "prod"
     data = settings.load(mode)
 
-    services.weather_service.global_init(data.get('weather_key'))
-    services.sun_service.use_cached_data = data.get('use_cached_data')
-    services.location_service.use_cached_data = data.get('use_cached_data')
+    services.weather_service.global_init(data.get("weather_key"))
+    services.sun_service.use_cached_data = data.get("use_cached_data")
+    services.location_service.use_cached_data = data.get("use_cached_data")
 
     print(f"Using cached data? {data.get('use_cached_data')}")
 
@@ -30,5 +29,5 @@ def run_web_app():
 
 configure_app()
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     run_web_app()

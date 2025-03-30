@@ -1,9 +1,8 @@
-import pytest
 import random
 
+import pytest
 from api.dao.auth import AuthDAO
 from api.exceptions.validation import ValidationException
-
 from api.neo4j import get_driver
 
 email = str(random.randint(1, 10000)) + "@neo4j.com"

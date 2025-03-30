@@ -1,13 +1,13 @@
-from api.data import popular, goodfellas
-
+from api.data import goodfellas, popular
 from api.exceptions.notfound import NotFoundException
-from api.data import popular
+
 
 class MovieDAO:
     """
     The constructor expects an instance of the Neo4j Driver, which will be
     used to interact with Neo4j.
     """
+
     def __init__(self, driver):
         self.driver = driver
 
@@ -19,12 +19,13 @@ class MovieDAO:
      If a user_id value is suppled, a `favorite` boolean property should be returned to
      signify whether the user has added the movie to their "My Favorites" list.
     """
+
     # tag::all[]
     def all(self, sort, order, limit=6, skip=0, user_id=None):
         # tag::get_movies[]
         # Define the Unit of Work
         def get_movies(tx, sort, order, limit, skip, user_id):
-        # tag::end_movies[]
+            # tag::end_movies[]
             # tag::allcypher[]
             # Get User favorites
             favorites = self.get_user_favorites(tx, user_id)
@@ -40,23 +41,28 @@ class MovieDAO:
                 ORDER BY m.`{0}` {1}
                 SKIP $skip
                 LIMIT $limit
-            """.format(sort, order)
+            """.format(
+                sort, order
+            )
 
             # Run the statement within the transaction passed as the first argument
-            result = tx.run(cypher, limit=limit, skip=skip, user_id=user_id, favorites=favorites)
+            result = tx.run(
+                cypher, limit=limit, skip=skip, user_id=user_id, favorites=favorites
+            )
             # end::allcypher[]
 
             # tag::allmovies[]
             # Extract a list of Movies from the Result
             return [row.value("movie") for row in result]
             # end::allmovies[]
-        
+
         # tag::return[]
         # tag::session[]
         with self.driver.session() as session:
-        # end::session[]
+            # end::session[]
             return session.execute_read(get_movies, sort, order, limit, skip, user_id)
             # end::return[]
+
     # end::all[]
 
     """
@@ -71,8 +77,11 @@ class MovieDAO:
     If a user_id value is suppled, a `favorite` boolean property should be returned to
     signify whether the user has added the movie to their "My Favorites" list.
     """
+
     # tag::getByGenre[]
-    def get_by_genre(self, name, sort='title', order='ASC', limit=6, skip=0, user_id=None):
+    def get_by_genre(
+        self, name, sort="title", order="ASC", limit=6, skip=0, user_id=None
+    ):
         # Get Movies in a Genre
         def get_movies_in_genre(tx, sort, order, limit, skip, user_id):
             favorites = self.get_user_favorites(tx, user_id)
@@ -87,14 +96,31 @@ class MovieDAO:
                 ORDER BY m.`{0}` {1}
                 SKIP $skip
                 LIMIT $limit
-            """.format(sort, order)
+            """.format(
+                sort, order
+            )
 
-            result = tx.run(cypher, name=name, limit=limit, skip=skip, user_id=user_id, favorites=favorites)
+            result = tx.run(
+                cypher,
+                name=name,
+                limit=limit,
+                skip=skip,
+                user_id=user_id,
+                favorites=favorites,
+            )
 
-            return [ row.get("movie") for row in result ]
+            return [row.get("movie") for row in result]
 
         with self.driver.session() as session:
-            return session.execute_read(get_movies_in_genre, sort, order, limit=limit, skip=skip, user_id=user_id)
+            return session.execute_read(
+                get_movies_in_genre,
+                sort,
+                order,
+                limit=limit,
+                skip=skip,
+                user_id=user_id,
+            )
+
     # end::getByGenre[]
 
     """
@@ -109,8 +135,11 @@ class MovieDAO:
     If a user_id value is suppled, a `favorite` boolean property should be returned to
     signify whether the user has added the movie to their "My Favorites" list.
     """
+
     # tag::getForActor[]
-    def get_for_actor(self, id, sort='title', order='ASC', limit=6, skip=0, user_id=None):
+    def get_for_actor(
+        self, id, sort="title", order="ASC", limit=6, skip=0, user_id=None
+    ):
         # Get Movies for an Actor
         def get_movies_for_actor(tx, id, sort, order, limit, skip, user_id):
             favorites = self.get_user_favorites(tx, user_id)
@@ -125,14 +154,32 @@ class MovieDAO:
                 ORDER BY m.`{0}` {1}
                 SKIP $skip
                 LIMIT $limit
-            """.format(sort, order)
+            """.format(
+                sort, order
+            )
 
-            result = tx.run(cypher, id=id, limit=limit, skip=skip, user_id=user_id, favorites=favorites)
+            result = tx.run(
+                cypher,
+                id=id,
+                limit=limit,
+                skip=skip,
+                user_id=user_id,
+                favorites=favorites,
+            )
 
-            return [ row.get("movie") for row in result ]
+            return [row.get("movie") for row in result]
 
         with self.driver.session() as session:
-            return session.execute_read(get_movies_for_actor, id, sort, order, limit=limit, skip=skip, user_id=user_id)
+            return session.execute_read(
+                get_movies_for_actor,
+                id,
+                sort,
+                order,
+                limit=limit,
+                skip=skip,
+                user_id=user_id,
+            )
+
     # end::getForActor[]
 
     """
@@ -147,8 +194,11 @@ class MovieDAO:
     If a user_id value is suppled, a `favorite` boolean property should be returned to
     signify whether the user has added the movie to their "My Favorites" list.
     """
+
     # tag::getForDirector[]
-    def get_for_director(self, id, sort='title', order='ASC', limit=6, skip=0, user_id=None):
+    def get_for_director(
+        self, id, sort="title", order="ASC", limit=6, skip=0, user_id=None
+    ):
         # Get Movies directed by a Person
         def get_movies_for_director(tx, id, sort, order, limit, skip, user_id):
             favorites = self.get_user_favorites(tx, user_id)
@@ -163,14 +213,32 @@ class MovieDAO:
                 ORDER BY m.`{0}` {1}
                 SKIP $skip
                 LIMIT $limit
-            """.format(sort, order)
+            """.format(
+                sort, order
+            )
 
-            result = tx.run(cypher, id=id, limit=limit, skip=skip, user_id=user_id, favorites=favorites)
+            result = tx.run(
+                cypher,
+                id=id,
+                limit=limit,
+                skip=skip,
+                user_id=user_id,
+                favorites=favorites,
+            )
 
-            return [ row.get("movie") for row in result ]
+            return [row.get("movie") for row in result]
 
         with self.driver.session() as session:
-            return session.execute_read(get_movies_for_director, id, sort, order, limit=limit, skip=skip, user_id=user_id)
+            return session.execute_read(
+                get_movies_for_director,
+                id,
+                sort,
+                order,
+                limit=limit,
+                skip=skip,
+                user_id=user_id,
+            )
+
     # end::getForDirector[]
 
     """
@@ -182,10 +250,11 @@ class MovieDAO:
     If a user_id value is suppled, a `favorite` boolean property should be returned to
     signify whether the user has added the movie to their "My Favorites" list.
     """
+
     # tag::findById[]
     def find_by_id(self, id, user_id=None):
         # Find a movie by its ID
-        def find_movie_by_id(tx, id, user_id = None):
+        def find_movie_by_id(tx, id, user_id=None):
             favorites = self.get_user_favorites(tx, user_id)
 
             cypher = """
@@ -209,6 +278,7 @@ class MovieDAO:
 
         with self.driver.session() as session:
             return session.execute_read(find_movie_by_id, id, user_id)
+
     # end::findById[]
 
     """
@@ -224,6 +294,7 @@ class MovieDAO:
     If a user_id value is suppled, a `favorite` boolean property should be returned to
     signify whether the user has added the movie to their "My Favorites" list.
     """
+
     # tag::getSimilarMovies[]
     def get_similar_movies(self, id, limit=6, skip=0, user_id=None):
         # Get similar movies
@@ -247,26 +318,31 @@ class MovieDAO:
 
             result = tx.run(cypher, id=id, limit=limit, skip=skip, favorites=favorites)
 
-            return [ row.get("movie") for row in result ]
+            return [row.get("movie") for row in result]
 
         with self.driver.session() as session:
             return session.execute_read(find_similar_movies, id, limit, skip, user_id)
-    # end::getSimilarMovies[]
 
+    # end::getSimilarMovies[]
 
     """
     This function should return a list of tmdbId properties for the movies that
     the user has added to their 'My Favorites' list.
     """
+
     # tag::getUserFavorites[]
     def get_user_favorites(self, tx, user_id):
         if user_id == None:
             return []
 
-        result = tx.run("""
+        result = tx.run(
+            """
             MATCH (u:User {userId: $userId})-[:HAS_FAVORITE]->(m)
             RETURN m.tmdbId AS id
-        """, userId=user_id)
+        """,
+            userId=user_id,
+        )
 
-        return [ record.get("id") for record in result ]
+        return [record.get("id") for record in result]
+
     # end::getUserFavorites[]

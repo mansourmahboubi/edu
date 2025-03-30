@@ -76,7 +76,7 @@ then
 
   # Generate Cluster join command
   echo "[TASK 12] Generate and save cluster join command to /joincluster.sh"
-  joinCommand=$(kubeadm token create --print-join-command 2>/dev/null) 
+  joinCommand=$(kubeadm token create --print-join-command 2>/dev/null)
   echo "$joinCommand --ignore-preflight-errors=all" > /joincluster.sh
 
 fi

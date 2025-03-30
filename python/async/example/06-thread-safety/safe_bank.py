@@ -1,7 +1,7 @@
 import datetime
 import random
 import time
-from threading import Thread, RLock
+from threading import RLock, Thread
 from typing import List
 
 
@@ -74,7 +74,7 @@ def do_transfer(from_account: Account, to_account: Account, amount: int):
     # good!
     with transfer_lock:
         from_account.balance -= amount
-        time.sleep(.000)
+        time.sleep(0.000)
         to_account.balance += amount
 
 
@@ -83,9 +83,12 @@ def validate_bank(accounts: List[Account], total: int, quiet=False):
         current = sum(a.balance for a in accounts)
 
     if current != total:
-        print("ERROR: Inconsistent account balance: ${:,} vs ${:,}".format(
-            current, total
-        ), flush=True)
+        print(
+            "ERROR: Inconsistent account balance: ${:,} vs ${:,}".format(
+                current, total
+            ),
+            flush=True,
+        )
     elif not quiet:
         print(f"All good: Consistent account balance: ${total:,}", flush=True)
 
@@ -99,5 +102,5 @@ def get_two_accounts(accounts):
     return a1, a2
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

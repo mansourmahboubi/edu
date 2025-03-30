@@ -1,11 +1,10 @@
 import pytest
-
-from api.exceptions.notfound import NotFoundException
-
-from api.neo4j import get_driver
 from api.dao.movies import MovieDAO
+from api.exceptions.notfound import NotFoundException
+from api.neo4j import get_driver
 
 lock_stock = "100"
+
 
 def test_get_movie_by_id(app):
     with app.app_context():
@@ -23,6 +22,7 @@ def test_get_movie_by_id(app):
         # Test NotFoundException is raised
         with pytest.raises(NotFoundException):
             dao.find_by_id(9999)
+
 
 def test_get_similar_movies(app):
     with app.app_context():
@@ -46,9 +46,9 @@ def test_get_similar_movies(app):
         assert output[0] != paginated[0]
 
         print("Here is the answer to the quiz question on the lesson:")
-        print("What is the title of the most similar movie to Lock, Stock & Two Smoking Barrels?")
+        print(
+            "What is the title of the most similar movie to Lock, Stock & Two Smoking Barrels?"
+        )
         print("Copy and paste the following answer into the text box: \n\n")
 
         print(output[0]["title"])
-
-

@@ -1,5 +1,4 @@
 import pytest
-
 from api.dao.auth import AuthDAO
 from api.neo4j import get_driver
 

@@ -1,8 +1,7 @@
 # from typing import TYPE_CHECKING
 
-from sqlalchemy import Boolean, Column, Integer, String
-
 from fastapi_third.db.base import Base
+from sqlalchemy import Boolean, Column, Integer, String
 
 # from sqlalchemy.orm import relationship
 

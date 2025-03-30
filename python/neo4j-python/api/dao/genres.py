@@ -25,6 +25,7 @@ class GenreDAO:
 
     ]
     """
+
     # tag::all[]
     def all(self):
         # TODO: Open a new session
@@ -41,6 +42,7 @@ class GenreDAO:
 
     If the genre is not found, a NotFoundError should be thrown.
     """
+
     # tag::find[]
     def find(self, name):
         # TODO: Open a new session

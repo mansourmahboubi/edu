@@ -4,16 +4,16 @@ import pytest
 from fakeredis import FakeServer
 from fakeredis.aioredis import FakeConnection
 from fastapi import FastAPI
-from httpx import AsyncClient
-from redis.asyncio import ConnectionPool
-from sqlalchemy.ext.asyncio import AsyncEngine, AsyncSession, create_async_engine
-from sqlalchemy.orm import sessionmaker
-
 from fastapi_template.db.dependencies import get_db_session
 from fastapi_template.db.utils import create_database, drop_database
 from fastapi_template.services.redis.dependency import get_redis_pool
 from fastapi_template.settings import settings
 from fastapi_template.web.application import get_app
+from httpx import AsyncClient
+from redis.asyncio import ConnectionPool
+from sqlalchemy.ext.asyncio import (AsyncEngine, AsyncSession,
+                                    create_async_engine)
+from sqlalchemy.orm import sessionmaker
 
 
 @pytest.fixture(scope="session")

@@ -1,7 +1,6 @@
-from flask import Blueprint, current_app, request, jsonify
-from flask_jwt_extended import current_user
-
 from api.dao.auth import AuthDAO
+from flask import Blueprint, current_app, jsonify, request
+from flask_jwt_extended import current_user
 
 auth_routes = Blueprint("auth", __name__, url_prefix="/api/auth")
 

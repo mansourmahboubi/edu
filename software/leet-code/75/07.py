@@ -3,6 +3,7 @@ Given the head of a singly linked list, return the middle node of the linked lis
 
 If there are two middle nodes, return the second middle node.
 """
+
 from typing import Optional
 
 from list_node import ListNode

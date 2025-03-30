@@ -18,8 +18,8 @@ def do_math(start=0, num=10):
     k_sq = 1000 * 1000
     while pos < num:
         pos += 1
-        dist = math.sqrt((pos - k_sq)*(pos - k_sq))
+        dist = math.sqrt((pos - k_sq) * (pos - k_sq))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

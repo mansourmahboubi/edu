@@ -1,15 +1,16 @@
 """
-    Creational patterns: Abstract Factory
-        Car => Benz, Bmw => Suv, Coupe
-            benz suv => gla, glc
-            bmw suv => x1, x2
+Creational patterns: Abstract Factory
+    Car => Benz, Bmw => Suv, Coupe
+        benz suv => gla, glc
+        bmw suv => x1, x2
 
-            benz coupe => cls, E-class
-            bmw coupe => m2, m4
+        benz coupe => cls, E-class
+        bmw coupe => m2, m4
 
-    lets you produce families of related objects
-        without specifying their concrete classes.
+lets you produce families of related objects
+    without specifying their concrete classes.
 """
+
 from abc import ABC, abstractmethod
 
 

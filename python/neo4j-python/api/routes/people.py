@@ -1,6 +1,5 @@
-from flask import Blueprint, current_app, request, jsonify
-
 from api.dao.people import PeopleDAO
+from flask import Blueprint, current_app, jsonify, request
 
 people_routes = Blueprint("people", __name__, url_prefix="/api/people")
 

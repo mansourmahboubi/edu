@@ -1,11 +1,10 @@
 from typing import List, Optional
 
 from fastapi import Depends
-from sqlalchemy import select
-from sqlalchemy.ext.asyncio import AsyncSession
-
 from fastapi_third.db.dependencies import get_db_session
 from fastapi_third.db.models.dummy_model import DummyModel
+from sqlalchemy import select
+from sqlalchemy.ext.asyncio import AsyncSession
 
 
 class DummyDAO:

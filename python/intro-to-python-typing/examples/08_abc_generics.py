@@ -1,6 +1,7 @@
 """
 Generic types are available for all Abstract Base Classes
 """
+
 from typing import Iterable, Tuple
 
 

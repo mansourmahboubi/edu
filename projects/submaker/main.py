@@ -1,6 +1,7 @@
 # https://github.com/openai/whisper/blob/main/model-card.md
-import whisper
 import json
+
+import whisper
 
 audio_file = "s1e1.mp3"
 data_file = audio_file.replace(".mp3", ".json")

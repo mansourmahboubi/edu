@@ -41,4 +41,3 @@ push = false
 "setup.py" = [
     "{version}",
 ]
-

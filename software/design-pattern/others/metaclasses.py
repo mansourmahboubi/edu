@@ -1,5 +1,5 @@
 """
-    Meta class
+Meta class
 """
 
 

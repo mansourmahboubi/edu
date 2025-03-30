@@ -1,12 +1,12 @@
+import time
+from typing import List
+
+import requests
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
-import requests
 
 # AddCookieParameters
-
-import time
-from typing import List
 
 
 # Close the browser
@@ -79,7 +79,6 @@ def find_video_url(text: str):
 
     # Sample text containing the URL
     # text = "sdsadasdaddashttp://embed.wistia.com/deliveries/9997c2b06070305cf4cf7509eb0ca21eb559350f.bin"
-
     # Define the regex pattern
     pattern = r"https://embed.*?\.bin"
 

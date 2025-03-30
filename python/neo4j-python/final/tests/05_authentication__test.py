@@ -1,11 +1,10 @@
 import pytest
-
 from api.dao.auth import AuthDAO
 from api.neo4j import get_driver
 
-email = 'authenticated@neo4j.com'
-password = 'AuthenticateM3!'
-name = 'Authenticated User'
+email = "authenticated@neo4j.com"
+password = "AuthenticateM3!"
+name = "Authenticated User"
 
 # TODO: Run this test before all
 # @pytest.fixture()
@@ -28,7 +27,9 @@ def test_authenticate_user(app):
 
         # Delete the user
         def delete_user(tx):
-            return tx.run("MATCH (u:User {email: $email}) DETACH DELETE u", email=email).consume()
+            return tx.run(
+                "MATCH (u:User {email: $email}) DETACH DELETE u", email=email
+            ).consume()
 
         with driver.session() as session:
             session.execute_write(delete_user)
@@ -47,6 +48,7 @@ def test_authenticate_user(app):
         assert output["userId"] is not None
         assert output["token"] is not None
 
+
 def test_return_false_incorrect_password(app):
     with app.app_context():
         driver = get_driver()
@@ -57,6 +59,7 @@ def test_return_false_incorrect_password(app):
 
         assert output is False
 
+
 def test_return_false_incorrect_username(app):
     with app.app_context():
         driver = get_driver()
@@ -66,12 +69,16 @@ def test_return_false_incorrect_username(app):
 
         assert output is False
 
+
 def test_set_GA_timestamp_to_verify_test(app):
     def update_user(tx):
-        return tx.run("""
+        return tx.run(
+            """
             MATCH (u:User {email: $email})
             SET u.authenticatedAt = datetime()
-        """, email=email).consume()
+        """,
+            email=email,
+        ).consume()
 
     with app.app_context():
         driver = get_driver()

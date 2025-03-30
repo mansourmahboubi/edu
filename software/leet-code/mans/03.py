@@ -9,6 +9,7 @@ def key_name(name, key):
 
 def flat_object(obj):
     flat_dict = {}
+
     # nested_props = {}
     def flasten(value, key=None):
         if isinstance(value, dict):

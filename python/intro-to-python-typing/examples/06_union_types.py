@@ -1,6 +1,7 @@
 """
 Unions can allow any member of a set of possible types
 """
+
 from typing import Union
 
 Multiplicable = Union[str, int, float]

@@ -1,7 +1,7 @@
 
 
 
-# Mastering pandas for Finance 
+# Mastering pandas for Finance
 
 <a href="https://prod.packtpub.com/in/big-data-and-business-intelligence/mastering-pandas-finance?utm_source=github&utm_medium=repository&utm_campaign="><img src="" alt="Mastering pandas for Finance " height="256px" align="right"></a>
 
@@ -24,7 +24,7 @@ This book covers the following exciting features:
 
 If you feel this book is for you, get your [copy](https://www.amazon.com/dp/1783985100) today!
 
-<a href="https://www.packtpub.com/?utm_source=github&utm_medium=banner&utm_campaign=GitHubBanner"><img src="https://raw.githubusercontent.com/PacktPublishing/GitHub/master/GitHub.png" 
+<a href="https://www.packtpub.com/?utm_source=github&utm_medium=banner&utm_campaign=GitHubBanner"><img src="https://raw.githubusercontent.com/PacktPublishing/GitHub/master/GitHub.png"
 alt="https://www.packtpub.com/" border="5" /></a>
 
 ## Instructions and Navigations

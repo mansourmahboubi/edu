@@ -1,9 +1,8 @@
+import logging
+
 import dramatiq
 
-import logging
 logger = logging.getLogger(__name__)
-
-
 
 
 @dramatiq.actor

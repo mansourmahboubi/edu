@@ -1,9 +1,10 @@
 """
 binary tree -  a tree which each node has at most 2 children
-BST - 
-a) All the values in the left sub-tree has a value less than that of the root node. 
+BST -
+a) All the values in the left sub-tree has a value less than that of the root node.
 b) All the values in the right node has a value greater than the value of the root node.
 """
+
 from bst_node import BSTNode
 from timer import Timer
 

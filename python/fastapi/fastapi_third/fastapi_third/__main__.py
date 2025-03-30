@@ -1,5 +1,4 @@
 import uvicorn
-
 from fastapi_third.settings import settings
 
 

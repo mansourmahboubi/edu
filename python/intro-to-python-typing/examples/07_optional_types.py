@@ -1,6 +1,7 @@
 """
 Optional indicates that a type could be None
 """
+
 from typing import Optional
 
 OptionalStr = Optional[str]

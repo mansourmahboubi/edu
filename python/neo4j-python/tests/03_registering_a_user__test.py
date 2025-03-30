@@ -1,10 +1,9 @@
 import os
-from neo4j.exceptions import Neo4jError
 
 import pytest
-
 from api.dao.auth import AuthDAO
 from api.neo4j import get_driver
+from neo4j.exceptions import Neo4jError
 
 email = "graphacademy@neo4j.com"
 password = "letmein"

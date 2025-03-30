@@ -1,4 +1,5 @@
 import logging
+
 from fastapi import FastAPI
 
 from .actors import sample_actor

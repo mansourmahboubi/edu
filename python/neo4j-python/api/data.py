@@ -19,6 +19,7 @@ ORDER BY n.rating DESC
 LIMIT 6
 RETURN collect(n)
 """
+
 popular = [
     {
         "actors": [

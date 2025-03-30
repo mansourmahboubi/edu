@@ -1,7 +1,6 @@
+from fastapi_third.db.base import Base
 from sqlalchemy.sql.schema import Column
 from sqlalchemy.sql.sqltypes import Integer, String
-
-from fastapi_third.db.base import Base
 
 
 class DummyModel(Base):

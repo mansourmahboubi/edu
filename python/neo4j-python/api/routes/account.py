@@ -1,8 +1,7 @@
-from flask import Blueprint, current_app, request, jsonify
-from flask_jwt_extended import current_user, jwt_required
-
 from api.dao.favorites import FavoriteDAO
 from api.dao.ratings import RatingDAO
+from flask import Blueprint, current_app, jsonify, request
+from flask_jwt_extended import current_user, jwt_required
 
 account_routes = Blueprint("account", __name__, url_prefix="/api/account")
 

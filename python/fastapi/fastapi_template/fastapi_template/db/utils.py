@@ -1,8 +1,7 @@
+from fastapi_template.settings import settings
 from sqlalchemy import text
 from sqlalchemy.engine import make_url
 from sqlalchemy.ext.asyncio import create_async_engine
-
-from fastapi_template.settings import settings
 
 
 async def create_database() -> None:

@@ -1,6 +1,7 @@
 """
 MyPy can duck-type objects, regardless of inheritance!
 """
+
 from typing import Sized
 
 

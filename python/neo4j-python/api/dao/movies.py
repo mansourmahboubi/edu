@@ -19,11 +19,13 @@ class MovieDAO:
      If a user_id value is suppled, a `favorite` boolean property should be returned to
      signify whether the user has added the movie to their "My Favorites" list.
     """
+
     # tag::all[]
     def all(self, sort, order, limit=6, skip=0, user_id=None):
         """
         # TODO: Get list from movies from Neo4j
         """
+
         # Define the Unit of Work
         def get_movies(tx, sort, order, limit, skip, user_id):
             # Define the cypher statement
@@ -67,6 +69,7 @@ class MovieDAO:
     If a user_id value is suppled, a `favorite` boolean property should be returned to
     signify whether the user has added the movie to their "My Favorites" list.
     """
+
     # tag::getByGenre[]
     def get_by_genre(
         self, name, sort="title", order="ASC", limit=6, skip=0, user_id=None
@@ -91,6 +94,7 @@ class MovieDAO:
     If a user_id value is suppled, a `favorite` boolean property should be returned to
     signify whether the user has added the movie to their "My Favorites" list.
     """
+
     # tag::getForActor[]
     def get_for_actor(
         self, id, sort="title", order="ASC", limit=6, skip=0, user_id=None
@@ -115,6 +119,7 @@ class MovieDAO:
     If a user_id value is suppled, a `favorite` boolean property should be returned to
     signify whether the user has added the movie to their "My Favorites" list.
     """
+
     # tag::getForDirector[]
     def get_for_director(
         self, id, sort="title", order="ASC", limit=6, skip=0, user_id=None
@@ -136,6 +141,7 @@ class MovieDAO:
     If a user_id value is suppled, a `favorite` boolean property should be returned to
     signify whether the user has added the movie to their "My Favorites" list.
     """
+
     # tag::findById[]
     def find_by_id(self, id, user_id=None):
         # TODO: Find a movie by its ID
@@ -158,6 +164,7 @@ class MovieDAO:
     If a user_id value is suppled, a `favorite` boolean property should be returned to
     signify whether the user has added the movie to their "My Favorites" list.
     """
+
     # tag::getSimilarMovies[]
     def get_similar_movies(self, id, limit=6, skip=0, user_id=None):
         # TODO: Get similar movies from Neo4j
@@ -170,6 +177,7 @@ class MovieDAO:
     This function should return a list of tmdbId properties for the movies that
     the user has added to their 'My Favorites' list.
     """
+
     # tag::getUserFavorites[]
     def get_user_favorites(self, tx, user_id):
         if user_id == None:

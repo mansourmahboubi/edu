@@ -1,7 +1,6 @@
 import pytest
-
-from api.neo4j import get_driver
 from api.dao.people import PeopleDAO
+from api.neo4j import get_driver
 
 coppola = "1776"
 

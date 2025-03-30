@@ -1,11 +1,11 @@
 """Interact with the Real Python feed."""
+
 # Standard library imports
 from typing import Dict, List  # noqa
 
 # Third party imports
 import feedparser
 import html2text
-
 # Reader imports
 from reader import URL
 

@@ -1,11 +1,12 @@
 """
-    Creational Pattern: 
-        Singleton
+Creational Pattern:
+    Singleton
 
-    Singleton implementation using meta class 
-    lets you ensure that a class has only one instance, 
-        while providing a global access point to this instance.
+Singleton implementation using meta class
+lets you ensure that a class has only one instance,
+    while providing a global access point to this instance.
 """
+
 from typing import Any
 
 

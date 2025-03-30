@@ -1,9 +1,8 @@
 from typing import Any, Tuple
 
+from fastapi_template.db.meta import meta
 from sqlalchemy import Table
 from sqlalchemy.orm import as_declarative
-
-from fastapi_template.db.meta import meta
 
 
 @as_declarative(metadata=meta)

@@ -1,4 +1,5 @@
 """fastapi_template models."""
+
 import pkgutil
 from pathlib import Path
 

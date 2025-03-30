@@ -1,8 +1,7 @@
 import pytest
-from api.exceptions.notfound import NotFoundException
-
-from api.neo4j import get_driver
 from api.dao.favorites import FavoriteDAO
+from api.exceptions.notfound import NotFoundException
+from api.neo4j import get_driver
 
 toy_story = "862"
 goodfellas = "769"

@@ -33,7 +33,7 @@ provider "aws" {
 # resourse name
 # type and name will create a uniuque ID
 resource "aws_instance" "app_server" {
-  # ami is somekind of template 
+  # ami is somekind of template
   #   https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/finding-an-ami.html#finding-quick-start-amis
   ami           = "ami-084419b01954a6223"
   instance_type = "t2.micro"

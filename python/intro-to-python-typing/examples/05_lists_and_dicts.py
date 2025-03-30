@@ -1,6 +1,7 @@
 """
 Lists can have typed contents; Dicts can type [Keys: Values]
 """
+
 from typing import Dict, List
 
 LetterList = List[str]

@@ -1,9 +1,7 @@
 import pytest
-
-from api.exceptions.notfound import NotFoundException
-
-from api.neo4j import get_driver
 from api.dao.ratings import RatingDAO
+from api.exceptions.notfound import NotFoundException
+from api.neo4j import get_driver
 
 pulp_fiction = "680"
 

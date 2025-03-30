@@ -21,6 +21,7 @@ class FavoriteDAO:
     Results should be limited to the number passed as `limit`.
     The `skip` variable should be used to skip a certain number of rows.
     """
+
     # tag::all[]
     def all(self, user_id, sort="title", order="ASC", limit=6, skip=0):
         # Open a new session
@@ -56,6 +57,7 @@ class FavoriteDAO:
    *
     If either the user or movie cannot be found, a `NotFoundError` should be thrown.
     """
+
     # tag::add[]
     def add(self, user_id, movie_id):
         # Define a new transaction function to create a HAS_FAVORITE relationship
@@ -93,6 +95,7 @@ class FavoriteDAO:
     If either the user, movie or the relationship between them cannot be found,
     a `NotFoundError` should be thrown.
     """
+
     # tag::remove[]
     def remove(self, user_id, movie_id):
         # Define a transaction function to delete the HAS_FAVORITE relationship within a Write Transaction

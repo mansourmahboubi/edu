@@ -1,14 +1,14 @@
 import datetime
 
-import requests
 import bs4
+import requests
 from colorama import Fore
 
 
 def get_html(episode_number: int) -> str:
     print(Fore.YELLOW + f"Getting HTML for episode {episode_number}", flush=True)
 
-    url = f'https://talkpython.fm/{episode_number}'
+    url = f"https://talkpython.fm/{episode_number}"
     resp = requests.get(url)
     resp.raise_for_status()
 
@@ -17,8 +17,8 @@ def get_html(episode_number: int) -> str:
 
 def get_title(html: str, episode_number: int) -> str:
     print(Fore.CYAN + f"Getting TITLE for episode {episode_number}", flush=True)
-    soup = bs4.BeautifulSoup(html, 'html.parser')
-    header = soup.select_one('h1')
+    soup = bs4.BeautifulSoup(html, "html.parser")
+    header = soup.select_one("h1")
     if not header:
         return "MISSING"
 
@@ -40,5 +40,5 @@ def get_title_range():
         print(Fore.WHITE + f"Title found: {title}", flush=True)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

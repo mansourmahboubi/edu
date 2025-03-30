@@ -1,7 +1,7 @@
 import pytest
-
-from api.neo4j import get_driver
 from api.dao.genres import GenreDAO
+from api.neo4j import get_driver
+
 
 def test_return_list_of_genres(app):
     with app.app_context():
@@ -25,4 +25,3 @@ def test_return_list_of_genres(app):
         output.sort(key=lambda genre: genre["movies"], reverse=True)
 
         print(output[0]["name"])
-

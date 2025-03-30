@@ -1,10 +1,10 @@
-from flask import Blueprint, current_app, request, jsonify
-from flask_jwt_extended import current_user, jwt_required
-
 from api.dao.movies import MovieDAO
 from api.dao.ratings import RatingDAO
+from flask import Blueprint, current_app, jsonify, request
+from flask_jwt_extended import current_user, jwt_required
 
 movie_routes = Blueprint("movies", __name__, url_prefix="/api/movies")
+
 
 # tag::list[]
 @movie_routes.get("/")

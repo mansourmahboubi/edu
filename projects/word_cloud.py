@@ -1,5 +1,5 @@
-
 """https://gist.github.com/owenlamont/cb6312afa50dca6ce94eb9a07e570c67"""
+
 from wordcloud import WordCloud
 
 word_dict = {
@@ -17,8 +17,8 @@ word_dict = {
     "imigration": 1,
     "fintech": 2,
     "crypto": 1,
-    "stock":1,
-    "blockchain":1,
+    "stock": 1,
+    "blockchain": 1,
     "edtech": 1,
     "moodle": 1,
     "realtime": 1,
@@ -30,7 +30,7 @@ word_dict = {
     "modular-monolith": 1,
     "microservice": 1,
     "postgresql": 1,
-    "neo4j": 1
+    "neo4j": 1,
 }
 
 wordcloud = WordCloud(

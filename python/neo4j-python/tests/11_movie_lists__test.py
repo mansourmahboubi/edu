@@ -1,7 +1,6 @@
 import pytest
-
-from api.neo4j import get_driver
 from api.dao.movies import MovieDAO
+from api.neo4j import get_driver
 
 tom_hanks = "31"
 coppola = "1776"

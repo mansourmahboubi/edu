@@ -1,7 +1,7 @@
 import datetime
 import math
-from threading import Thread
 import multiprocessing
+from threading import Thread
 
 
 def main():
@@ -15,11 +15,16 @@ def main():
     processor_count = multiprocessing.cpu_count()
     threads = []
     for n in range(1, processor_count + 1):
-        threads.append(Thread(target=do_math,
-                              args=(30_000_000 * (n - 1) / processor_count,
-                                    30_000_000 * n / processor_count),
-                              daemon=True)
-                       )
+        threads.append(
+            Thread(
+                target=do_math,
+                args=(
+                    30_000_000 * (n - 1) / processor_count,
+                    30_000_000 * n / processor_count,
+                ),
+                daemon=True,
+            )
+        )
 
     [t.start() for t in threads]
     [t.join() for t in threads]
@@ -36,5 +41,5 @@ def do_math(start=0, num=10):
         math.sqrt((pos - k_sq) * (pos - k_sq))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

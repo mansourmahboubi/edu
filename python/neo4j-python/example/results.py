@@ -25,6 +25,7 @@ driver = GraphDatabase.driver(
 # Verify Connectivity
 # driver.verify_connectivity()
 
+
 # tag::get_actors[]
 # tag::get_actors_unit_of_work[]
 # Unit of work
@@ -106,6 +107,8 @@ def get_actors_iterate(tx, movie):
 """
 Consume the remainder of this result and return a ResultSummary.
 """
+
+
 # tag::consume[]
 def get_actors_consume(tx, name):
     result = tx.run(
@@ -142,6 +145,8 @@ else return None. Calling this method always exhausts the result.
 A warning is generated if more than one record is available but the
 first of these is still returned.
 """
+
+
 # tag::single[]
 def get_actors_single(tx, movie):
     result = tx.run(
@@ -187,6 +192,8 @@ remaining records.
 A graph is a local, self-contained graph object that acts as a container
 for Node and Relationship instances.
 """
+
+
 # tag::graph[]
 def get_actors_graph(tx, movie):
     result = tx.run(
@@ -207,6 +214,8 @@ def get_actors_graph(tx, movie):
 value(key=0, default=None)
 Helper function that return the remainder of the result as a list of values.
 """
+
+
 # tag::value[]
 def get_actors_values(tx, movie):
     result = tx.run(
@@ -227,6 +236,8 @@ def get_actors_values(tx, movie):
 values(*keys)
 Helper function that return the remainder of the result as a list of values lists.
 """
+
+
 # tag::values[]
 def get_actors_values(tx, movie):
     result = tx.run(
@@ -245,6 +256,8 @@ def get_actors_values(tx, movie):
 """
 Helper function that return the remainder of the result as a list of dictionaries.
 """
+
+
 # tag::data[]
 def get_actors_data(tx, movie):
     result = tx.run(

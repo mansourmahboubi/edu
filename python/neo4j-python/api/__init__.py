@@ -1,24 +1,20 @@
+import os
 from datetime import timedelta
 from email import policy
-import os
-
-from flask import Flask
-from flask.helpers import send_from_directory
-
-from flask_jwt_extended import JWTManager
-from flask_cors import CORS
 
 from api.exceptions.notfound import NotFoundException
+from flask import Flask
+from flask.helpers import send_from_directory
+from flask_cors import CORS
+from flask_jwt_extended import JWTManager
 
 from .exceptions.badrequest import BadRequestException
 from .exceptions.validation import ValidationException
-
 from .neo4j import init_driver
-
-from .routes.auth import auth_routes
 from .routes.account import account_routes
-from .routes.movies import movie_routes
+from .routes.auth import auth_routes
 from .routes.genres import genre_routes
+from .routes.movies import movie_routes
 from .routes.people import people_routes
 from .routes.status import status_routes
 

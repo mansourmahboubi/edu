@@ -24,7 +24,7 @@ RUN curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.32/deb/Release.key | gpg --d
     rm -rf /var/lib/apt/lists/*
 
 # RUN modprobe overlay && \
-#     modprobe br_netfilter 
+#     modprobe br_netfilter
 # start the container
 CMD ["dockerd"]
 # REALY ???

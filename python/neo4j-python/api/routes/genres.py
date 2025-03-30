@@ -1,8 +1,7 @@
-from flask import Blueprint, current_app, request, jsonify
-from flask_jwt_extended import current_user, jwt_required
-
 from api.dao.genres import GenreDAO
 from api.dao.movies import MovieDAO
+from flask import Blueprint, current_app, jsonify, request
+from flask_jwt_extended import current_user, jwt_required
 
 genre_routes = Blueprint("genre", __name__, url_prefix="/api/genres")
 

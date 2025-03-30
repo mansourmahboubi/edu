@@ -1,9 +1,7 @@
 import pytest
-
-from api.exceptions.notfound import NotFoundException
-
-from api.neo4j import get_driver
 from api.dao.movies import MovieDAO
+from api.exceptions.notfound import NotFoundException
+from api.neo4j import get_driver
 
 lock_stock = "100"
 

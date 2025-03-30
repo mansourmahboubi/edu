@@ -2,10 +2,9 @@ import os
 import tempfile
 
 import pytest
-from dotenv import load_dotenv
-
 from api import create_app
-from api.neo4j import init_driver, close_driver
+from api.neo4j import close_driver, init_driver
+from dotenv import load_dotenv
 
 
 @pytest.fixture(scope="session", autouse=True)

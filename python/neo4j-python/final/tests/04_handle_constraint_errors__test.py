@@ -1,14 +1,14 @@
-import pytest
 import random
 
+import pytest
 from api.dao.auth import AuthDAO
 from api.exceptions.validation import ValidationException
-
 from api.neo4j import get_driver
 
 email = str(random.randint(1, 10000)) + "@neo4j.com"
 password = "letmein"
 name = "Random User"
+
 
 @pytest.fixture(autouse=True)
 def before_all(app):
@@ -16,7 +16,9 @@ def before_all(app):
         driver = get_driver()
 
         def delete_user(tx):
-            return tx.run("MATCH (u:User {email: $email}) DETACH DELETE u", email=email).consume()
+            return tx.run(
+                "MATCH (u:User {email: $email}) DETACH DELETE u", email=email
+            ).consume()
 
         with driver.session() as session:
             session.execute_write(delete_user)
@@ -30,18 +32,21 @@ def test_unique_constraint(app):
     """
 
     def get_constraints(tx):
-        return tx.run("""
+        return tx.run(
+            """
             CALL db.constraints()
             YIELD name, description
             WHERE description = 'CONSTRAINT ON ( user:User ) ASSERT (user.email) IS UNIQUE'
             RETURN *
-        """).single()
+        """
+        ).single()
 
     with app.app_context():
         with get_driver().session() as session:
             res = session.execute_read(get_constraints)
 
             assert res is not None
+
 
 def test_validation_error(app):
     with app.app_context():
@@ -53,4 +58,3 @@ def test_validation_error(app):
 
         with pytest.raises(ValidationException):
             dao.register(email, password, name)
-

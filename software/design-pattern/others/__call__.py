@@ -1,5 +1,5 @@
 """
-    __call__() method is called when the instance is called.
+__call__() method is called when the instance is called.
 """
 
 

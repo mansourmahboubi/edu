@@ -1,7 +1,8 @@
-import datetime
-import colorama
-import random
 import asyncio
+import datetime
+import random
+
+import colorama
 
 
 def main():
@@ -22,17 +23,20 @@ def main():
     loop.run_until_complete(final_task)
 
     dt = datetime.datetime.now() - t0
-    print(colorama.Fore.WHITE + "App exiting, total time: {:,.2f} sec.".format(
-        dt.total_seconds()), flush=True)
+    print(
+        colorama.Fore.WHITE
+        + "App exiting, total time: {:,.2f} sec.".format(dt.total_seconds()),
+        flush=True,
+    )
 
 
 async def generate_data(num: int, data: asyncio.Queue):
     for idx in range(1, num + 1):
-        item = idx*idx
+        item = idx * idx
         await data.put((item, datetime.datetime.now()))
 
         print(colorama.Fore.YELLOW + f" -- generated item {idx}", flush=True)
-        await asyncio.sleep(random.random() + .5)
+        await asyncio.sleep(random.random() + 0.5)
 
 
 async def process_data(num: int, data: asyncio.Queue):
@@ -45,11 +49,15 @@ async def process_data(num: int, data: asyncio.Queue):
         t = item[1]
         dt = datetime.datetime.now() - t
 
-        print(colorama.Fore.CYAN +
-              " +++ Processed value {} after {:,.2f} sec.".format(
-                  value, dt.total_seconds()), flush=True)
-        await asyncio.sleep(.5)
+        print(
+            colorama.Fore.CYAN
+            + " +++ Processed value {} after {:,.2f} sec.".format(
+                value, dt.total_seconds()
+            ),
+            flush=True,
+        )
+        await asyncio.sleep(0.5)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

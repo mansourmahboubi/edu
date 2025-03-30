@@ -63,12 +63,12 @@ This cooperative multitasking system allows many coroutines to execute concurren
 without threads, sharing a single event loop that efficiently manages I/O operations.
 """
 
-from datetime import datetime, timedelta
-from dataclasses import dataclass
+import asyncio
 import select
 import socket
-import asyncio
-from typing import cast, Any, Coroutine, Generator
+from dataclasses import dataclass
+from datetime import datetime, timedelta
+from typing import Any, Coroutine, Generator, cast
 
 
 @dataclass
@@ -79,6 +79,7 @@ class Task:
     A Task wraps a coroutine and tracks its execution state including results,
     exceptions, and cancellation status.
     """
+
     def __init__(self, coroutine: Coroutine[Any, Any, Any]):
         """
         Initialize a new task with the given coroutine.
@@ -105,6 +106,7 @@ class EventLoopRequest[T]:
     control back to the event loop. Subclasses represent specific types of
     requests (timeout, socket I/O, task scheduling, etc).
     """
+
     def __await__(self) -> Any:
         """
         Make this class awaitable in an async function.
@@ -127,6 +129,7 @@ class Timeout(EventLoopRequest[None]):
     The event loop will resume this coroutine after the specified number of
     seconds have elapsed.
     """
+
     seconds: float
 
 
@@ -138,6 +141,7 @@ class Readable(EventLoopRequest[None]):
     The event loop will resume this coroutine when data is available to be read
     from the specified socket.
     """
+
     socket: socket.socket
 
 
@@ -149,6 +153,7 @@ class Writable(EventLoopRequest[None]):
     The event loop will resume this coroutine when the specified socket is ready
     to accept data for writing.
     """
+
     socket: socket.socket
 
 
@@ -160,6 +165,7 @@ class Errored(EventLoopRequest[None]):
     The event loop will resume this coroutine when an error condition is detected
     on the specified socket.
     """
+
     socket: socket.socket
 
 
@@ -170,6 +176,7 @@ class Schedule(EventLoopRequest[Task]):
 
     When awaited, returns a Task object representing the scheduled coroutine.
     """
+
     coroutine: Coroutine[Any, Any, Any]
 
 
@@ -181,6 +188,7 @@ class CancelTask(EventLoopRequest[None]):
     The event loop will mark the specified task as cancelled and inject a
     CancelledError into its execution.
     """
+
     task: Task
 
 
@@ -191,6 +199,7 @@ class WatchedSocket:
     This class associates a socket with the task that is waiting for I/O on that
     socket, and implements the necessary methods for use with select.select().
     """
+
     def __init__(self, socket: socket.socket, thread: Task):
         """
         Initialize a watched socket.
@@ -276,7 +285,9 @@ def event_loop(main: Coroutine[Any, Any, Any]) -> None:
                 if thread.cancelled:
                     # Inject a CancelledError into the task
                     try:
-                        thread.generator.throw(asyncio.CancelledError("Task was cancelled"))
+                        thread.generator.throw(
+                            asyncio.CancelledError("Task was cancelled")
+                        )
                         # If the exception is caught, the task continues
                         task_queue.append((thread, None))
                     except StopIteration as e:
@@ -300,7 +311,9 @@ def event_loop(main: Coroutine[Any, Any, Any]) -> None:
                         task_queue.insert(0, (thread, None))
 
                     case Timeout(seconds):
-                        timers.append((datetime.now() + timedelta(seconds=seconds), thread))
+                        timers.append(
+                            (datetime.now() + timedelta(seconds=seconds), thread)
+                        )
 
                     case Readable(socket):
                         read_watches.add(WatchedSocket(socket, thread))
@@ -312,7 +325,9 @@ def event_loop(main: Coroutine[Any, Any, Any]) -> None:
                         error_watches.add(WatchedSocket(socket, thread))
 
                     case _:
-                        raise RuntimeError(f"Expected a EventLoopRequest object, got a {type(yielded).__qualname__}")
+                        raise RuntimeError(
+                            f"Expected a EventLoopRequest object, got a {type(yielded).__qualname__}"
+                        )
 
             except StopIteration as e:
                 thread.result = e.value
@@ -321,6 +336,7 @@ def event_loop(main: Coroutine[Any, Any, Any]) -> None:
             except Exception as e:
                 thread.exception = e
                 import traceback
+
                 print(f"Exception in thread {thread}:")
                 traceback.print_exc()
                 break
@@ -330,15 +346,33 @@ def event_loop(main: Coroutine[Any, Any, Any]) -> None:
         wakeup_date = min(timers, key=lambda x: x[0])[0] if timers else None
 
         # Remove watches for cancelled tasks
-        read_watches = {socket for socket in read_watches if socket.fileno() >= 0 and not socket.thread.cancelled}
-        write_watches = {socket for socket in write_watches if socket.fileno() >= 0 and not socket.thread.cancelled}
-        error_watches = {socket for socket in error_watches if socket.fileno() >= 0 and not socket.thread.cancelled}
+        read_watches = {
+            socket
+            for socket in read_watches
+            if socket.fileno() >= 0 and not socket.thread.cancelled
+        }
+        write_watches = {
+            socket
+            for socket in write_watches
+            if socket.fileno() >= 0 and not socket.thread.cancelled
+        }
+        error_watches = {
+            socket
+            for socket in error_watches
+            if socket.fileno() >= 0 and not socket.thread.cancelled
+        }
         # Wait for any of the sockets to become ready, or until the next timer expires
         if read_watches or write_watches or error_watches or wakeup_date:
             try:
-                timeout = max((wakeup_date - datetime.now()).total_seconds(), 0) if wakeup_date else None
+                timeout = (
+                    max((wakeup_date - datetime.now()).total_seconds(), 0)
+                    if wakeup_date
+                    else None
+                )
                 # prune negative filenos
-                read_sockets, write_sockets, error_sockets = select.select(read_watches, write_watches, error_watches, timeout)
+                read_sockets, write_sockets, error_sockets = select.select(
+                    read_watches, write_watches, error_watches, timeout
+                )
                 for socket in read_sockets:
                     task_queue.append((socket.thread, socket))
                     read_watches.remove(socket)
@@ -518,6 +552,7 @@ async def accept(server_sock: socket.socket) -> tuple[socket.socket, tuple[str, 
     client_sock.setblocking(False)
     return client_sock, addr
 
+
 if __name__ == "__main__":
     """
     Demo application that showcases the event loop functionality.
@@ -556,7 +591,6 @@ if __name__ == "__main__":
             client_sock.close()
             print(f"Connection closed from {addr[0]}:{addr[1]}")
 
-
     async def server(host: str, port: int):
         """
         Start a server that accepts connections and spawns handlers for each client.
@@ -581,7 +615,6 @@ if __name__ == "__main__":
             print(f"Server error: {e}")
         finally:
             server_sock.close()
-
 
     async def client(host: str, port: int, messages: list[str]):
         """
@@ -614,7 +647,6 @@ if __name__ == "__main__":
         finally:
             sock.close()
 
-
     async def demo_sleep():
         """
         Demonstrate basic sleep functionality.
@@ -629,7 +661,6 @@ if __name__ == "__main__":
         await sleep(3)  # Wait for the scheduled tasks to complete
         print("End sleep demo")
 
-
     async def sleep_print(seconds: float, message: str):
         """
         Sleep for the specified duration and then print a message.
@@ -640,7 +671,6 @@ if __name__ == "__main__":
         """
         await sleep(seconds)
         print(message)
-
 
     async def demo_socket():
         """
@@ -658,18 +688,13 @@ if __name__ == "__main__":
         await sleep(0.1)
 
         # Schedule the client task with some messages
-        messages = [
-            "Hello from the client!",
-            "This is a test message",
-            "Goodbye!"
-        ]
+        messages = ["Hello from the client!", "This is a test message", "Goodbye!"]
         await schedule(client(host, port, messages))
 
         # Wait for the tasks to finish
         await sleep(5)
         server_task.cancel()
         print("Socket demo finished")
-
 
     async def demo_cancellation():
         """
@@ -710,7 +735,6 @@ if __name__ == "__main__":
         await sleep(1)
         print("Cancellation demo finished")
 
-
     async def main():
         """
         Run all demos.
@@ -730,7 +754,6 @@ if __name__ == "__main__":
         await demo_cancellation()
 
         print("\nAll demos completed successfully!")
-
 
     # Start the event loop with the main coroutine
     event_loop(main())

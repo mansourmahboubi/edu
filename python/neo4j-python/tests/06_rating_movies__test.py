@@ -1,7 +1,6 @@
 import pytest
-
-from api.neo4j import get_driver
 from api.dao.ratings import RatingDAO
+from api.neo4j import get_driver
 
 movie = "769"
 user = "1185150b-9e81-46a2-a1d3-eb649544b9c4"

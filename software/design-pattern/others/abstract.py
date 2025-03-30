@@ -1,6 +1,7 @@
 """
-    Abstract clas. Abstraact method
+Abstract clas. Abstraact method
 """
+
 from abc import ABC, abstractmethod
 
 

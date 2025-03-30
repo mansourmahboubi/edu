@@ -2,12 +2,11 @@ import asyncio
 from logging.config import fileConfig
 
 from alembic import context
-from sqlalchemy.ext.asyncio.engine import create_async_engine
-from sqlalchemy.future import Connection
-
 from fastapi_third.db.meta import meta
 from fastapi_third.db.models import load_all_models
 from fastapi_third.settings import settings
+from sqlalchemy.ext.asyncio.engine import create_async_engine
+from sqlalchemy.future import Connection
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.

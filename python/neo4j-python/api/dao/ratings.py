@@ -15,6 +15,7 @@ class RatingDAO:
     Add a relationship between a User and Movie with a `rating` property.
     The `rating` parameter should be converted to a Neo4j Integer.
     """
+
     # tag::add[]
     def add(self, user_id, movie_id, rating):
         # Create function to save the rating in the database
@@ -56,6 +57,7 @@ class RatingDAO:
     Results should be limited to the number passed as `limit`.
     The `skip` variable should be used to skip a certain number of rows.
     """
+
     # tag::forMovie[]
     def for_movie(self, id, sort="timestamp", order="ASC", limit=6, skip=0):
         # TODO: Get ratings for a Movie
