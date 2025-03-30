@@ -1,0 +1,49 @@
+# docker-compose.yml
+version: '3.9'
+
+services:
+  ubuntu:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: ubuntu
+    privileged: true
+    hostname: ubuntu-22-04
+    restart: unless-stopped
+    # Keep container running with sleep infinity
+    # command: sleep infinity
+    # Alternatively, you can use tty for interactive mode
+    # tty: true
+    # stdin_open: true
+    
+    # deploy:
+    #   resources:
+    #     limits:
+    #       cpus: '2'
+    #       memory: 2G
+    #     reservations:
+    #       cpus: '1'
+    #       memory: 1G
+
+    # Volume mounts (customize as needed)
+    # volumes:
+    #   - ./data:/data
+    #   - ./config:/config
+      
+    # Network ports (customize as needed)
+    # ports:
+    #   - "8080:80"
+    #   - "2222:22"
+
+    # Environment variables (customize as needed)
+    # environment:
+    #   - TZ=UTC
+    #   - LANG=C.UTF-8
+      
+    # Networks (customize as needed)
+#     networks:
+#       - ubuntu_net
+
+# networks:
+#   ubuntu_net:
+#     driver: bridge
