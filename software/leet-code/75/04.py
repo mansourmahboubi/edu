@@ -8,9 +8,7 @@ class Solution:
         for l in s:
             after_letters = t[index + 1 if index else 0 : len(t)]
             if l in after_letters:
-                cur_index = after_letters.index(l) + (
-                    len(t) - len(after_letters)
-                )
+                cur_index = after_letters.index(l) + (len(t) - len(after_letters))
                 if not index or cur_index > index:
                     string += l
                     index = cur_index
@@ -35,10 +33,10 @@ if __name__ == "__main__":
     res = s.is_subsequence(a, b)
     print(res)
     end = time.perf_counter_ns()
-    print(f"method 1 {end-start} ns")
+    print(f"method 1 {end - start} ns")
 
     start = time.perf_counter_ns()
     res = s.is_subsequence_2(a, b)
     print(res)
     end = time.perf_counter_ns()
-    print(f"method 2 {end-start} ns")
+    print(f"method 2 {end - start} ns")

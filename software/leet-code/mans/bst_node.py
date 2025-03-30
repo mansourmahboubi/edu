@@ -76,18 +76,10 @@ class BSTNode:
         val_str = f"{self.value}"
         val_len = len(val_str)
         first_line = (
-            (x + 1) * " "
-            + (n - x - 1) * "_"
-            + val_str
-            + y * "_"
-            + (m - y) * " "
+            (x + 1) * " " + (n - x - 1) * "_" + val_str + y * "_" + (m - y) * " "
         )
         second_line = (
-            x * " "
-            + "/"
-            + (n - x - 1 + val_len + y) * " "
-            + "\\"
-            + (m - y - 1) * " "
+            x * " " + "/" + (n - x - 1 + val_len + y) * " " + "\\" + (m - y - 1) * " "
         )
         if p < q:
             left += [n * " "] * (q - p)

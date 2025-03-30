@@ -35,7 +35,6 @@ async def for_today(latitude: float, longitude: float) -> dict:
     else:
         async with aiohttp.ClientSession() as session:
             async with session.get(url) as resp:
-
                 data = await resp.json()
                 sun_data = data.get("results", {})
 
@@ -43,9 +42,7 @@ async def for_today(latitude: float, longitude: float) -> dict:
             if "AM" not in v and "PM" not in v:
                 continue
 
-            sun_data[k] = datetime.datetime.strftime(
-                __utc_to_local(v), "%I:%M:%S %p"
-            )
+            sun_data[k] = datetime.datetime.strftime(__utc_to_local(v), "%I:%M:%S %p")
 
         return sun_data
 

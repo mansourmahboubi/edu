@@ -44,3 +44,11 @@ repos:
         language: system
         pass_filenames: false
         always_run: true
+
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.3.2
+    hooks:
+      - id: ruff
+        args: [--fix, --exit-non-zero-on-fix]
+        exclude: ^python/neo4j-python/
+      - id: ruff-format

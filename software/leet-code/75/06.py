@@ -25,10 +25,7 @@ class Solution:
             tmp = new
         return res
 
-    def reverse_list_2(
-        self, head: Optional["ListNode"]
-    ) -> Optional["ListNode"]:
-
+    def reverse_list_2(self, head: Optional["ListNode"]) -> Optional["ListNode"]:
         prev = None
         curr = head
 

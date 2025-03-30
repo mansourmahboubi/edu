@@ -55,9 +55,7 @@ class AuthDAO:
         try:
             # tag::call_create[]
             with self.driver.session() as session:
-                result = session.execute_write(
-                    create_user, email, encrypted, name
-                )
+                result = session.execute_write(create_user, email, encrypted, name)
                 # end::call_create[]
 
                 # tag::extract[]

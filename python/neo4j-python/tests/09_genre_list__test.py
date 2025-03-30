@@ -13,7 +13,7 @@ def test_return_list_of_genres(app):
         # Get all genres
         output = dao.all()
 
-        assert len(output) is 19
+        assert len(output) == 19
         assert output[0]["name"] == "Action"
         assert output[18]["name"] == "Western"
 

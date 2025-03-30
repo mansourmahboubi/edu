@@ -12,7 +12,6 @@ from timer import Timer
 
 class Solution:
     def dfs(self, root, output):
-
         # If root is none return
         if root is None:
             return
@@ -50,7 +49,6 @@ class Solution:
         output = []
         # Till there is element in stack the loop runs.
         while stack:
-
             # pop the last element from the stack and store it into temp.
             temp = stack.pop()
             # append. the value of temp to output

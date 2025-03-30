@@ -61,9 +61,7 @@ class TestSetDefault:
             is_default=False,
         )
 
-    def test_sets_address_as_default_and_publishes_changes(
-        self, mocker, address
-    ):
+    def test_sets_address_as_default_and_publishes_changes(self, mocker, address):
         # In this case a lot less dependencies
         mock_set_default = mocker.patch.object(Address.objects, "set_default")
         # mock_publish = mocker.patch.object(events, 'publish')

@@ -24,9 +24,7 @@ class DummyDAO:
         """
         self.session.add(DummyModel(name=name))
 
-    async def get_all_dummies(
-        self, limit: int, offset: int
-    ) -> List[DummyModel]:
+    async def get_all_dummies(self, limit: int, offset: int) -> List[DummyModel]:
         """
         Get all dummy models with limit/offset pagination.
 

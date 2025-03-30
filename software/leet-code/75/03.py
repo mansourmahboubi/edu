@@ -7,7 +7,7 @@ class Solution:
         for index in range(len(s)):
             frist_letter = s[index]
             second_letter = t[index]
-            if not second_letter in hashmap.values():
+            if second_letter not in hashmap.values():
                 hashmap[frist_letter] = second_letter
         isom = ""
         for letter in s:
@@ -22,7 +22,6 @@ class Solution:
         mapping_t_s = {}
 
         for c1, c2 in zip(s, t):
-
             # Case 1: No mapping exists in either of the dictionaries
             if (c1 not in mapping_s_t) and (c2 not in mapping_t_s):
                 mapping_s_t[c1] = c2
@@ -56,16 +55,16 @@ if __name__ == "__main__":
     res = s.is_isomorphic("egg", "add")
     print(res)
     end = time.perf_counter_ns()
-    print(f"method 1 {end-start} ns")
+    print(f"method 1 {end - start} ns")
 
     start = time.perf_counter_ns()
     res = s.is_isomorphic_1("egg", "add")
     print(res)
     end = time.perf_counter_ns()
-    print(f"method 2 {end-start} ns")
+    print(f"method 2 {end - start} ns")
 
     start = time.perf_counter_ns()
     res = s.is_isomorphic_2("egg", "add")
     print(res)
     end = time.perf_counter_ns()
-    print(f"method 3 {end-start} ns")
+    print(f"method 3 {end - start} ns")

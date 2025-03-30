@@ -42,9 +42,7 @@ class MovieDAO:
                 ORDER BY m.`{0}` {1}
                 SKIP $skip
                 LIMIT $limit
-            """.format(
-                sort, order
-            )
+            """.format(sort, order)
             # Run the statement within the transaction passed as the first argument
             result = tx.run(
                 cypher,

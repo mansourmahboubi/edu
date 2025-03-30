@@ -25,7 +25,9 @@ measured_latency_in_sec = [
 
 def get_lat_long(zip_code: str, country: str) -> Tuple[float, float]:
     key = f"{zip_code}, {country}"
-    url = f'http://www.datasciencetoolkit.org/street2coordinates/{key.replace(" ", "+")}'
+    url = (
+        f"http://www.datasciencetoolkit.org/street2coordinates/{key.replace(' ', '+')}"
+    )
 
     if use_cached_data:
         time.sleep(random.choice(measured_latency_in_sec))
