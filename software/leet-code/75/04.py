@@ -5,7 +5,7 @@ class Solution:
     def is_subsequence(self, s: str, t: str) -> bool:
         index = None
         string = ""
-        for l in s:
+        for l in s:  # noqa: E741
             after_letters = t[index + 1 if index else 0 : len(t)]
             if l in after_letters:
                 cur_index = after_letters.index(l) + (len(t) - len(after_letters))

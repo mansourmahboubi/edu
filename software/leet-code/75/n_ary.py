@@ -17,7 +17,7 @@ class NAryNode:
         nodes = [root]
         index = 0
         for i in range(2, len(array)):
-            if array[i] == None:
+            if array[i] == None:  # noqa: E711
                 index += 1
             else:
                 node = cls(array[i], children=[])
