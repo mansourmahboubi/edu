@@ -17,7 +17,8 @@ exclude = '''
 
 [tool.flake8]
 max-line-length = 80
-extend-ignore = ["D203", "E203", "E251", "E266", "E302", "E305", "E401", "E402", "E501", "F401", "F403", "W503"]
+max-doc-length = 200
+extend-ignore = ["E501"]
 exclude = [".git", "__pycache__", "dist"]
 max-complexity = 10
 

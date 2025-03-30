@@ -16,6 +16,7 @@ repos:
             "--in-place",
             "--expand-star-imports",
           ]
+
   - repo: https://github.com/pycqa/isort
     rev: 6.0.1
     hooks:
@@ -27,8 +28,10 @@ repos:
       - id: black
         language_version: python3.13
 
-  # - repo: https://github.com/pycqa/flake8
-  #   rev: 7.2.0
-  #   hooks:
-  #     - id: flake8
-  #       # additional_dependencies: [flake8-docstrings]
+  - repo: https://github.com/pycqa/flake8
+    rev: 7.0.0
+    hooks:
+      - id: flake8
+        entry: pflake8
+        additional_dependencies: [pyproject-flake8]
+        # additional_dependencies: [flake8-docstrings
