@@ -29,3 +29,6 @@ atomic = true
 profile = "black"
 line_length = 80
 skip_gitignore = true
+
+[pytest]
+addopts = ["python/*"]

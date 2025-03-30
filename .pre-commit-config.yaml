@@ -35,3 +35,13 @@ repos:
         entry: pflake8
         additional_dependencies: [pyproject-flake8]
         # additional_dependencies: [flake8-docstrings
+
+  # # pytest
+  # - repo: local
+  #   hooks:
+  #     - id: pytest
+  #       name: pytest
+  #       entry: pytest
+  #       language: system
+  #       pass_filenames: false
+  #       always_run: true
