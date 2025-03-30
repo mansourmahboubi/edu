@@ -17,9 +17,7 @@ async def main():
     - Updating requirements.txt with trio v0.16.0 and trio_asyncio v0.11.0
     """
 
-    send_channel, receive_channel = trio.open_memory_channel(
-        max_buffer_size=10
-    )
+    send_channel, receive_channel = trio.open_memory_channel(max_buffer_size=10)
 
     with trio.move_on_after(5):
         async with trio.open_nursery() as nursery:

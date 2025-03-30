@@ -1,6 +1,6 @@
 import sys
 from concurrent.futures import ThreadPoolExecutor
-from threading import Thread, active_count, current_thread
+from threading import active_count, current_thread
 from time import perf_counter, sleep
 
 DAEMON_BOOL = False

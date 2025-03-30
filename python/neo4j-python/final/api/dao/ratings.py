@@ -1,4 +1,3 @@
-from api.data import goodfellas, ratings
 from api.exceptions.notfound import NotFoundException
 
 

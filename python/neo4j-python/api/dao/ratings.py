@@ -1,4 +1,4 @@
-from api.data import goodfellas, ratings
+from api.data import ratings
 from api.exceptions.notfound import NotFoundException
 
 

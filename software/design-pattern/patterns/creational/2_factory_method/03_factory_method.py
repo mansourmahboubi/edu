@@ -16,7 +16,6 @@ class Creator(ABC):
         Note that the Creator may also provide some default implementation of
         the factory method.
         """
-        pass
 
     def some_operation(self) -> str:
         """

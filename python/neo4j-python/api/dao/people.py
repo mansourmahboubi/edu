@@ -1,5 +1,4 @@
 from api.data import pacino, people
-from api.exceptions.notfound import NotFoundException
 
 
 class PeopleDAO:

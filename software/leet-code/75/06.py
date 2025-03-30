@@ -9,9 +9,7 @@ from timer import Timer
 
 
 class Solution:
-    def reverse_list(
-        self, head: Optional["ListNode"]
-    ) -> Optional["ListNode"]:
+    def reverse_list(self, head: Optional["ListNode"]) -> Optional["ListNode"]:
         if not head:
             return head
         l1 = []

@@ -1,5 +1,4 @@
 import time
-from itertools import accumulate
 from typing import List
 
 

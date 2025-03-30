@@ -1,4 +1,3 @@
-from api.data import genres
 from api.exceptions.notfound import NotFoundException
 
 

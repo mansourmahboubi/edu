@@ -1,9 +1,8 @@
 import os
-import tempfile
 
 import pytest
 from api import create_app
-from api.neo4j import close_driver, init_driver
+from api.neo4j import init_driver
 from dotenv import load_dotenv
 
 

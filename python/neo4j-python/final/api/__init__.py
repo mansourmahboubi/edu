@@ -1,6 +1,5 @@
 import os
 from datetime import timedelta
-from email import policy
 
 from api.exceptions.notfound import NotFoundException
 from flask import Flask

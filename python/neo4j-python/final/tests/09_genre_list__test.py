@@ -1,4 +1,3 @@
-import pytest
 from api.dao.genres import GenreDAO
 from api.neo4j import get_driver
 

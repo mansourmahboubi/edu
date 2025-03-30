@@ -1,5 +1,4 @@
 from api.data import goodfellas, popular
-from api.exceptions.notfound import NotFoundException
 
 
 class MovieDAO:

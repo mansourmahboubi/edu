@@ -1,7 +1,6 @@
 import pytest
 from api.dao.favorites import FavoriteDAO
 from api.dao.movies import MovieDAO
-from api.exceptions.notfound import NotFoundException
 from api.neo4j import get_driver
 
 toy_story = "862"

@@ -37,6 +37,4 @@ def get_lat_long(zip_code: str, country: str) -> Tuple[float, float]:
         data = resp.json()
 
         city_data = data.get(f"{zip_code}, {country}", dict())
-        return city_data.get("latitude", 0.00), city_data.get(
-            "longitude", 0.00
-        )
+        return city_data.get("latitude", 0.00), city_data.get("longitude", 0.00)

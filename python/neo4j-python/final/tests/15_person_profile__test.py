@@ -1,4 +1,3 @@
-import pytest
 from api.dao.people import PeopleDAO
 from api.neo4j import get_driver
 

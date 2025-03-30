@@ -1,6 +1,5 @@
 import pytest
 from django.contrib.auth import get_user_model
-from django.test import TestCase
 
 from .business_logic import set_default
 from .models import Address
