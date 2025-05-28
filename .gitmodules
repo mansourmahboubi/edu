@@ -1,0 +1,6 @@
+[submodule "software/clean-architecutre/CleanArchitecture"]
+	path = software/clean-architecutre/CleanArchitecture
+	url = git@github.com:jasontaylordev/CleanArchitecture.git
+[submodule "software/clean-architecutre/Practical.CleanArchitecture"]
+	path = software/clean-architecutre/Practical.CleanArchitecture
+	url = git@github.com:phongnguyend/Practical.CleanArchitecture.git
