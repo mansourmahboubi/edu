@@ -1,16 +1,34 @@
 # https://github.com/openai/whisper/blob/main/model-card.md
 import json
-
+import torch
 import whisper
 
-audio_file = "s1e1.mp3"
+audio_file = "output.mp3"
 data_file = audio_file.replace(".mp3", ".json")
 final_data = f"{audio_file.replace('.mp3', '')}-final.json"
 srt_file = f"{audio_file.replace('.mp3', '')}-final.srt"
 
 
+def get_device():
+    if torch.cuda.is_available():
+        print("CUDA is available")
+        return "cuda"
+    elif torch.backends.mps.is_available():
+        print(
+            "MPS (Metal) is available but not fully supported. Falling back to CPU."
+        )
+        return "cpu"
+    else:
+        print("CPU is available")
+        return "cpu"
+
+
 def transcribe_audio(audio_file: str) -> None:
-    model = whisper.load_model("turbo")
+    device = get_device()
+    print(f"Using device: {device}")
+    mps_device = torch.device(device)
+    model = whisper.load_model("turbo", device=mps_device)
+    print(f"Model loaded on device: {model.device}")
     result = model.transcribe(audio_file, word_timestamps=True, verbose=False)
     data = json.dumps(result, indent=4)
     with open(data_file, "w") as f:
@@ -64,14 +82,7 @@ def format_timestamp(seconds: float) -> str:
 
 
 if __name__ == "__main__":
-    # transcription = transcribe_audio(audio_file)
-    # audiofile_loader(data_file)
-    convert_to_srt(final_data)
-    # print(transcription)
-
-
-if __name__ == "__main__":
-    # transcription = transcribe_audio(audio_file)
-    # audiofile_loader(data_file)
+    transcription = transcribe_audio(audio_file)
+    audiofile_loader(data_file)
     convert_to_srt(final_data)
     # print(transcription)
