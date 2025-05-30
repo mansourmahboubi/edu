@@ -4,3 +4,6 @@
 [submodule "software/clean-architecutre/Practical.CleanArchitecture"]
 	path = software/clean-architecutre/Practical.CleanArchitecture
 	url = git@github.com:phongnguyend/Practical.CleanArchitecture.git
+[submodule "software/clean-architecutre/python/python-clean-architecture"]
+	path = software/clean-architecutre/python/python-clean-architecture
+	url = git@github.com:pcah/python-clean-architecture.git
